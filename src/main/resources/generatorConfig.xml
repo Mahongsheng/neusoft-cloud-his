@@ -15,7 +15,7 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.neu.his.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.neu.his.pojo" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
