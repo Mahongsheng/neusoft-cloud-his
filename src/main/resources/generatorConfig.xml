@@ -28,6 +28,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
+        <table tableName="user" domainObjectName="User"></table>
         <table tableName="charge_info" domainObjectName="ChargeInfo"></table>
         <table tableName="charge_subject" domainObjectName="ChargeSubject"></table>
         <table tableName="confirmed" domainObjectName="Confirmed"></table>
@@ -52,7 +53,6 @@
         <table tableName="scheduling" domainObjectName="Scheduling"></table>
         <table tableName="settlement" domainObjectName="Settlement"></table>
         <table tableName="drug_template_detail" domainObjectName="DrugTemplateDetail"></table>
-        <table tableName="user" domainObjectName="User"></table>
 
     </context>
 </generatorConfiguration>
