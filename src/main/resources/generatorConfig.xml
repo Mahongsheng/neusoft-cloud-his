@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/his?serverTimezone=UTC"
+                        userId="root"
+                        password="mage@1125">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.neu.his.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.neu.his.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="charge_info" domainObjectName="ChargeInfo"></table>
+        <table tableName="charge_subject" domainObjectName="ChargeSubject"></table>
+        <table tableName="confirmed" domainObjectName="Confirmed"></table>
+        <table tableName="constant" domainObjectName="Constant"></table>
+        <table tableName="constant_type" domainObjectName="ConstantType"></table>
+        <table tableName="department" domainObjectName="Department"></table>
+        <table tableName="disease_catalog" domainObjectName="DiseaseCatalog"></table>
+        <table tableName="disease_category" domainObjectName="DiseaseCategory"></table>
+        <table tableName="doctor" domainObjectName="Doctor"></table>
+        <table tableName="drug" domainObjectName="Drug"></table>
+        <table tableName="drug_prescription" domainObjectName="DrugPrescription"></table>
+        <table tableName="drug_prescription_detail" domainObjectName="DrugPrescriptionDetail"></table>
+        <table tableName="drug_template" domainObjectName="DrugTemplate"></table>
+        <table tableName="invoice" domainObjectName="Invoice"></table>
+        <table tableName="medical_project" domainObjectName="MedicalProject"></table>
+        <table tableName="medical_record" domainObjectName="MedicalRecord"></table>
+        <table tableName="non_drug_item" domainObjectName="NonDrugItem"></table>
+        <table tableName="patient" domainObjectName="Patient"></table>
+        <table tableName="regist_level" domainObjectName="RegistLevel"></table>
+        <table tableName="registration_record" domainObjectName="RegistrationRecord"></table>
+        <table tableName="sche_rule" domainObjectName="ScheRule"></table>
+        <table tableName="scheduling" domainObjectName="Scheduling"></table>
+        <table tableName="settlement" domainObjectName="Settlement"></table>
+        <table tableName="drug_template_detail" domainObjectName="DrugTemplateDetail"></table>
+        <table tableName="user" domainObjectName="User"></table>
+
+    </context>
+</generatorConfiguration>
