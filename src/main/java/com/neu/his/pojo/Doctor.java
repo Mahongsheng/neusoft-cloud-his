@@ -9,21 +9,21 @@ import java.io.Serializable;
  * @date 2019年7月22日11:50:24
  */
 public class Doctor implements Serializable {
-    private int doctorID;
+    private Integer doctorID;
     private String doctorLoginName;
     private String doctorPSW;
     private String doctorName;
-    private int deptID;
-    private int doctorType;
-    private int doctorTitle;
-    private int doctorSche;
-    private int doctorRegistLevel;
+    private Integer deptID;
+    private Integer doctorType;
+    private Integer doctorTitle;
+    private Integer doctorSche;
+    private Integer doctorRegistLevel;
 
-    public int getDoctorID() {
+    public Integer getDoctorID() {
         return doctorID;
     }
 
-    public void setDoctorID(int doctorID) {
+    public void setDoctorID(Integer doctorID) {
         this.doctorID = doctorID;
     }
 
@@ -51,43 +51,43 @@ public class Doctor implements Serializable {
         this.doctorName = doctorName;
     }
 
-    public int getDeptID() {
+    public Integer getDeptID() {
         return deptID;
     }
 
-    public void setDeptID(int deptID) {
+    public void setDeptID(Integer deptID) {
         this.deptID = deptID;
     }
 
-    public int getDoctorType() {
+    public Integer getDoctorType() {
         return doctorType;
     }
 
-    public void setDoctorType(int doctorType) {
+    public void setDoctorType(Integer doctorType) {
         this.doctorType = doctorType;
     }
 
-    public int getDoctorTitle() {
+    public Integer getDoctorTitle() {
         return doctorTitle;
     }
 
-    public void setDoctorTitle(int doctorTitle) {
+    public void setDoctorTitle(Integer doctorTitle) {
         this.doctorTitle = doctorTitle;
     }
 
-    public int getDoctorSche() {
+    public Integer getDoctorSche() {
         return doctorSche;
     }
 
-    public void setDoctorSche(int doctorSche) {
+    public void setDoctorSche(Integer doctorSche) {
         this.doctorSche = doctorSche;
     }
 
-    public int getDoctorRegistLevel() {
+    public Integer getDoctorRegistLevel() {
         return doctorRegistLevel;
     }
 
-    public void setDoctorRegistLevel(int doctorRegistLevel) {
+    public void setDoctorRegistLevel(Integer doctorRegistLevel) {
         this.doctorRegistLevel = doctorRegistLevel;
     }
 }

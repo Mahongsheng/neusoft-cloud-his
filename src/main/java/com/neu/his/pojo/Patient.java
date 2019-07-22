@@ -1,7 +1,7 @@
 package com.neu.his.pojo;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * 数据库表patient对应的实体类Patient
@@ -10,20 +10,20 @@ import java.sql.Date;
  * @date 2019年7月22日11:53:24
  */
 public class Patient implements Serializable {
-    private int patientRecordID;
+    private Integer patientRecordID;
     private String patientName;
-    private int patientGender;
-    private int patientAge;
+    private Integer patientGender;
+    private Integer patientAge;
     private String patientIDNum;
     private String patientAddress;
     private String patientAgeType;
     private Date patientBirthday;
 
-    public int getPatientRecordID() {
+    public Integer getPatientRecordID() {
         return patientRecordID;
     }
 
-    public void setPatientRecordID(int patientRecordID) {
+    public void setPatientRecordID(Integer patientRecordID) {
         this.patientRecordID = patientRecordID;
     }
 
@@ -35,19 +35,19 @@ public class Patient implements Serializable {
         this.patientName = patientName;
     }
 
-    public int getPatientGender() {
+    public Integer getPatientGender() {
         return patientGender;
     }
 
-    public void setPatientGender(int patientGender) {
+    public void setPatientGender(Integer patientGender) {
         this.patientGender = patientGender;
     }
 
-    public int getPatientAge() {
+    public Integer getPatientAge() {
         return patientAge;
     }
 
-    public void setPatientAge(int patientAge) {
+    public void setPatientAge(Integer patientAge) {
         this.patientAge = patientAge;
     }
 

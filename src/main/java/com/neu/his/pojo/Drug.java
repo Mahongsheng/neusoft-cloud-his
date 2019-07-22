@@ -10,23 +10,23 @@ import java.util.Date;
  * @date 2019年7月22日11:55:25
  */
 public class Drug implements Serializable {
-    private int drugID;
+    private Integer drugID;
     private String drugCode;
     private String drugName;
     private String drugSpecif;
     private String drugUnit;
     private String drugManufacturer;
-    private int drugsDosageID;
-    private int drugsTypeID;
+    private Integer drugsDosageID;
+    private Integer drugsTypeID;
     private float drugUnitPrice;
     private String drugMemonicCode;
     private Date drugCrtTime;
 
-    public int getDrugID() {
+    public Integer getDrugID() {
         return drugID;
     }
 
-    public void setDrugID(int drugID) {
+    public void setDrugID(Integer drugID) {
         this.drugID = drugID;
     }
 
@@ -70,19 +70,19 @@ public class Drug implements Serializable {
         this.drugManufacturer = drugManufacturer;
     }
 
-    public int getDrugsDosageID() {
+    public Integer getDrugsDosageID() {
         return drugsDosageID;
     }
 
-    public void setDrugsDosageID(int drugsDosageID) {
+    public void setDrugsDosageID(Integer drugsDosageID) {
         this.drugsDosageID = drugsDosageID;
     }
 
-    public int getDrugsTypeID() {
+    public Integer getDrugsTypeID() {
         return drugsTypeID;
     }
 
-    public void setDrugsTypeID(int drugsTypeID) {
+    public void setDrugsTypeID(Integer drugsTypeID) {
         this.drugsTypeID = drugsTypeID;
     }
 

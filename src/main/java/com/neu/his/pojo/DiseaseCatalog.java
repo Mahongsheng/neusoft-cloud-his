@@ -9,17 +9,17 @@ import java.io.Serializable;
  * @date 2019年7月22日11:59:00
  */
 public class DiseaseCatalog implements Serializable {
-    private int diseaseID;
+    private Integer diseaseID;
     private String diseaseCode;
     private String diseaseName;
     private String diseaseICD;
-    private int diseaseCateID;
+    private Integer diseaseCateID;
 
-    public int getDiseaseID() {
+    public Integer getDiseaseID() {
         return diseaseID;
     }
 
-    public void setDiseaseID(int diseaseID) {
+    public void setDiseaseID(Integer diseaseID) {
         this.diseaseID = diseaseID;
     }
 
@@ -47,11 +47,11 @@ public class DiseaseCatalog implements Serializable {
         this.diseaseICD = diseaseICD;
     }
 
-    public int getDiseaseCateID() {
+    public Integer getDiseaseCateID() {
         return diseaseCateID;
     }
 
-    public void setDiseaseCateID(int diseaseCateID) {
+    public void setDiseaseCateID(Integer diseaseCateID) {
         this.diseaseCateID = diseaseCateID;
     }
 }

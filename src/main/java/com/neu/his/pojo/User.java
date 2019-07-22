@@ -9,17 +9,17 @@ import java.io.Serializable;
  * @date 2019年7月22日11:49:38
  */
 public class User implements Serializable {
-    private int userID;
+    private Integer userID;
     private String userLoginName;
     private String userPSW;
     private String userName;
-    private int userType;
+    private Integer userType;
 
-    public int getUserID() {
+    public Integer getUserID() {
         return userID;
     }
 
-    public void setUserID(int userID) {
+    public void setUserID(Integer userID) {
         this.userID = userID;
     }
 
@@ -47,11 +47,11 @@ public class User implements Serializable {
         this.userName = userName;
     }
 
-    public int getUserType() {
+    public Integer getUserType() {
         return userType;
     }
 
-    public void setUserType(int userType) {
+    public void setUserType(Integer userType) {
         this.userType = userType;
     }
 }

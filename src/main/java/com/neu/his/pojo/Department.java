@@ -9,17 +9,17 @@ import java.io.Serializable;
  * @date 2019年7月22日12:12:14
  */
 public class Department implements Serializable {
-    private int deptID;
+    private Integer deptID;
     private String deptCode;
     private String deptName;
-    private int deptCategory;
-    private int deptType;
+    private Integer deptCategory;
+    private Integer deptType;
 
-    public int getDeptID() {
+    public Integer getDeptID() {
         return deptID;
     }
 
-    public void setDeptID(int deptID) {
+    public void setDeptID(Integer deptID) {
         this.deptID = deptID;
     }
 
@@ -39,19 +39,19 @@ public class Department implements Serializable {
         this.deptName = deptName;
     }
 
-    public int getDeptCategory() {
+    public Integer getDeptCategory() {
         return deptCategory;
     }
 
-    public void setDeptCategory(int deptCategory) {
+    public void setDeptCategory(Integer deptCategory) {
         this.deptCategory = deptCategory;
     }
 
-    public int getDeptType() {
+    public Integer getDeptType() {
         return deptType;
     }
 
-    public void setDeptType(int deptType) {
+    public void setDeptType(Integer deptType) {
         this.deptType = deptType;
     }
 }
