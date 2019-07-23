@@ -6,5 +6,6 @@ import lombok.Data;
 public class LoginReturn {
     private String userType;
     private String userName;
-    private boolean ifSuccess;
+    private boolean ifNameRight;
+    private boolean ifPswRight;
 }
