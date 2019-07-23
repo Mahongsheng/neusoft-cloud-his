@@ -26,4 +26,5 @@ public class RegisterDTO {
     private Boolean medicalBook;//是否需要病历本
     private Double money;//金额
     private String chargeWay;//收费方式
+    private int registerUserID;//挂号员ID
 }

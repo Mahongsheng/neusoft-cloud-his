@@ -3,6 +3,9 @@ package com.neu.his.serviceInterface;
 import com.neu.his.dto.UserLoginDTO;
 import com.neu.his.vojo.LoginReturn;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * 用户管理接口
  */
@@ -13,5 +16,5 @@ public interface UserManagement {
      * @param userLoginDTO
      * @return
      */
-    LoginReturn login(UserLoginDTO userLoginDTO);
+    LoginReturn login(UserLoginDTO userLoginDTO, HttpServletResponse response);
 }

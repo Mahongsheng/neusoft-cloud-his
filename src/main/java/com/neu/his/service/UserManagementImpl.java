@@ -12,6 +12,9 @@ import com.neu.his.vojo.LoginReturn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -31,14 +34,15 @@ public class UserManagementImpl implements UserManagement {
 
     /**
      * 用户登录（待补充token、session、cookie）等
+     *
      * @param userLoginDTO
      * @return
      */
     @Override
-    public LoginReturn login(UserLoginDTO userLoginDTO) {
+    public LoginReturn login(UserLoginDTO userLoginDTO, HttpServletResponse response) {
         //实例化返回值
         LoginReturn loginReturn = new LoginReturn();
-        if (userLoginDTO == null){
+        if (userLoginDTO == null) {
             return loginReturn;
         }
         loginReturn.setUserType(userLoginDTO.getUserType());
@@ -55,10 +59,12 @@ public class UserManagementImpl implements UserManagement {
                 //列表为空，则证明用户名不正确
                 if (doctorList.isEmpty()) return loginReturn;
 
-                if (doctorList.get(0).getDoctorPsw() == userLoginDTO.getUserPsw()){
+                if (doctorList.get(0).getDoctorPsw() == userLoginDTO.getUserPsw()) {
                     loginReturn.setIfNameRight(true);
                     loginReturn.setIfPswRight(true);
                     loginReturn.setUserName(doctorList.get(0).getDoctorName());
+                    //列表不为空，写cookie
+                    response.addCookie(new Cookie("token", doctorList.get(0).getDoctorId().toString()));
                 }
                 return loginReturn;
             } else if (userLoginDTO.getUserType().equals("管理员")) {
@@ -72,10 +78,12 @@ public class UserManagementImpl implements UserManagement {
                 //列表为空，则证明用户名不正确
                 if (userList.isEmpty()) return loginReturn;
 
-                if (userList.get(0).getUserPsw() == userLoginDTO.getUserPsw()){
+                if (userList.get(0).getUserPsw() == userLoginDTO.getUserPsw()) {
                     loginReturn.setIfNameRight(true);
                     loginReturn.setIfPswRight(true);
                     loginReturn.setUserName(userList.get(0).getUserName());
+                    //列表不为空，写cookie
+                    response.addCookie(new Cookie("token", userList.get(0).getUserId().toString()));
                 }
                 return loginReturn;
             }
