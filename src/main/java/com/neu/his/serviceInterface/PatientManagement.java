@@ -43,4 +43,12 @@ public interface PatientManagement {
      * @return
      */
     JSONObject charge(ChargeInfoDTO chargeInfoDTO);
+
+    /**
+     * 医生开药
+     *
+     * @param prescribeDTO
+     * @return
+     */
+    JSONObject prescribe(PrescribeDTO prescribeDTO);
 }

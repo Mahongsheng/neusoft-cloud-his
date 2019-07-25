@@ -10,8 +10,7 @@ import com.neu.his.util.ReturnState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class PatientManagementImpl implements PatientManagement {
@@ -42,6 +41,15 @@ public class PatientManagementImpl implements PatientManagement {
 
     @Autowired
     private DrugPrescriptionDetailMapper drugPrescriptionDetailMapper;
+
+    @Autowired
+    private DrugMapper drugMapper;
+
+    @Autowired
+    private ChargeInfoMapper chargeInfoMapper;
+
+    @Autowired
+    private InvoiceMapper invoiceMapper;
 
     /**
      * 患者挂号
@@ -273,25 +281,26 @@ public class PatientManagementImpl implements PatientManagement {
     public JSONObject charge(ChargeInfoDTO chargeInfoDTO) {
         JSONObject returnJson;
         try {
+            //处方明细对象
+            List<DrugPrescriptionDetail> drugPrescriptionDetails = new ArrayList<>();
             //药品处方明细属性
-            int drug_pre_detail_id;//已有
             int drug_pre_id;
-            short drug_id;
-            String drug_pre_detail_usage;
-            String drug_pre_detail_amount;
-            String drug_pre_detail_freq;
-            byte drug_pre_detail_num;
-            String drug_pre_detail_state;
-            byte charge_type;//已有
+            int drug_id;
+            byte charge_type = 0;//已有
             //药品处方属性
             short doctor_id;
             Date drug_pre_time;
-            int regist_id;
+            int register_id = 0;
             //发票属性
             int invoice_id;//已有
             double invoice_price;//已有
             //收费信息属性
-            int charge_refund_user_id;//已有
+            short charge_refund_user_id;//已有
+            String drug_name;
+            double price;
+            double unitPrice;
+            short amount;
+            short deptID;
 
             //转换收费类型
             if (chargeInfoDTO.getChargeType().equals("现金")) {
@@ -316,16 +325,102 @@ public class PatientManagementImpl implements PatientManagement {
             invoice_price = chargeInfoDTO.getChargeWholePrice();
             charge_refund_user_id = chargeInfoDTO.getChargeUserID();
 
-            //首先将处方明细表中的处方明细状态处设置为已缴费，并取出处方ID
+            //首先将处方明细表中的处方明细状态处设置为已缴费，并取出所有处方明细属性封装为处方明细对象
             for (int drugPreDetailID : chargeInfoDTO.getDrugPreIDs()) {
-
-
+                drugPrescriptionDetailMapper.changeStateChargedByPrimaryKey(drugPreDetailID);
+                drugPrescriptionDetails.add(drugPrescriptionDetailMapper.selectByPrimaryKey(drugPreDetailID));
             }
+
+            //将缴费信息插入表中
+            for (DrugPrescriptionDetail drugPrescriptionDetail : drugPrescriptionDetails) {
+                drug_pre_id = drugPrescriptionDetail.getDrugPreId();
+
+                //找到该药品
+                drug_id = drugPrescriptionDetail.getDrugId();
+                Drug drug = drugMapper.selectByPrimaryKey(drug_id);
+                drug_name = drug.getDrugName();
+                unitPrice = drug.getDrugUnitPrice();
+                amount = drugPrescriptionDetail.getDrugPreDetailNum();
+                //计算出价格
+                price = unitPrice * amount;
+
+                //根据药品处方ID找到处方
+                DrugPrescription drugPrescription = drugPrescriptionMapper.selectByPrimaryKey(drug_pre_id);
+                //找到处方中的医生ID、开立时间、挂号ID
+                doctor_id = drugPrescription.getDoctorId();
+                drug_pre_time = drugPrescription.getDrugPreTime();
+                register_id = drugPrescription.getRegistId();
+
+                //找到执行科室ID
+                Doctor doctor = doctorMapper.selectByPrimaryKey(doctor_id);
+                deptID = doctor.getDeptId();
+
+                //插入到消费信息表中
+                ChargeInfo chargeInfo = new ChargeInfo();
+                chargeInfo.setRegistId(register_id);
+                chargeInfo.setInvoiceId(invoice_id);
+                chargeInfo.setItemId((short) drug_id);
+                chargeInfo.setItemType((byte) 2);
+                chargeInfo.setItemName(drug_name);
+                chargeInfo.setChargeInfoUnitPrice(unitPrice);
+                chargeInfo.setChargeInfoAmount(amount);
+                chargeInfo.setDeptId(deptID);
+                chargeInfo.setChargeRefundTime(new Date());
+                chargeInfo.setChargeRefundUserId(charge_refund_user_id);
+                chargeInfo.setChargeBeginTime(drug_pre_time);
+                chargeInfo.setChargeBeginUserid(doctor_id);
+                chargeInfo.setChargeType(charge_type);
+                chargeInfo.setChargeWholePrice(price);
+                chargeInfoMapper.insert(chargeInfo);
+            }
+            //插入到发票表中
+            Invoice invoice = new Invoice();
+            invoice.setInvoicePrice((float) invoice_price);
+            invoice.setInvoiceState((byte) 1);
+            invoice.setInvoiceOperaTime(new Date());
+            invoice.setChargeUserId(charge_refund_user_id);
+            invoice.setRegistId(register_id);
+            invoice.setChargeType(charge_type);
+            invoiceMapper.insert(invoice);
+            //包装返回Json
+            ReturnState returnState = new ReturnState();
+            returnState.setState(511);
+            returnState.setDetail("缴费成功");
+            returnJson = (JSONObject) JSON.toJSON(returnState);
+            return returnJson;
         } catch (Exception e) {
             e.printStackTrace();
+            //包装返回Json
+            ReturnState returnState = new ReturnState();
+            returnState.setState(512);
+            returnState.setDetail("缴费失败");
+            returnJson = (JSONObject) JSON.toJSON(returnState);
+            return returnJson;
         }
+    }
 
-        return null;
+    @Override
+    public JSONObject prescribe(PrescribeDTO prescribeDTO) {
+        JSONObject returnJson;
+        try {
+            for (int drugPreDetailID : prescribeDTO.getDrugPreIDs()) {
+                drugPrescriptionDetailMapper.changeStatePrescribedByPrimaryKey(drugPreDetailID);
+            }
+            //包装返回Json
+            ReturnState returnState = new ReturnState();
+            returnState.setState(513);
+            returnState.setDetail("开药成功");
+            returnJson = (JSONObject) JSON.toJSON(returnState);
+            return returnJson;
+        } catch (Exception e) {
+            e.printStackTrace();
+            //包装返回Json
+            ReturnState returnState = new ReturnState();
+            returnState.setState(514);
+            returnState.setDetail("开药失败");
+            returnJson = (JSONObject) JSON.toJSON(returnState);
+            return returnJson;
+        }
     }
 
 

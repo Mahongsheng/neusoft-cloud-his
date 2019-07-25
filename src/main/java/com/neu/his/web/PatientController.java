@@ -2,10 +2,7 @@ package com.neu.his.web;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.neu.his.dto.DrugPrescriptionDTO;
-import com.neu.his.dto.MedicalRecordDTO;
-import com.neu.his.dto.RegisterBackDTO;
-import com.neu.his.dto.RegisterDTO;
+import com.neu.his.dto.*;
 import com.neu.his.serviceInterface.PatientManagement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,5 +38,17 @@ public class PatientController {
     @ResponseBody
     public JSONObject makePrescription(@RequestBody DrugPrescriptionDTO drugPrescriptionDTO) {
         return patientManagement.makePrescription(drugPrescriptionDTO);
+    }
+
+    @RequestMapping(value = "/charge", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONObject makePrescription(@RequestBody ChargeInfoDTO chargeInfoDTO) {
+        return patientManagement.charge(chargeInfoDTO);
+    }
+
+    @RequestMapping(value = "/prescribe", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONObject prescribe(@RequestBody PrescribeDTO prescribeDTO) {
+        return patientManagement.prescribe(prescribeDTO);
     }
 }

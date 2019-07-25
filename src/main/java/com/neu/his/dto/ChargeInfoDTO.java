@@ -6,7 +6,7 @@ import java.util.List;
 
 @Data
 public class ChargeInfoDTO {
-    private Integer chargeUserID;//收费人员ID
+    private short chargeUserID;//收费人员ID
     private String chargeType;//收费方式
     private Double chargeWholePrice;//总价
     private Integer invoiceID;//发票ID
