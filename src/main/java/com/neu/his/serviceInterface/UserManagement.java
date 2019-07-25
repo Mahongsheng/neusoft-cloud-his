@@ -3,7 +3,6 @@ package com.neu.his.serviceInterface;
 import com.neu.his.dto.UserLoginDTO;
 import com.neu.his.vojo.LoginReturn;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**

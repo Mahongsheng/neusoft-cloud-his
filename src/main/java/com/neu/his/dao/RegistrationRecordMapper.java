@@ -2,7 +2,9 @@ package com.neu.his.dao;
 
 import com.neu.his.pojo.RegistrationRecord;
 import com.neu.his.pojo.RegistrationRecordExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -95,4 +97,11 @@ public interface RegistrationRecordMapper {
      * @mbg.generated Tue Jul 23 16:40:50 CST 2019
      */
     int updateByPrimaryKey(RegistrationRecord record);
+
+    /**
+     * 更新为退号
+     * @param registerID
+     * @return
+     */
+    int updateStateByPrimaryKey(Integer registerID);
 }

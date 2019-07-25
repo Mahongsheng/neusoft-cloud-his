@@ -2,6 +2,7 @@ package com.neu.his.web;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.neu.his.dto.DrugPrescriptionDTO;
 import com.neu.his.dto.MedicalRecordDTO;
 import com.neu.his.dto.RegisterBackDTO;
 import com.neu.his.dto.RegisterDTO;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class RegisterController {
+public class PatientController {
     @Autowired
     private PatientManagement patientManagement;
 
@@ -34,5 +35,11 @@ public class RegisterController {
     @ResponseBody
     public JSONObject writeMedical(@RequestBody MedicalRecordDTO medicalRecordDTO) {
         return patientManagement.writeMedical(medicalRecordDTO);
+    }
+
+    @RequestMapping(value = "/makePrescription", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONObject makePrescription(@RequestBody DrugPrescriptionDTO drugPrescriptionDTO) {
+        return patientManagement.makePrescription(drugPrescriptionDTO);
     }
 }

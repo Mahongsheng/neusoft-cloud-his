@@ -395,4 +395,9 @@
       regist_date = #{registDate,jdbcType=DATE}
     where regist_id = #{registId,jdbcType=INTEGER}
   </update>
+  <update id="updateStateByPrimaryKey" parameterType="java.lang.Integer">
+    update registration_record
+    set regist_state = '退号'
+    where regist_id = #{registId,jdbcType=INTEGER}
+  </update>
 </mapper>

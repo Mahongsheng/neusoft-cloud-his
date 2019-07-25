@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
@@ -42,49 +41,48 @@ public class UserManagementImpl implements UserManagement {
     public LoginReturn login(UserLoginDTO userLoginDTO, HttpServletResponse response) {
         //实例化返回值
         LoginReturn loginReturn = new LoginReturn();
-        if (userLoginDTO == null) {
-            return loginReturn;
-        }
-        loginReturn.setUserType(userLoginDTO.getUserType());
         //监测任何异常
         try {
-            //判断医生或管理员
-            if (userLoginDTO.getUserType().equals("医生")) {
-                //使用Example进行查询
-                DoctorExample doctorExample = new DoctorExample();
-                DoctorExample.Criteria doctorCriteria = doctorExample.createCriteria();
-                doctorCriteria.andDoctorLoginNameEqualTo(userLoginDTO.getUserLoginName());
-                List<Doctor> doctorList = doctorMapper.selectByExample(doctorExample);
-
-                //列表为空，则证明用户名不正确
-                if (doctorList.isEmpty()) return loginReturn;
-
-                if (doctorList.get(0).getDoctorPsw() == userLoginDTO.getUserPsw()) {
-                    loginReturn.setIfNameRight(true);
-                    loginReturn.setIfPswRight(true);
-                    loginReturn.setUserName(doctorList.get(0).getDoctorName());
-                    //列表不为空，写cookie
-                    response.addCookie(new Cookie("token", doctorList.get(0).getDoctorId().toString()));
-                }
-                return loginReturn;
-            } else if (userLoginDTO.getUserType().equals("管理员")) {
-
+            //先后在医生和管理员表中进行检索
+            //使用Example进行查询
+            DoctorExample doctorExample = new DoctorExample();
+            DoctorExample.Criteria doctorCriteria = doctorExample.createCriteria();
+            doctorCriteria.andDoctorLoginNameEqualTo(userLoginDTO.getUserLoginName());
+            List<Doctor> doctorList = doctorMapper.selectByExample(doctorExample);
+            //列表为空，则证明医生中不存在该用户
+            if (doctorList.isEmpty()) {
                 //使用Example进行查询
                 UserExample userExample = new UserExample();
                 UserExample.Criteria userCriteria = userExample.createCriteria();
                 userCriteria.andUserLoginNameEqualTo(userLoginDTO.getUserLoginName());
                 List<User> userList = userMapper.selectByExample(userExample);
-
-                //列表为空，则证明用户名不正确
-                if (userList.isEmpty()) return loginReturn;
-
-                if (userList.get(0).getUserPsw() == userLoginDTO.getUserPsw()) {
+                if (userList.isEmpty()) {
+                    //都没有检索到该用户，用户名不存在
+                    loginReturn.setIfNameRight(false);
+                } else if (userList.get(0).getUserPsw() != userLoginDTO.getUserPsw()) {
+                    loginReturn.setIfNameRight(true);
+                    loginReturn.setIfPswRight(false);
+                    return loginReturn;
+                } else {
                     loginReturn.setIfNameRight(true);
                     loginReturn.setIfPswRight(true);
                     loginReturn.setUserName(userList.get(0).getUserName());
+                    loginReturn.setUserType("管理员");
                     //列表不为空，写cookie
                     response.addCookie(new Cookie("token", userList.get(0).getUserId().toString()));
+                    return loginReturn;
                 }
+            } else if (doctorList.get(0).getDoctorPsw() != userLoginDTO.getUserPsw()) {
+                loginReturn.setIfNameRight(true);
+                loginReturn.setIfPswRight(false);
+                return loginReturn;
+            } else {
+                loginReturn.setIfNameRight(true);
+                loginReturn.setIfPswRight(true);
+                loginReturn.setUserName(doctorList.get(0).getDoctorName());
+                loginReturn.setUserType("医生");
+                //列表不为空，写cookie
+                response.addCookie(new Cookie("token", doctorList.get(0).getDoctorId().toString()));
                 return loginReturn;
             }
         } catch (Exception e) {

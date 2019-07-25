@@ -1,10 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html>
 
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>东软云医院HIS系统 | 登录</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Toastr style -->
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+    <!-- Gritter -->
+    <link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <!--    <link href="css/my_his.css" rel="stylesheet">-->
+</head>
+
+<body class="black-bg">
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div>
+        <div>
+            <h1 class="logo-name">neu</h1>
+        </div>
+        <h3>欢迎登录东软云医院HIS系统</h3>
+        <p>让看病更加轻松</p>
+        <form class="m-t" role="form" action="/loginPost" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="用户名" required="" name="userName">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="密码" required="" name="password">
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b">登录</button>
+
+            <a href="#">
+                <small>忘记密码?</small>
+            </a>
+        </form>
+        <p class="m-t">
+            <small>Copyright</strong> 马洪升 &copy; 2018-2019</small>
+        </p>
+    </div>
+</div>
+
+
+<!-- Mainly scripts -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+<!--<script>-->
+<!--    $(document).read(function () {-->
+<!--        $("#btn btn-primary block full-width m-b").click(function () {-->
+<!--            $.post("")-->
+<!--        })-->
+<!--    })-->
+<!--</script>-->
 </body>
+
 </html>
