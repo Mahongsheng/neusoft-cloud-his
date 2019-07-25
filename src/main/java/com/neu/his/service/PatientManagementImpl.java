@@ -119,6 +119,12 @@ public class PatientManagementImpl implements PatientManagement {
         }
     }
 
+    /**
+     * 患者退号
+     *
+     * @param registerBackDTO
+     * @return
+     */
     @Override
     public JSONObject registerBack(RegisterBackDTO registerBackDTO) {
         JSONObject returnJson;
@@ -207,6 +213,12 @@ public class PatientManagementImpl implements PatientManagement {
         }
     }
 
+    /**
+     * 填写病历首页
+     *
+     * @param drugPrescriptionDTO
+     * @return
+     */
     @Override
     public JSONObject makePrescription(DrugPrescriptionDTO drugPrescriptionDTO) {
         JSONObject returnJson;
@@ -216,7 +228,6 @@ public class PatientManagementImpl implements PatientManagement {
             drugPrescription.setDrugPreId(null);
             drugPrescription.setDoctorId(drugPrescriptionDTO.getDoctorId());
             drugPrescription.setDrugPreName(drugPrescriptionDTO.getDrugPreName());
-            drugPrescription.setDrugPreState("未缴费");
             drugPrescription.setDrugPreTime(new Date());
             drugPrescription.setMedicalRecordId(drugPrescriptionDTO.getMedicalRecordId());
             drugPrescription.setRegistId(drugPrescriptionDTO.getRegisterId());
@@ -251,6 +262,72 @@ public class PatientManagementImpl implements PatientManagement {
             return returnJson;
         }
     }
+
+    /**
+     * 收费
+     *
+     * @param chargeInfoDTO
+     * @return
+     */
+    @Override
+    public JSONObject charge(ChargeInfoDTO chargeInfoDTO) {
+        JSONObject returnJson;
+        try {
+            //药品处方明细属性
+            int drug_pre_detail_id;//已有
+            int drug_pre_id;
+            short drug_id;
+            String drug_pre_detail_usage;
+            String drug_pre_detail_amount;
+            String drug_pre_detail_freq;
+            byte drug_pre_detail_num;
+            String drug_pre_detail_state;
+            byte charge_type;//已有
+            //药品处方属性
+            short doctor_id;
+            Date drug_pre_time;
+            int regist_id;
+            //发票属性
+            int invoice_id;//已有
+            double invoice_price;//已有
+            //收费信息属性
+            int charge_refund_user_id;//已有
+
+            //转换收费类型
+            if (chargeInfoDTO.getChargeType().equals("现金")) {
+                charge_type = 51;
+            } else if (chargeInfoDTO.getChargeType().equals("医保卡")) {
+                charge_type = 52;
+            } else if (chargeInfoDTO.getChargeType().equals("银行卡")) {
+                charge_type = 53;
+            } else if (chargeInfoDTO.getChargeType().equals("信用卡")) {
+                charge_type = 54;
+            } else if (chargeInfoDTO.getChargeType().equals("微信")) {
+                charge_type = 55;
+            } else if (chargeInfoDTO.getChargeType().equals("支付宝")) {
+                charge_type = 56;
+            } else if (chargeInfoDTO.getChargeType().equals("云闪付")) {
+                charge_type = 57;
+            } else if (chargeInfoDTO.getChargeType().equals("其他")) {
+                charge_type = 58;
+            }
+            //得到发票号、发票总价、收费人员ID
+            invoice_id = chargeInfoDTO.getInvoiceID();
+            invoice_price = chargeInfoDTO.getChargeWholePrice();
+            charge_refund_user_id = chargeInfoDTO.getChargeUserID();
+
+            //首先将处方明细表中的处方明细状态处设置为已缴费，并取出处方ID
+            for (int drugPreDetailID : chargeInfoDTO.getDrugPreIDs()) {
+
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
 
     private void addPatient(RegisterDTO registerDTO) {
 

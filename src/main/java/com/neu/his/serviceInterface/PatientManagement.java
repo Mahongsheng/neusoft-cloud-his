@@ -1,10 +1,7 @@
 package com.neu.his.serviceInterface;
 
 import com.alibaba.fastjson.JSONObject;
-import com.neu.his.dto.DrugPrescriptionDTO;
-import com.neu.his.dto.MedicalRecordDTO;
-import com.neu.his.dto.RegisterBackDTO;
-import com.neu.his.dto.RegisterDTO;
+import com.neu.his.dto.*;
 
 public interface PatientManagement {
     /**
@@ -38,4 +35,12 @@ public interface PatientManagement {
      * @return
      */
     JSONObject makePrescription(DrugPrescriptionDTO drugPrescriptionDTO);
+
+    /**
+     * 收费员收费
+     *
+     * @param chargeInfoDTO
+     * @return
+     */
+    JSONObject charge(ChargeInfoDTO chargeInfoDTO);
 }
