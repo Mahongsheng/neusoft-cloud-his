@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class NotFoundController {
-    @GetMapping("/404.html")
+    @GetMapping("/404")
     public String notFound() {
         return "404";
     }

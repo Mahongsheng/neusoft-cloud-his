@@ -1,10 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
 <body>
-$END$
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox-content">
+                <div class="form-group  row">
+                    <label class="col-sm-2 col-form-label">病历号：</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group  row">
+                    <label class="col-sm-2 col-form-label">时间：</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control">
+                        <br>
+                        <button type="button" class="btn btn-w-m btn-primary">搜索</button>
+                    </div>
+                </div>
+            </div>
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>发药</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th><input type="checkbox" checked class="i-checks" name="input[]"></th>
+                                <th>药品名称</th>
+                                <th>单价</th>
+                                <th>数量</th>
+                                <th>开立医生</th>
+                                <th>处方名称</th>
+                                <th>开立时间</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><input type="checkbox" checked class="i-checks" name="input[]"></td>
+                                <td>乐高玩具
+                                    <small>例子</small>
+                                </td>
+                                <td><span class="pie">0.52/1.561</span></td>
+                                <td>20%</td>
+                                <td>2017年12月12日</td>
+                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
+                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+    });
+</script>
 </body>
-</html>

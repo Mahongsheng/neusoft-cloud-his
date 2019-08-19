@@ -42,7 +42,7 @@ public class PatientController {
 
     @RequestMapping(value = "/charge", method = RequestMethod.POST)
     @ResponseBody
-    public JSONObject makePrescription(@RequestBody ChargeInfoDTO chargeInfoDTO) {
+    public JSONObject charge(@RequestBody ChargeInfoDTO chargeInfoDTO) {
         return patientManagement.charge(chargeInfoDTO);
     }
 

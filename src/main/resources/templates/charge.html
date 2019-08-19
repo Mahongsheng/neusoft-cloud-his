@@ -1,10 +1,99 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
 <body>
-$END$
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox-title">
+                <h5>患者信息查询</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="form-group  row">
+                    <label class="col-sm-2 col-form-label">病历号：</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control">
+                        <br>
+                        <button type="button" class="btn btn-w-m btn-primary">搜索</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ibox-title">
+                <h5>患者信息确认</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="form-group  row">
+                    <label class="col-sm-2 col-form-label">姓名：</label>
+                    <div class="col-sm-10"><input type="text" class="form-control"></div>
+                </div>
+
+                <div class="form-group  row">
+                    <label class="col-sm-2 col-form-label">身份证号：</label>
+                    <div class="col-sm-10"><input type="text" class="form-control"></div>
+                </div>
+                <div class="form-group  row">
+                    <label class="col-sm-2 col-form-label">家庭住址：</label>
+                    <div class="col-sm-10"><input type="text" class="form-control"></div>
+                </div>
+            </div>
+
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>患者消费信息</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th><input type="checkbox" checked class="i-checks" name="input[]"></th>
+                                <th>病历号</th>
+                                <th>姓名</th>
+                                <th>项目名称</th>
+                                <th>单价</th>
+                                <th>数量</th>
+                                <th>开立时间</th>
+                                <th>状态</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><input type="checkbox" checked class="i-checks" name="input[]"></td>
+                                <td>乐高玩具
+                                    <small>例子</small>
+                                </td>
+                                <td><span class="pie">0.52/1.561</span></td>
+                                <td>20%</td>
+                                <td>2017年12月12日</td>
+                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
+                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
+                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-4 col-sm-offset-2">
+                            <button class="btn btn-primary btn-sm" id="chargeNow">收费</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+    });
+</script>
+<!--<script>-->
+<!--    $(document).ready(function () {-->
+<!--        $("#chargeNow").click(function () {-->
+<!--            window.open("invoice.html", "", "height=100, width=400, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no");-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 </body>
-</html>
