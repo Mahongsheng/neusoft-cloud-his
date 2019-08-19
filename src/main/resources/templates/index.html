@@ -1,7 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,7 +19,7 @@
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
-
+    <link href="css/my_his.css" rel="stylesheet">
 </head>
 
 <body>
@@ -198,8 +197,8 @@
 
             </nav>
         </div>
-        <div class="wrapper wrapper-content" id="xiaoshi">
-            <div id="lunbo">
+        <div id="hideElement">
+            <div id="playPicture">
                 <div id="carouselExampleBigIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleBigIndicators" data-slide-to="0"
@@ -773,8 +772,8 @@
                 type: "GET", //静态页用get方法，否则服务器会抛出405错误
                 success: function (register) {
                     console.log(register);
-                    $("#lunbo").hide();
-                    $("#xiaoshi").html(register);
+                    $("#playPicture").hide();
+                    $("#hideElement").html(register);
                 }
             });
         });
@@ -787,8 +786,8 @@
                 type: "GET", //静态页用get方法，否则服务器会抛出405错误
                 success: function (registerBack) {
                     console.log(registerBack);
-                    $("#lunbo").hide();
-                    $("#xiaoshi").html(registerBack);
+                    $("#playPicture").hide();
+                    $("#hideElement").html(registerBack);
                 }
             });
         });
@@ -801,8 +800,8 @@
                 type: "GET", //静态页用get方法，否则服务器会抛出405错误
                 success: function (charge) {
                     console.log(charge);
-                    $("#lunbo").hide();
-                    $("#xiaoshi").html(charge);
+                    $("#playPicture").hide();
+                    $("#hideElement").html(charge);
                 }
             });
         });
@@ -815,8 +814,8 @@
                 type: "GET", //静态页用get方法，否则服务器会抛出405错误
                 success: function (prescribe) {
                     console.log(prescribe);
-                    $("#lunbo").hide();
-                    $("#xiaoshi").html(prescribe);
+                    $("#playPicture").hide();
+                    $("#hideElement").html(prescribe);
                 }
             });
         });
