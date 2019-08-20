@@ -73,7 +73,7 @@
                     <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">门诊医生</span><span
                             class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="404">门诊病历</a></li>
+                        <li><a id="medicalRecord" href="###">门诊病历</a></li>
                         <li><a href="404">医技模板管理</a></li>
                         <li><a href="404">西药处方模板</a></li>
                         <li><a href="404">中药处方模板</a></li>
@@ -816,6 +816,20 @@
                     console.log(prescribe);
                     $("#playPicture").hide();
                     $("#hideElement").html(prescribe);
+                }
+            });
+        });
+    });
+
+    $(document).ready(function () {
+        $("#medicalRecord").click(function () {
+            $.ajax({
+                url: "medicalRecord.html", //这里是静态页的地址
+                type: "GET", //静态页用get方法，否则服务器会抛出405错误
+                success: function (medicalRecord) {
+                    console.log(medicalRecord);
+                    $("#playPicture").hide();
+                    $("#hideElement").html(medicalRecord);
                 }
             });
         });

@@ -27,6 +27,6 @@ public class OperationsController {
 
     @GetMapping("/medicalRecord.html")
     public String medicalRecord(){
-        return "tabs";
+        return "medicalRecord";
     }
 }

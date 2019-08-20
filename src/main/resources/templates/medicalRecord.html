@@ -1,0 +1,171 @@
+<body>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-md-4" style="padding-right: 0">
+            <div class="ibox-title">
+                <h5>患者选择：</h5>
+                <button class="btn btn-sm btn-primary">
+                    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                </button>
+                <div style="padding-top: 2px">
+                    <select class="form-control m-b">
+                        <option>全部</option>
+                        <option>未诊断</option>
+                        <option>已诊断</option>
+                    </select>
+                </div>
+            </div>
+            <div class="ibox-content">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>病历号</th>
+                            <th>姓名</th>
+                            <th>年龄</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>12345</td>
+                            <td>张三</td>
+                            <td>12</td>
+                            <td>
+                                <span class="label label-primary">未诊</span>
+                            </td>
+                            <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
+                        </tr>
+                        <tr>
+                            <td>12346</td>
+                            <td>马斯</td>
+                            <td>13</td>
+                            <td>
+                                <span class="label label-primary">已诊</span>
+                            </td>
+                            <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8" style="padding-left: 0">
+            <div class="tabs-container">
+                <ul class="nav nav-tabs">
+                    <li><a class="nav-link active" data-toggle="tab" href="#tab-1">病历首页</a>
+                    </li>
+                    <li><a class="nav-link" data-toggle="tab" href="#tab-2" aria-controls="home">检查申请</a>
+                    </li>
+                    <li><a class="nav-link" data-toggle="tab" href="#tab-3" aria-controls="home">检验申请</a>
+                    </li>
+                    <li><a class="nav-link" data-toggle="tab" href="#tab-4" aria-controls="home">门诊确诊</a>
+                    </li>
+                    <li><a class="nav-link" data-toggle="tab" href="#tab-5" aria-controls="home">处置申请</a>
+                    </li>
+                    <li><a class="nav-link" data-toggle="tab" href="#tab-6" aria-controls="home">成药处方</a>
+                    </li>
+                    <li><a class="nav-link" data-toggle="tab" href="#tab-7" aria-controls="home">费用查询</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane active in">
+                        <div class="panel-body">
+                            <div class="ibox">
+                                <div class="ibox-content">
+                                    <form method="post">
+                                        <div class="align-content-center">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <button class="btn btn-primary btn-sm" type="button">暂存</button>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <button class="btn btn-primary btn-sm" type="submit">提交</button>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <button class="btn btn-primary btn-sm" type="reset">清空所有</button>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <button class="btn btn-primary btn-sm" type="reset">刷新</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="hr-line-dashed"></div>
+                                        <div><label>病史内容：</label></div>
+                                        <div class="form-group  row">
+                                            <label class="col-sm-2 col-form-label">主诉：</label>
+                                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                        </div>
+                                        <div class="form-group  row">
+                                            <label class="col-sm-2 col-form-label">现病史：</label>
+                                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                        </div>
+                                        <div class="form-group  row">
+                                            <label class="col-sm-2 col-form-label">现病治疗情况：</label>
+                                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">既往史：</label>
+                                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                        </div>
+                                        <div class="form-group  row">
+                                            <label class="col-sm-2 col-form-label">过敏史：</label>
+                                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                        </div>
+                                        <div class="form-group  row">
+                                            <label class="col-sm-2 col-form-label">体格检查：</label>
+                                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-2" class="tab-pane fade">
+                        <div class="panel-body">
+                            <p>检查申请</p>
+                        </div>
+                    </div>
+                    <div id="tab-3" class="tab-pane fade">
+                        <div class="panel-body">
+                            <p>近日沃尔沃宣布将联合瑞典汽车安全公司奥托立夫(AUTOLIV)成立一个独立子公司，该公司将专攻瞄准未来车型自动驾驶技
+                                术相关的研发。奥托立夫公司(AUTOLIV)是在瑞典设立的一家国际跨国公司，公司多年来研发汽车电子安全系统、电子控制单元，汽车方向盘系统以及夜视
+                                和雷达传感系统，新的合作能够让新公司吸取Autoliv多年来在汽车驾驶安全配件制造方面的经验，研发未来用于沃尔沃或其它厂商的无人驾驶软件系统。</p>
+                        </div>
+                    </div>
+                    <div id="tab-4" class="tab-pane fade">
+                        <div class="panel-body">
+                            <p>近日沃尔沃宣布将联合瑞典汽车安全公司奥托立夫(AUTOLIV)成立一个独立子公司，该公司将专攻瞄准未来车型自动驾驶技
+                                术相关的研发。奥托立夫公司(AUTOLIV)是在瑞典设立的一家国际跨国公司，公司多年来研发汽车电子安全系统、电子控制单元，汽车方向盘系统以及夜视
+                                和雷达传感系统，新的合作能够让新公司吸取Autoliv多年来在汽车驾驶安全配件制造方面的经验，研发未来用于沃尔沃或其它厂商的无人驾驶软件系统。</p>
+                        </div>
+                    </div>
+                    <div id="tab-5" class="tab-pane fade">
+                        <div class="panel-body">
+                            <p>近日沃尔沃宣布将联合瑞典汽车安全公司奥托立夫(AUTOLIV)成立一个独立子公司，该公司将专攻瞄准未来车型自动驾驶技
+                                术相关的研发。奥托立夫公司(AUTOLIV)是在瑞典设立的一家国际跨国公司，公司多年来研发汽车电子安全系统、电子控制单元，汽车方向盘系统以及夜视
+                                和雷达传感系统，新的合作能够让新公司吸取Autoliv多年来在汽车驾驶安全配件制造方面的经验，研发未来用于沃尔沃或其它厂商的无人驾驶软件系统。</p>
+                        </div>
+                    </div>
+                    <div id="tab-6" class="tab-pane fade">
+                        <div class="panel-body">
+                            <p>近日沃尔沃宣布将联合瑞典汽车安全公司奥托立夫(AUTOLIV)成立一个独立子公司，该公司将专攻瞄准未来车型自动驾驶技
+                                术相关的研发。奥托立夫公司(AUTOLIV)是在瑞典设立的一家国际跨国公司，公司多年来研发汽车电子安全系统、电子控制单元，汽车方向盘系统以及夜视
+                                和雷达传感系统，新的合作能够让新公司吸取Autoliv多年来在汽车驾驶安全配件制造方面的经验，研发未来用于沃尔沃或其它厂商的无人驾驶软件系统。</p>
+                        </div>
+                    </div>
+                    <div id="tab-7" class="tab-pane fade">
+                        <div class="panel-body">
+                            <p>近日沃尔沃宣布将联合瑞典汽车安全公司奥托立夫(AUTOLIV)成立一个独立子公司，该公司将专攻瞄准未来车型自动驾驶技
+                                术相关的研发。奥托立夫公司(AUTOLIV)是在瑞典设立的一家国际跨国公司，公司多年来研发汽车电子安全系统、电子控制单元，汽车方向盘系统以及夜视
+                                和雷达传感系统，新的合作能够让新公司吸取Autoliv多年来在汽车驾驶安全配件制造方面的经验，研发未来用于沃尔沃或其它厂商的无人驾驶软件系统。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
