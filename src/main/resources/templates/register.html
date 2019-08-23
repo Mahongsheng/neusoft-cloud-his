@@ -4,23 +4,23 @@
         <div class="col-lg-12">
             <div class="ibox ">
                 <div class="ibox-content">
-                    <form method="post">
+                    <form id="registerInfo">
                         <div class="form-group  row">
                             <label class="col-sm-2 col-form-label">发票号：</label>
-                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="invoiceID"></div>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div><label>挂号信息</label></div>
                         <div class="form-group  row">
                             <label class="col-sm-2 col-form-label">病历号：</label>
-                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="medicalRecordID"></div>
                         </div>
                         <div class="form-group  row">
                             <label class="col-sm-2 col-form-label">姓名：</label>
-                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="name"></div>
                         </div>
                         <div class="form-group row"><label class="col-sm-2 col-form-label">性别：</label>
-                            <div class="col-sm-10"><select class="form-control m-b" name="account">
+                            <div class="col-sm-10"><select class="form-control m-b" name="gender">
                                 <option>男</option>
                                 <option>女</option>
                             </select>
@@ -28,10 +28,10 @@
                         </div>
                         <div class="form-group  row">
                             <label class="col-sm-2 col-form-label">年龄：</label>
-                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="age"></div>
                         </div>
                         <div class="form-group row"><label class="col-sm-2 col-form-label">年龄类别：</label>
-                            <div class="col-sm-10"><select class="form-control m-b" name="account">
+                            <div class="col-sm-10"><select class="form-control m-b" name="ageType">
                                 <option>岁</option>
                                 <option>月</option>
                                 <option>日</option>
@@ -40,18 +40,18 @@
                         </div>
                         <div class="form-group  row">
                             <label class="col-sm-2 col-form-label">出生日期：</label>
-                            <div class="col-sm-10"><input type="date" class="form-control"></div>
+                            <div class="col-sm-10"><input type="date" class="form-control" name="birthday"></div>
                         </div>
                         <div class="form-group  row">
                             <label class="col-sm-2 col-form-label">身份证号：</label>
-                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="numID"></div>
                         </div>
                         <div class="form-group  row">
                             <label class="col-sm-2 col-form-label">家庭住址：</label>
-                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="address"></div>
                         </div>
                         <div class="form-group row"><label class="col-sm-2 col-form-label">结算类别：</label>
-                            <div class="col-sm-10"><select class="form-control m-b" name="account">
+                            <div class="col-sm-10"><select class="form-control m-b" name="chargeType">
                                 <option>自费</option>
                                 <option>市医保</option>
                             </select>
@@ -59,31 +59,31 @@
                         </div>
                         <div class="form-group  row">
                             <label class="col-sm-2 col-form-label">看诊日期：</label>
-                            <div class="col-sm-10"><input type="date" class="form-control"></div>
+                            <div class="col-sm-10"><input type="date" class="form-control" name="registerDate"></div>
                         </div>
                         <div class="form-group row"><label class="col-sm-2 col-form-label">午别：</label>
-                            <div class="col-sm-10"><select class="form-control m-b" name="account">
+                            <div class="col-sm-10"><select class="form-control m-b" name="registerNoon">
                                 <option>上午</option>
                                 <option>下午</option>
                             </select>
                             </div>
                         </div>
                         <div class="form-group row"><label class="col-sm-2 col-form-label">挂号科室：</label>
-                            <div class="col-sm-10"><select class="form-control m-b" name="account">
+                            <div class="col-sm-10"><select class="form-control m-b" name="department">
                                 <option>心血管内科</option>
                                 <option>下午</option>
                             </select>
                             </div>
                         </div>
                         <div class="form-group row"><label class="col-sm-2 col-form-label">号别：</label>
-                            <div class="col-sm-10"><select class="form-control m-b" name="account">
+                            <div class="col-sm-10"><select class="form-control m-b" name="registerLevel">
                                 <option>普通号</option>
                                 <option>专家号</option>
                             </select>
                             </div>
                         </div>
                         <div class="form-group row"><label class="col-sm-2 col-form-label">看诊医生：</label>
-                            <div class="col-sm-10"><select class="form-control m-b" name="account">
+                            <div class="col-sm-10"><select class="form-control m-b" name="doctorName">
                                 <option>扁鹊</option>
                                 <option>华佗</option>
                             </select>
@@ -91,14 +91,14 @@
                         </div>
                         <div class="form-group  row">
                             <label class="col-sm-2 col-form-label">初始号额：</label>
-                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="registerNum"></div>
                         </div>
                         <div class="form-group  row">
-                            <label class="col-sm-2 col-form-label">已用：</label>
-                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                            <label class="col-sm-2 col-form-label">已挂号额：</label>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="registerUsedNum"></div>
                         </div>
                         <div class="form-group row"><label class="col-sm-2 col-form-label">是否需要病历本：</label>
-                            <div class="col-sm-10"><select class="form-control m-b" name="account">
+                            <div class="col-sm-10"><select class="form-control m-b" name="medicalBook">
                                 <option>是</option>
                                 <option>否</option>
                             </select>
@@ -106,10 +106,10 @@
                         </div>
                         <div class="form-group  row">
                             <label class="col-sm-2 col-form-label">应收金额：</label>
-                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="money"></div>
                         </div>
                         <div class="form-group row"><label class="col-sm-2 col-form-label">收费方式：</label>
-                            <div class="col-sm-10"><select class="form-control m-b" name="account">
+                            <div class="col-sm-10"><select class="form-control m-b" name="chargeWay">
                                 <option>现金</option>
                                 <option>医保卡</option>
                                 <option>银行卡</option>
@@ -122,11 +122,11 @@
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
-
                         <div class="form-group row">
                             <div class="col-sm-4 col-sm-offset-2">
-                                <button class="btn btn-white btn-sm" type="submit">取消</button>
-                                <button class="btn btn-primary btn-sm" type="submit">提交</button>
+                                <button class="btn btn-white btn-sm" type="reset" style="padding-right: 20px">清空
+                                </button>
+                                <button class="btn btn-primary btn-sm" type="button" id="registerSubmit">提交</button>
                             </div>
                         </div>
                     </form>
@@ -135,4 +135,31 @@
         </div>
     </div>
 </div>
+<script>
+    $.fn.serializeObject = function () {
+        var obj = {};
+        var formArray = this.serializeArray();
+        for (var i = 0; i < formArray.length; i++) {
+            obj[formArray[i].name] = formArray[i]['value'];
+        }
+        obj['registerUserID'] = 1;
+        return obj;
+    };
+
+    $("#registerSubmit").click(function () {
+        alert("正在挂号");
+        var formData = $("#registerInfo").serializeObject();
+        console.log(formData);
+        $.ajax({
+            url: "/register",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify(formData),
+            success: function () {
+                alert("挂号成功");
+            }
+        });
+    });
+</script>
 </body>

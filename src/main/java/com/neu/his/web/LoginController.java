@@ -36,7 +36,7 @@ public class LoginController {
         if (loginReturn.isIfNameRight() && loginReturn.isIfPswRight()) {
             return "redirect:/";
         } else {
-            return "redirect:/";
+            return "redirect:/404";
         }
     }
 }

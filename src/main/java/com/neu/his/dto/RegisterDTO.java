@@ -23,8 +23,8 @@ public class RegisterDTO {
     private String doctorName;//医生姓名
     private Integer registerNum;//挂号额
     private Integer registerUsedNum;//已挂号额
-    private Boolean medicalBook;//是否需要病历本
+    private String medicalBook;//是否需要病历本
     private Double money;//金额
     private String chargeWay;//收费方式
-    private int registerUserID;//挂号员ID
+    private Short registerUserID;//挂号员ID
 }

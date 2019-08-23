@@ -68,6 +68,7 @@ public class PatientManagementImpl implements PatientManagement {
             int doctorID;
             int registerLevel = 0;
             String registerState;
+            boolean ifNeedMedicalBook;
 
             //科室ID需要转换
             DepartmentExample departmentExample = new DepartmentExample();
@@ -90,6 +91,13 @@ public class PatientManagementImpl implements PatientManagement {
             } else if (registerDTO.getRegisterLevel().equals("普通号")) {
                 registerLevel = 2;
             }
+
+            if (registerDTO.getMedicalBook().equals("是")) {
+                ifNeedMedicalBook = true;
+            } else {
+                ifNeedMedicalBook = false;
+            }
+
             //看诊状态需要自己添加
             registerState = "待诊";
 
@@ -99,7 +107,7 @@ public class PatientManagementImpl implements PatientManagement {
             newRecord.setRegistChargeCategory(registerDTO.getChargeType());
             newRecord.setRegistLevel((byte) registerLevel);
             newRecord.setDoctorId((short) doctorID);
-            newRecord.setRegistBook(registerDTO.getMedicalBook());
+            newRecord.setRegistBook(ifNeedMedicalBook);
             newRecord.setRegistState(registerState);
             newRecord.setRegistTime(new Date());
             newRecord.setRegistUserId((short) registerDTO.getRegisterUserID());
@@ -399,6 +407,12 @@ public class PatientManagementImpl implements PatientManagement {
         }
     }
 
+    /**
+     * 开药
+     *
+     * @param prescribeDTO
+     * @return
+     */
     @Override
     public JSONObject prescribe(PrescribeDTO prescribeDTO) {
         JSONObject returnJson;
@@ -422,7 +436,6 @@ public class PatientManagementImpl implements PatientManagement {
             return returnJson;
         }
     }
-
 
     private void addPatient(RegisterDTO registerDTO) {
 
