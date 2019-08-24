@@ -7,7 +7,7 @@ import com.neu.his.pojo.Doctor;
 import com.neu.his.pojo.DoctorExample;
 import com.neu.his.pojo.User;
 import com.neu.his.pojo.UserExample;
-import com.neu.his.serviceInterface.UserManagement;
+import com.neu.his.serviceInterface.LoginManagement;
 import com.neu.his.vojo.LoginReturn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ import java.util.List;
  * @date 2019年7月23日08:51:37
  */
 @Service
-public class UserManagementImpl implements UserManagement {
+public class LoginManagementImpl implements LoginManagement {
 
     @Autowired
     private UserMapper userMapper;

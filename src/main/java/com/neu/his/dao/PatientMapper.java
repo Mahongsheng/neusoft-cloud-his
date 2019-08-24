@@ -2,7 +2,9 @@ package com.neu.his.dao;
 
 import com.neu.his.pojo.Patient;
 import com.neu.his.pojo.PatientExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -95,4 +97,11 @@ public interface PatientMapper {
      * @mbg.generated Mon Jul 22 23:45:36 CST 2019
      */
     int updateByPrimaryKey(Patient record);
+
+    /**
+     * 找到最大病历号并返回
+     *
+     * @return
+     */
+    int findMaxID();
 }

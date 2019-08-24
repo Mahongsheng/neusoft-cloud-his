@@ -3,38 +3,31 @@ package com.neu.his.service;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.neu.his.dao.*;
-import com.neu.his.dto.*;
+import com.neu.his.dto.ChargeInfoDTO;
+import com.neu.his.dto.RegisterBackDTO;
+import com.neu.his.dto.RegisterDTO;
 import com.neu.his.pojo.*;
-import com.neu.his.serviceInterface.PatientManagement;
+import com.neu.his.serviceInterface.RegistrationManagement;
 import com.neu.his.util.ReturnState;
+import com.neu.his.vojo.RegistrationInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Service
-public class PatientManagementImpl implements PatientManagement {
-
-    @Autowired
-    private PatientMapper patientMapper;
-
-    @Autowired
-    private RegistLevelMapper registLevelMapper;
+public class RegistrationManagementImpl implements RegistrationManagement {
 
     @Autowired
     private DepartmentMapper departmentMapper;
 
     @Autowired
-    private RegistrationRecordMapper registrationRecordMapper;
-
-    @Autowired
     private DoctorMapper doctorMapper;
 
     @Autowired
-    private MedicalRecordMapper medicalRecordMapper;
-
-    @Autowired
-    private ConfirmedMapper confirmedMapper;
+    private RegistrationRecordMapper registrationRecordMapper;
 
     @Autowired
     private DrugPrescriptionMapper drugPrescriptionMapper;
@@ -50,6 +43,9 @@ public class PatientManagementImpl implements PatientManagement {
 
     @Autowired
     private InvoiceMapper invoiceMapper;
+
+    @Autowired
+    private PatientMapper patientMapper;
 
     /**
      * 患者挂号
@@ -174,106 +170,6 @@ public class PatientManagementImpl implements PatientManagement {
             ReturnState returnState = new ReturnState();
             returnState.setState(508);
             returnState.setDetail("退号失败");
-            returnJson = (JSONObject) JSON.toJSON(returnState);
-            return returnJson;
-        }
-    }
-
-    /**
-     * 填写病历首页
-     *
-     * @param medicalRecordDTO
-     * @return
-     */
-    @Override
-    public JSONObject writeMedical(MedicalRecordDTO medicalRecordDTO) {
-        JSONObject returnJson;
-        try {
-            //转换对象类型并进行插入
-            MedicalRecord medicalRecord = new MedicalRecord();
-            medicalRecord.setMedicalRegistId(medicalRecordDTO.getMedicalRegisterId());
-            medicalRecord.setMedicalRecordSaying(medicalRecordDTO.getMedicalRecordSaying());
-            medicalRecord.setMedicalRecordCurtIllness(medicalRecordDTO.getMedicalRecordCurtIllness());
-            medicalRecord.setMedicalRecordTreat(medicalRecordDTO.getMedicalRecordTreat());
-            medicalRecord.setMedicalRecordPreIllness(medicalRecordDTO.getMedicalRecordPreIllness());
-            medicalRecord.setMedicalRecordAllergy(medicalRecordDTO.getMedicalRecordAllergy());
-            medicalRecord.setMedicalRecordCheck(medicalRecordDTO.getMedicalRecordCheck());
-            medicalRecord.setMedicalRecordCheckAdvice(medicalRecordDTO.getMedicalRecordCheckAdvice());
-            medicalRecord.setMedicalRecordWarn(medicalRecordDTO.getMedicalRecordWarn());
-            medicalRecord.setMedicalRecordState(medicalRecordDTO.getMedicalRecordState());
-            //插入
-            medicalRecordMapper.insert(medicalRecord);
-
-            for (ConfirmedDTO confirmedDTO : medicalRecordDTO.getMedicalConfirms()) {
-                Confirmed confirmed = new Confirmed();
-                confirmed.setConfirmedId(null);
-                confirmed.setConfirmedCategory((byte) 1);
-                confirmed.setDiseaseTime(confirmedDTO.getDiseaseTime());
-                confirmed.setRegistId(medicalRecordDTO.getMedicalRegisterId());
-                confirmed.setDiseaseIcd(confirmedDTO.getDiseaseICD());
-                confirmedMapper.insert(confirmed);
-            }
-            ReturnState returnState = new ReturnState();
-            returnState.setState(505);
-            returnState.setDetail("病历首页填写成功");
-            returnJson = (JSONObject) JSON.toJSON(returnState);
-            return returnJson;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            ReturnState returnState = new ReturnState();
-            returnState.setState(506);
-            returnState.setDetail("病历首页填写失败");
-            returnJson = (JSONObject) JSON.toJSON(returnState);
-            return returnJson;
-        }
-    }
-
-    /**
-     * 填写病历首页
-     *
-     * @param drugPrescriptionDTO
-     * @return
-     */
-    @Override
-    public JSONObject makePrescription(DrugPrescriptionDTO drugPrescriptionDTO) {
-        JSONObject returnJson;
-        try {
-            //转换对象类型并进行插入
-            DrugPrescription drugPrescription = new DrugPrescription();
-            drugPrescription.setDrugPreId(null);
-            drugPrescription.setDoctorId(drugPrescriptionDTO.getDoctorId());
-            drugPrescription.setDrugPreName(drugPrescriptionDTO.getDrugPreName());
-            drugPrescription.setDrugPreTime(new Date());
-            drugPrescription.setMedicalRecordId(drugPrescriptionDTO.getMedicalRecordId());
-            drugPrescription.setRegistId(drugPrescriptionDTO.getRegisterId());
-            //插入
-            drugPrescriptionMapper.insert(drugPrescription);
-            int drugPreId = drugPrescriptionMapper.findMaxPreId();
-
-            for (DrugPrescriptionDetailDTO drugPrescriptionDetailDTO : drugPrescriptionDTO.getDrugPrescriptionDetails()) {
-                DrugPrescriptionDetail drugPrescriptionDetail = new DrugPrescriptionDetail();
-                drugPrescriptionDetail.setDrugId(drugPrescriptionDetailDTO.getDrugId());
-                drugPrescriptionDetail.setDrugPreDetailAmount(drugPrescriptionDetailDTO.getDrugPreDetailAmount());
-                drugPrescriptionDetail.setDrugPreDetailFreq(drugPrescriptionDetailDTO.getDrugPreDetailFreq());
-                drugPrescriptionDetail.setDrugPreDetailId(null);
-                drugPrescriptionDetail.setDrugPreDetailNum(drugPrescriptionDetailDTO.getDrugPreDetailNum());
-                drugPrescriptionDetail.setDrugPreDetailState("未缴费");
-                drugPrescriptionDetail.setDrugPreId(drugPreId);
-                drugPrescriptionDetail.setDrugPreDetailUsage(drugPrescriptionDetailDTO.getDrugPreDetailUsage());
-                drugPrescriptionDetailMapper.insert(drugPrescriptionDetail);
-            }
-            ReturnState returnState = new ReturnState();
-            returnState.setState(509);
-            returnState.setDetail("开药成功");
-            returnJson = (JSONObject) JSON.toJSON(returnState);
-            return returnJson;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            ReturnState returnState = new ReturnState();
-            returnState.setState(510);
-            returnState.setDetail("开药失败");
             returnJson = (JSONObject) JSON.toJSON(returnState);
             return returnJson;
         }
@@ -408,39 +304,48 @@ public class PatientManagementImpl implements PatientManagement {
     }
 
     /**
-     * 开药
+     * 挂号时根据病历号得到一些信息
      *
-     * @param prescribeDTO
+     * @param medicalRecordID
      * @return
      */
     @Override
-    public JSONObject prescribe(PrescribeDTO prescribeDTO) {
+    public JSONObject getRegistrationInfo(Integer medicalRecordID) {
         JSONObject returnJson;
         try {
-            for (int drugPreDetailID : prescribeDTO.getDrugPreIDs()) {
-                drugPrescriptionDetailMapper.changeStatePrescribedByPrimaryKey(drugPreDetailID);
+            if (medicalRecordID == null) {
+                int maxMedicalRecordID = patientMapper.findMaxID() + 1;
+                RegistrationInfo registrationInfo = new RegistrationInfo();
+                registrationInfo.setMedicalRecordID(maxMedicalRecordID);
+                returnJson = (JSONObject) JSON.toJSON(registrationInfo);
+                return returnJson;
+            } else {
+                String gender = new String();
+                Patient patient = patientMapper.selectByPrimaryKey(medicalRecordID);
+                RegistrationInfo registrationInfo = new RegistrationInfo();
+                registrationInfo.setMedicalRecordID(medicalRecordID);
+                registrationInfo.setPatientName(patient.getPatientName());
+                if (patient.getPatientGender() == 71) {
+                    gender = "男";
+                } else if (patient.getPatientGender() == 72) {
+                    gender = "女";
+                }
+                registrationInfo.setGender(gender);
+                registrationInfo.setBirthday(patient.getPatientBirthday());
+                registrationInfo.setNumID(patient.getPatientIdNum());
+                registrationInfo.setAddress(patient.getPatientAddress());
+                returnJson = (JSONObject) JSON.toJSON(registrationInfo);
+                return returnJson;
             }
-            //包装返回Json
-            ReturnState returnState = new ReturnState();
-            returnState.setState(513);
-            returnState.setDetail("开药成功");
-            returnJson = (JSONObject) JSON.toJSON(returnState);
-            return returnJson;
         } catch (Exception e) {
             e.printStackTrace();
-            //包装返回Json
             ReturnState returnState = new ReturnState();
-            returnState.setState(514);
-            returnState.setDetail("开药失败");
+            returnState.setState(515);
+            returnState.setDetail("病人信息获取失败");
             returnJson = (JSONObject) JSON.toJSON(returnState);
             return returnJson;
         }
     }
 
-    private void addPatient(RegisterDTO registerDTO) {
 
-    }
-
-    private void addInvoice(RegisterDTO registerDTO) {
-    }
 }

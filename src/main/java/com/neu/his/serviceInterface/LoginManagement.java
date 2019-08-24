@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 用户管理接口
  */
-public interface UserManagement {
+public interface LoginManagement {
     /**
      * 登录
      *

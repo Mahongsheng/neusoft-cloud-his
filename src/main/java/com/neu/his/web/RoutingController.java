@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class OperationsController {
+public class RoutingController {
     @GetMapping("/register.html")
     public String registerHtml() {
         return "register";
@@ -22,11 +22,16 @@ public class OperationsController {
 
     @GetMapping("/prescribe.html")
     public String prescribeHtml() {
-        return "invoice";
+        return "prescribe";
     }
 
     @GetMapping("/medicalRecord.html")
-    public String medicalRecord(){
+    public String medicalRecord() {
         return "medicalRecord";
+    }
+
+    @GetMapping("/404")
+    public String notFound() {
+        return "404";
     }
 }

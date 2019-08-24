@@ -1,9 +1,11 @@
 package com.neu.his.serviceInterface;
 
 import com.alibaba.fastjson.JSONObject;
-import com.neu.his.dto.*;
+import com.neu.his.dto.ChargeInfoDTO;
+import com.neu.his.dto.RegisterBackDTO;
+import com.neu.his.dto.RegisterDTO;
 
-public interface PatientManagement {
+public interface RegistrationManagement {
     /**
      * 挂号方法
      *
@@ -21,22 +23,6 @@ public interface PatientManagement {
     JSONObject registerBack(RegisterBackDTO registerBackDTO);
 
     /**
-     * 填写病历首页
-     *
-     * @param medicalRecordDTO
-     * @return
-     */
-    JSONObject writeMedical(MedicalRecordDTO medicalRecordDTO);
-
-    /**
-     * 医生开立处方（开药）
-     *
-     * @param drugPrescriptionDTO
-     * @return
-     */
-    JSONObject makePrescription(DrugPrescriptionDTO drugPrescriptionDTO);
-
-    /**
      * 收费员收费
      *
      * @param chargeInfoDTO
@@ -45,10 +31,10 @@ public interface PatientManagement {
     JSONObject charge(ChargeInfoDTO chargeInfoDTO);
 
     /**
-     * 医生开药
+     * 挂号时根据病历号得到一些信息
      *
-     * @param prescribeDTO
+     * @param medicalRecordID
      * @return
      */
-    JSONObject prescribe(PrescribeDTO prescribeDTO);
+    JSONObject getRegistrationInfo(Integer medicalRecordID);
 }

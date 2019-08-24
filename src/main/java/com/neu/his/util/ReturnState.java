@@ -19,6 +19,7 @@ public class ReturnState {
      * 512：缴费失败
      * 513：开药成功
      * 514：开药失败
+     * 515: 病人信息获取失败
      */
     private Integer state;
     private String detail;

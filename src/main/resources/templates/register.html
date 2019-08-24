@@ -145,21 +145,36 @@
         obj['registerUserID'] = 1;
         return obj;
     };
-
-    $("#registerSubmit").click(function () {
-        alert("正在挂号");
-        var formData = $("#registerInfo").serializeObject();
-        console.log(formData);
-        $.ajax({
-            url: "/register",
-            type: "post",
-            contentType: "application/json",
-            dataType: "json",
-            data: JSON.stringify(formData),
-            success: function () {
-                alert("挂号成功");
-            }
+    $(document).ready(function () {
+        $("#registerSubmit").click(function () {
+            alert("正在挂号");
+            var formData = $("#registerInfo").serializeObject();
+            console.log(formData);
+            $.ajax({
+                url: "/register",
+                type: "post",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(formData),
+                success: function () {
+                    alert("挂号成功");
+                }
+            });
         });
     });
+
+    $(document).ready(function () {
+        var medicalRecordID = $("input[name = 'medicalRecordID']").val();
+        $.ajax({
+            url: "/getRegistrationInfo",
+            type: "post",
+            data: medicalRecordID,
+            success: function (RegistrationInfo) {
+                $("input[name = 'medicalRecordID']").val(RegistrationInfo.medicalRecordID);
+            }
+        });
+
+    });
+
 </script>
 </body>
