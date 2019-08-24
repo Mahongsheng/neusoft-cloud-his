@@ -165,15 +165,46 @@
 
     $(document).ready(function () {
         var medicalRecordID = $("input[name = 'medicalRecordID']").val();
-        $.ajax({
-            url: "/getRegistrationInfo",
-            type: "post",
-            data: medicalRecordID,
-            success: function (RegistrationInfo) {
-                $("input[name = 'medicalRecordID']").val(RegistrationInfo.medicalRecordID);
-            }
-        });
+        var sendJson = {};
+        sendJson['medicalRecordID'] = medicalRecordID;
+        if (medicalRecordID.length == 0) {
+            $.ajax({
+                url: "/getRegistrationInfo",
+                type: "post",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(sendJson),
+                success: function (RegistrationInfo) {
+                    $("input[name = 'medicalRecordID']").val(RegistrationInfo.medicalRecordID);
+                }
+            });
+        }
+    });
 
+    $(document).ready(function () {
+        $("input[name = 'medicalRecordID']").change(function () {
+            var medicalRecordID = $("input[name = 'medicalRecordID']").val();
+            var sendJson = {};
+            sendJson['medicalRecordID'] = medicalRecordID;
+            $.ajax({
+                url: "/getRegistrationInfo",
+                type: "post",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(sendJson),
+                success: function (RegistrationInfo) {
+                    $("input[name = 'medicalRecordID']").val(RegistrationInfo.medicalRecordID);
+                    if (true) {
+                        $("input[name = 'name']").val(RegistrationInfo.patientName);
+                        $("select[name = 'gender']").val(RegistrationInfo.gender);
+                        $("input[name = 'age']").val(RegistrationInfo.age);
+                        $("input[name = 'birthday']").attr('value', RegistrationInfo.birthday);
+                        $("input[name = 'numID']").val(RegistrationInfo.numID);
+                        $("input[name = 'address']").val(RegistrationInfo.address);
+                    }
+                }
+            });
+        });
     });
 
 </script>

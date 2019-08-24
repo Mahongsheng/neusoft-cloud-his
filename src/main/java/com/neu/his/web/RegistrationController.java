@@ -2,6 +2,7 @@ package com.neu.his.web;
 
 import com.alibaba.fastjson.JSONObject;
 import com.neu.his.dto.ChargeInfoDTO;
+import com.neu.his.dto.MedicalRecordIDDTO;
 import com.neu.his.dto.RegisterBackDTO;
 import com.neu.his.dto.RegisterDTO;
 import com.neu.his.serviceInterface.RegistrationManagement;
@@ -62,7 +63,7 @@ public class RegistrationController {
      */
     @RequestMapping(value = "/getRegistrationInfo", method = RequestMethod.POST)
     @ResponseBody
-    public JSONObject getRegistrationInfo(Integer medicalRecordID) {
+    public JSONObject getRegistrationInfo(@RequestBody MedicalRecordIDDTO medicalRecordID) {
         return registrationManagement.getRegistrationInfo(medicalRecordID);
     }
 }

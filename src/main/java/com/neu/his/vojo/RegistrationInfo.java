@@ -10,7 +10,7 @@ public class RegistrationInfo {
     private String patientName;
     private String gender;
     private int age;
-    private Date birthday;
+    private String birthday;
     private String numID;
     private String address;
 }

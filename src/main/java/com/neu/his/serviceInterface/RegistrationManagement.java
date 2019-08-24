@@ -2,6 +2,7 @@ package com.neu.his.serviceInterface;
 
 import com.alibaba.fastjson.JSONObject;
 import com.neu.his.dto.ChargeInfoDTO;
+import com.neu.his.dto.MedicalRecordIDDTO;
 import com.neu.his.dto.RegisterBackDTO;
 import com.neu.his.dto.RegisterDTO;
 
@@ -33,8 +34,8 @@ public interface RegistrationManagement {
     /**
      * 挂号时根据病历号得到一些信息
      *
-     * @param medicalRecordID
+     * @param medicalRecordIDDTO
      * @return
      */
-    JSONObject getRegistrationInfo(Integer medicalRecordID);
+    JSONObject getRegistrationInfo(MedicalRecordIDDTO medicalRecordIDDTO);
 }

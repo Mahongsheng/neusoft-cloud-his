@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.neu.his.dao.*;
 import com.neu.his.dto.ChargeInfoDTO;
+import com.neu.his.dto.MedicalRecordIDDTO;
 import com.neu.his.dto.RegisterBackDTO;
 import com.neu.his.dto.RegisterDTO;
 import com.neu.his.pojo.*;
@@ -13,6 +14,7 @@ import com.neu.his.vojo.RegistrationInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -306,14 +308,14 @@ public class RegistrationManagementImpl implements RegistrationManagement {
     /**
      * 挂号时根据病历号得到一些信息
      *
-     * @param medicalRecordID
+     * @param medicalRecordIDDTO
      * @return
      */
     @Override
-    public JSONObject getRegistrationInfo(Integer medicalRecordID) {
+    public JSONObject getRegistrationInfo(MedicalRecordIDDTO medicalRecordIDDTO) {
         JSONObject returnJson;
         try {
-            if (medicalRecordID == null) {
+            if (medicalRecordIDDTO.getMedicalRecordID() == null) {
                 int maxMedicalRecordID = patientMapper.findMaxID() + 1;
                 RegistrationInfo registrationInfo = new RegistrationInfo();
                 registrationInfo.setMedicalRecordID(maxMedicalRecordID);
@@ -321,9 +323,10 @@ public class RegistrationManagementImpl implements RegistrationManagement {
                 return returnJson;
             } else {
                 String gender = new String();
-                Patient patient = patientMapper.selectByPrimaryKey(medicalRecordID);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Patient patient = patientMapper.selectByPrimaryKey(medicalRecordIDDTO.getMedicalRecordID());
                 RegistrationInfo registrationInfo = new RegistrationInfo();
-                registrationInfo.setMedicalRecordID(medicalRecordID);
+                registrationInfo.setMedicalRecordID(medicalRecordIDDTO.getMedicalRecordID());
                 registrationInfo.setPatientName(patient.getPatientName());
                 if (patient.getPatientGender() == 71) {
                     gender = "男";
@@ -331,7 +334,9 @@ public class RegistrationManagementImpl implements RegistrationManagement {
                     gender = "女";
                 }
                 registrationInfo.setGender(gender);
-                registrationInfo.setBirthday(patient.getPatientBirthday());
+                registrationInfo.setAge(patient.getPatientAge());
+                registrationInfo.setBirthday(simpleDateFormat.format(patient.getPatientBirthday()));
+                System.out.println(simpleDateFormat.format(patient.getPatientBirthday()));
                 registrationInfo.setNumID(patient.getPatientIdNum());
                 registrationInfo.setAddress(patient.getPatientAddress());
                 returnJson = (JSONObject) JSON.toJSON(registrationInfo);
