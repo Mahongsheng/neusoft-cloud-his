@@ -1,10 +1,7 @@
 package com.neu.his.web;
 
 import com.alibaba.fastjson.JSONObject;
-import com.neu.his.dto.ChargeInfoDTO;
-import com.neu.his.dto.MedicalRecordIDDTO;
-import com.neu.his.dto.RegisterBackDTO;
-import com.neu.his.dto.RegisterDTO;
+import com.neu.his.dto.*;
 import com.neu.his.serviceInterface.RegistrationManagement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 public class RegistrationController {
@@ -66,4 +65,52 @@ public class RegistrationController {
     public JSONObject getRegistrationInfo(@RequestBody MedicalRecordIDDTO medicalRecordID) {
         return registrationManagement.getRegistrationInfo(medicalRecordID);
     }
+
+    /**
+     * 得到所有科室的名称
+     *
+     * @return
+     */
+    @RequestMapping(value = "/getAllDepartmentName", method = RequestMethod.POST)
+    @ResponseBody
+    public List<JSONObject> getAllDepartmentName() {
+        return registrationManagement.getAllDepartmentName();
+    }
+
+    /**
+     * 根据科室名称得到所有医生姓名
+     *
+     * @return
+     */
+    @RequestMapping(value = "/getDoctorNameByDept", method = RequestMethod.POST)
+    @ResponseBody
+    public List<JSONObject> getDoctorNameByDept(@RequestBody DepartmentNameDTO departmentNameDTO) {
+        return registrationManagement.getDoctorNameByDept(departmentNameDTO);
+    }
+
+    /**
+     * 根据医生ID得到该医生初始挂号额和已挂号额
+     *
+     * @param doctorIDDTO
+     * @return
+     */
+    @RequestMapping(value = "/getRegistrationNum", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONObject getRegistrationNum(@RequestBody DoctorIDDTO doctorIDDTO) {
+        return registrationManagement.getRegistrationNum(doctorIDDTO);
+    }
+
+    /**
+     * 根据病历号得到该患者的所有挂号信息
+     *
+     * @param medicalRecordIDDTO
+     * @return
+     */
+    @RequestMapping(value = "/getRegistrationRecord", method = RequestMethod.POST)
+    @ResponseBody
+    public List<JSONObject> getRegistrationRecord(@RequestBody MedicalRecordIDDTO medicalRecordIDDTO) {
+        return registrationManagement.getRegistrationRecord(medicalRecordIDDTO);
+    }
+
+
 }

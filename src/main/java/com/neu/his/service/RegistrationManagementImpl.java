@@ -3,19 +3,17 @@ package com.neu.his.service;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.neu.his.dao.*;
-import com.neu.his.dto.ChargeInfoDTO;
-import com.neu.his.dto.MedicalRecordIDDTO;
-import com.neu.his.dto.RegisterBackDTO;
-import com.neu.his.dto.RegisterDTO;
+import com.neu.his.dto.*;
 import com.neu.his.pojo.*;
 import com.neu.his.serviceInterface.RegistrationManagement;
 import com.neu.his.util.ReturnState;
-import com.neu.his.vojo.RegistrationInfo;
+import com.neu.his.vojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -48,6 +46,9 @@ public class RegistrationManagementImpl implements RegistrationManagement {
 
     @Autowired
     private PatientMapper patientMapper;
+
+    @Autowired
+    private RegistLevelMapper registLevelMapper;
 
     /**
      * 患者挂号
@@ -336,7 +337,6 @@ public class RegistrationManagementImpl implements RegistrationManagement {
                 registrationInfo.setGender(gender);
                 registrationInfo.setAge(patient.getPatientAge());
                 registrationInfo.setBirthday(simpleDateFormat.format(patient.getPatientBirthday()));
-                System.out.println(simpleDateFormat.format(patient.getPatientBirthday()));
                 registrationInfo.setNumID(patient.getPatientIdNum());
                 registrationInfo.setAddress(patient.getPatientAddress());
                 returnJson = (JSONObject) JSON.toJSON(registrationInfo);
@@ -349,6 +349,151 @@ public class RegistrationManagementImpl implements RegistrationManagement {
             returnState.setDetail("病人信息获取失败");
             returnJson = (JSONObject) JSON.toJSON(returnState);
             return returnJson;
+        }
+    }
+
+    /**
+     * 得到所有科室的名称
+     *
+     * @return
+     */
+    @Override
+    public List<JSONObject> getAllDepartmentName() {
+        List<JSONObject> jsonObjectList = new ArrayList<>();
+        try {
+            DepartmentExample departmentExample = new DepartmentExample();
+            List<Department> departments = departmentMapper.selectByExample(departmentExample);
+            for (Department d : departments) {
+                DepartmentName departmentName = new DepartmentName();
+                departmentName.setDepartmentName(d.getDeptName());
+                JSONObject jsonObject = (JSONObject) JSON.toJSON(departmentName);
+                jsonObjectList.add(jsonObject);
+            }
+            return jsonObjectList;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * 根据科室名称得到所有医生姓名
+     *
+     * @param departmentNameDTO
+     * @return
+     */
+    @Override
+    public List<JSONObject> getDoctorNameByDept(DepartmentNameDTO departmentNameDTO) {
+        List<JSONObject> jsonObjectList = new ArrayList<>();
+        try {
+            DepartmentExample departmentExample = new DepartmentExample();
+            DepartmentExample.Criteria deptCriteria = departmentExample.createCriteria();
+            deptCriteria.andDeptNameEqualTo(departmentNameDTO.getDepartmentName());
+
+            List<Department> departments = departmentMapper.selectByExample(departmentExample);
+
+            DoctorExample doctorExample = new DoctorExample();
+            DoctorExample.Criteria docCriteria = doctorExample.createCriteria();
+            docCriteria.andDeptIdEqualTo(departments.get(0).getDeptId());
+
+            List<Doctor> doctors = doctorMapper.selectByExample(doctorExample);
+
+            for (Doctor d : doctors) {
+                DoctorName doctorName = new DoctorName();
+                doctorName.setDoctorName(d.getDoctorName());
+                doctorName.setDoctorID(d.getDoctorId());
+                JSONObject jsonObject = (JSONObject) JSON.toJSON(doctorName);
+                jsonObjectList.add(jsonObject);
+            }
+            return jsonObjectList;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * 根据医生ID得到该医生的初始挂号额和已挂号额
+     *
+     * @param doctorIDDTO
+     * @return
+     */
+    @Override
+    public JSONObject getRegistrationNum(DoctorIDDTO doctorIDDTO) {
+        JSONObject returnJson;
+        try {
+            DoctorRegistrationNum doctorRegistrationNum = new DoctorRegistrationNum();
+            Doctor doctor = doctorMapper.selectByPrimaryKey((short) doctorIDDTO.getDoctorID());
+
+            RegistLevel registLevel = registLevelMapper.selectByPrimaryKey(doctor.getDoctorRegistLevel());
+
+            Date todayBegin;
+            Date todayEnd;
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.MILLISECOND, 0);
+            calendar.set(Calendar.SECOND, 0);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.HOUR_OF_DAY, 0);
+            todayBegin = calendar.getTime();
+            calendar.set(Calendar.HOUR_OF_DAY, 24);
+            todayEnd = calendar.getTime();
+
+            RegistrationRecordExample registrationRecordExample = new RegistrationRecordExample();
+            RegistrationRecordExample.Criteria criteria = registrationRecordExample.createCriteria();
+            criteria.andDoctorIdEqualTo((short) doctorIDDTO.getDoctorID());
+            criteria.andRegistStateEqualTo("待诊");
+            criteria.andRegistTimeGreaterThanOrEqualTo(todayBegin);
+            criteria.andRegistTimeLessThan(todayEnd);
+
+            int usedRegistrationNum = (int) registrationRecordMapper.countByExample(registrationRecordExample);
+
+            doctorRegistrationNum.setDoctorRegistrationNum(registLevel.getRegistLevelLimit());
+            doctorRegistrationNum.setDoctorUsedRegistrationNum(usedRegistrationNum);
+
+            returnJson = (JSONObject) JSON.toJSON(doctorRegistrationNum);
+            return returnJson;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * 根据病历号获得该患者挂号信息
+     *
+     * @param medicalRecordIDDTO
+     * @return
+     */
+    @Override
+    public List<JSONObject> getRegistrationRecord(MedicalRecordIDDTO medicalRecordIDDTO) {
+        List<JSONObject> returnJsons = new ArrayList<>();
+        try {
+            RegistrationRecordExample registrationRecordExample = new RegistrationRecordExample();
+            RegistrationRecordExample.Criteria criteria = registrationRecordExample.createCriteria();
+            criteria.andPatientRecordIdEqualTo(medicalRecordIDDTO.getMedicalRecordID());
+            List<RegistrationRecord> registrationRecords = registrationRecordMapper.selectByExample(registrationRecordExample);
+
+            for (RegistrationRecord r : registrationRecords) {
+                PatientRegistrationRecord patientRegistrationRecord = new PatientRegistrationRecord();
+
+                Department department = departmentMapper.selectByPrimaryKey(r.getDeptId());
+
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+                patientRegistrationRecord.setRegistrationID(r.getRegistId());
+                patientRegistrationRecord.setDepartment(department.getDeptName());
+                patientRegistrationRecord.setRegistrationDate(simpleDateFormat.format(r.getRegistDate()));
+                patientRegistrationRecord.setRegistrationNoon(r.getRegistNoon());
+                patientRegistrationRecord.setRegistrationState(r.getRegistState());
+
+                JSONObject jsonObject = (JSONObject) JSON.toJSON(patientRegistrationRecord);
+
+                returnJsons.add(jsonObject);
+            }
+            return returnJsons;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 

@@ -10,7 +10,7 @@ public class RegistLevel implements Serializable {
      *
      * @mbg.generated Mon Jul 22 23:45:36 CST 2019
      */
-    private Boolean registLevelId;
+    private Byte registLevelId;
 
     /**
      *
@@ -65,7 +65,7 @@ public class RegistLevel implements Serializable {
      *
      * @mbg.generated Mon Jul 22 23:45:36 CST 2019
      */
-    public Boolean getRegistLevelId() {
+    public Byte getRegistLevelId() {
         return registLevelId;
     }
 
@@ -77,7 +77,7 @@ public class RegistLevel implements Serializable {
      *
      * @mbg.generated Mon Jul 22 23:45:36 CST 2019
      */
-    public void setRegistLevelId(Boolean registLevelId) {
+    public void setRegistLevelId(Byte registLevelId) {
         this.registLevelId = registLevelId;
     }
 

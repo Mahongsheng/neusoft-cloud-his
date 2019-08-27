@@ -15,7 +15,7 @@
     <result column="doctor_type" jdbcType="SMALLINT" property="doctorType" />
     <result column="doctor_title" jdbcType="TINYINT" property="doctorTitle" />
     <result column="doctor_sche" jdbcType="BIT" property="doctorSche" />
-    <result column="doctor_regist_level" jdbcType="BIT" property="doctorRegistLevel" />
+    <result column="doctor_regist_level" jdbcType="TINYINT" property="doctorRegistLevel" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -156,7 +156,7 @@
       )
     values (#{doctorId,jdbcType=SMALLINT}, #{doctorLoginName,jdbcType=VARCHAR}, #{doctorPsw,jdbcType=VARCHAR}, 
       #{doctorName,jdbcType=VARCHAR}, #{deptId,jdbcType=SMALLINT}, #{doctorType,jdbcType=SMALLINT}, 
-      #{doctorTitle,jdbcType=TINYINT}, #{doctorSche,jdbcType=BIT}, #{doctorRegistLevel,jdbcType=BIT}
+      #{doctorTitle,jdbcType=TINYINT}, #{doctorSche,jdbcType=BIT}, #{doctorRegistLevel,jdbcType=TINYINT}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.neu.his.pojo.Doctor">
@@ -221,7 +221,7 @@
         #{doctorSche,jdbcType=BIT},
       </if>
       <if test="doctorRegistLevel != null">
-        #{doctorRegistLevel,jdbcType=BIT},
+        #{doctorRegistLevel,jdbcType=TINYINT},
       </if>
     </trim>
   </insert>
@@ -269,7 +269,7 @@
         doctor_sche = #{record.doctorSche,jdbcType=BIT},
       </if>
       <if test="record.doctorRegistLevel != null">
-        doctor_regist_level = #{record.doctorRegistLevel,jdbcType=BIT},
+        doctor_regist_level = #{record.doctorRegistLevel,jdbcType=TINYINT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -291,7 +291,7 @@
       doctor_type = #{record.doctorType,jdbcType=SMALLINT},
       doctor_title = #{record.doctorTitle,jdbcType=TINYINT},
       doctor_sche = #{record.doctorSche,jdbcType=BIT},
-      doctor_regist_level = #{record.doctorRegistLevel,jdbcType=BIT}
+      doctor_regist_level = #{record.doctorRegistLevel,jdbcType=TINYINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -326,7 +326,7 @@
         doctor_sche = #{doctorSche,jdbcType=BIT},
       </if>
       <if test="doctorRegistLevel != null">
-        doctor_regist_level = #{doctorRegistLevel,jdbcType=BIT},
+        doctor_regist_level = #{doctorRegistLevel,jdbcType=TINYINT},
       </if>
     </set>
     where doctor_id = #{doctorId,jdbcType=SMALLINT}
@@ -345,7 +345,7 @@
       doctor_type = #{doctorType,jdbcType=SMALLINT},
       doctor_title = #{doctorTitle,jdbcType=TINYINT},
       doctor_sche = #{doctorSche,jdbcType=BIT},
-      doctor_regist_level = #{doctorRegistLevel,jdbcType=BIT}
+      doctor_regist_level = #{doctorRegistLevel,jdbcType=TINYINT}
     where doctor_id = #{doctorId,jdbcType=SMALLINT}
   </update>
 </mapper>

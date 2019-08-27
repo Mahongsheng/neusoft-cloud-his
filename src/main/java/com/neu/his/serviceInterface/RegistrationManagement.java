@@ -1,10 +1,9 @@
 package com.neu.his.serviceInterface;
 
 import com.alibaba.fastjson.JSONObject;
-import com.neu.his.dto.ChargeInfoDTO;
-import com.neu.his.dto.MedicalRecordIDDTO;
-import com.neu.his.dto.RegisterBackDTO;
-import com.neu.his.dto.RegisterDTO;
+import com.neu.his.dto.*;
+
+import java.util.List;
 
 public interface RegistrationManagement {
     /**
@@ -38,4 +37,35 @@ public interface RegistrationManagement {
      * @return
      */
     JSONObject getRegistrationInfo(MedicalRecordIDDTO medicalRecordIDDTO);
+
+    /**
+     * 得到所有的科室名称
+     *
+     * @return
+     */
+    List<JSONObject> getAllDepartmentName();
+
+    /**
+     * 根据科室得到该科室所有医生姓名
+     *
+     * @param departmentNameDTO
+     * @return
+     */
+    List<JSONObject> getDoctorNameByDept(DepartmentNameDTO departmentNameDTO);
+
+    /**
+     * 根据医生姓名得到其初始挂号额和已挂号额
+     *
+     * @param doctorIDDTO
+     * @return
+     */
+    JSONObject getRegistrationNum(DoctorIDDTO doctorIDDTO);
+
+    /**
+     * 根据病历号获得该患者挂号信息
+     *
+     * @param medicalRecordIDDTO
+     * @return
+     */
+    List<JSONObject> getRegistrationRecord(MedicalRecordIDDTO medicalRecordIDDTO);
 }
