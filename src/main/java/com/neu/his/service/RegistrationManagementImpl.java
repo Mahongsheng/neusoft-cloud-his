@@ -144,24 +144,7 @@ public class RegistrationManagementImpl implements RegistrationManagement {
     public JSONObject registerBack(RegisterBackDTO registerBackDTO) {
         JSONObject returnJson;
         try {
-            //得到科室ID
-            DepartmentExample departmentExample = new DepartmentExample();
-            DepartmentExample.Criteria departmentCriteria = departmentExample.createCriteria();
-            departmentCriteria.andDeptNameEqualTo(registerBackDTO.getDepartment());
-            List<Department> departments = departmentMapper.selectByExample(departmentExample);
-            int departmentID = departments.get(0).getDeptId();
-
-            //得到该挂号信息
-            RegistrationRecordExample registrationRecordExample = new RegistrationRecordExample();
-            RegistrationRecordExample.Criteria registrationCriteria = registrationRecordExample.createCriteria();
-            registrationCriteria.andPatientRecordIdEqualTo(registerBackDTO.getMedicalRecordID());
-            registrationCriteria.andRegistDateEqualTo(registerBackDTO.getRegisterDate());
-            registrationCriteria.andRegistNoonEqualTo(registerBackDTO.getRegisterNoon());
-            registrationCriteria.andDeptIdEqualTo((short) departmentID);
-            List<RegistrationRecord> registrationRecords = registrationRecordMapper.selectByExample(registrationRecordExample);
-
-            int registerID = registrationRecords.get(0).getRegistId();
-            registrationRecordMapper.updateStateByPrimaryKey(registerID);
+            registrationRecordMapper.updateStateByPrimaryKey(registerBackDTO.getRegistrationID());
 
             ReturnState returnState = new ReturnState();
             returnState.setState(507);
