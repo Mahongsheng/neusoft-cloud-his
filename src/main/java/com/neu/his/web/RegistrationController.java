@@ -112,5 +112,15 @@ public class RegistrationController {
         return registrationManagement.getRegistrationRecord(medicalRecordIDDTO);
     }
 
-
+    /**
+     * 根据病历号得到所有处方明细
+     *
+     * @param medicalRecordIDDTO
+     * @return
+     */
+    @RequestMapping(value = "/getChargeInfo", method = RequestMethod.POST)
+    @ResponseBody
+    public List<JSONObject> getChargeInfo(@RequestBody MedicalRecordIDDTO medicalRecordIDDTO) {
+        return registrationManagement.getChargeInfo(medicalRecordIDDTO);
+    }
 }

@@ -10,6 +10,7 @@ import com.neu.his.util.ReturnState;
 import com.neu.his.vojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import springfox.documentation.spring.web.json.Json;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -472,6 +473,52 @@ public class RegistrationManagementImpl implements RegistrationManagement {
                 JSONObject jsonObject = (JSONObject) JSON.toJSON(patientRegistrationRecord);
 
                 returnJsons.add(jsonObject);
+            }
+            return returnJsons;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * 根据病历号得到所有处方明细
+     *
+     * @param medicalRecordIDDTO
+     * @return
+     */
+    @Override
+    public List<JSONObject> getChargeInfo(MedicalRecordIDDTO medicalRecordIDDTO) {
+        List<JSONObject> returnJsons = new ArrayList<>();
+        try {
+            DrugPrescriptionExample drugPrescriptionExample = new DrugPrescriptionExample();
+            DrugPrescriptionExample.Criteria drugPrescriptionExampleCriteria = drugPrescriptionExample.createCriteria();
+            drugPrescriptionExampleCriteria.andMedicalRecordIdEqualTo(medicalRecordIDDTO.getMedicalRecordID());
+
+            List<DrugPrescription> drugPrescriptions = drugPrescriptionMapper.selectByExample(drugPrescriptionExample);
+
+            for (DrugPrescription drugPre : drugPrescriptions) {
+                DrugPrescriptionDetailExample drugPrescriptionDetailExample = new DrugPrescriptionDetailExample();
+                DrugPrescriptionDetailExample.Criteria drugPrescriptionDetailExampleCriteria = drugPrescriptionDetailExample.createCriteria();
+                drugPrescriptionDetailExampleCriteria.andDrugPreIdEqualTo(drugPre.getDrugPreId());
+
+                List<DrugPrescriptionDetail> findDrugPreDetails = drugPrescriptionDetailMapper.selectByExample(drugPrescriptionDetailExample);
+
+                for (DrugPrescriptionDetail drugPreDetail : findDrugPreDetails) {
+                    DrugPreDetailInfo drugPreDetailInfo = new DrugPreDetailInfo();
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    Drug drug = drugMapper.selectByPrimaryKey(drugPreDetail.getDrugId());
+
+                    drugPreDetailInfo.setDrugPreDetailID(drugPreDetail.getDrugPreDetailId());
+                    drugPreDetailInfo.setAmount(drugPreDetail.getDrugPreDetailNum());
+                    drugPreDetailInfo.setCreateTime(simpleDateFormat.format(drugPre.getDrugPreTime()));
+                    drugPreDetailInfo.setDrugName(drug.getDrugName());
+                    drugPreDetailInfo.setDrugUnitPrice(drug.getDrugUnitPrice());
+                    drugPreDetailInfo.setState(drugPreDetail.getDrugPreDetailState());
+
+                    JSONObject jsonObject = (JSONObject) JSON.toJSON(drugPreDetailInfo);
+                    returnJsons.add(jsonObject);
+                }
             }
             return returnJsons;
         } catch (Exception e) {

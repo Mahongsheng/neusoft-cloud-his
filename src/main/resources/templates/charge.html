@@ -4,29 +4,29 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title">发票信息（收费）</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">发票信息（收费）</h4>
             </div>
             <div class="modal-body">
                 <form method="post">
                     <div class="form-group  row">
-                        <label class="col-sm-2 col-form-label">发票号（可修改）：</label>
-                        <div class="col-sm-10"><input type="text" class="form-control"></div>
+                        <label class="col-sm-4 col-form-label">发票号（可修改）：</label>
+                        <div class="col-sm-8"><input type="text" class="form-control"></div>
                     </div>
 
                     <div class="form-group  row">
-                        <label class="col-sm-2 col-form-label">病历号：</label>
-                        <div class="col-sm-10"><input type="text" class="form-control"></div>
+                        <label class="col-sm-4 col-form-label">病历号：</label>
+                        <div class="col-sm-8"><input type="text" class="form-control"></div>
                     </div>
                     <div class="form-group  row">
-                        <label class="col-sm-2 col-form-label">患者姓名：</label>
-                        <div class="col-sm-10"><input type="text" class="form-control"></div>
+                        <label class="col-sm-4 col-form-label">患者姓名：</label>
+                        <div class="col-sm-8"><input type="text" class="form-control"></div>
 
                     </div>
                     <div class="form-group  row">
-                        <label class="col-sm-2 col-form-label">支付方式：</label>
-                        <div class="col-sm-10"><select class="form-control m-b" name="account">
+                        <label class="col-sm-4 col-form-label">支付方式：</label>
+                        <div class="col-sm-8"><select class="form-control m-b" name="account">
                             <option>现金</option>
                             <option>医保卡</option>
                             <option>银行卡</option>
@@ -39,16 +39,16 @@
                         </div>
                     </div>
                     <div class="form-group  row">
-                        <label class="col-sm-2 col-form-label">应收金额：</label>
-                        <div class="col-sm-10"><input type="text" class="form-control"></div>
+                        <label class="col-sm-4 col-form-label">应收金额：</label>
+                        <div class="col-sm-8"><input type="text" class="form-control"></div>
                     </div>
                     <div class="form-group  row">
-                        <label class="col-sm-2 col-form-label">实收金额：</label>
-                        <div class="col-sm-10"><input type="date" class="form-control"></div>
+                        <label class="col-sm-4 col-form-label">实收金额：</label>
+                        <div class="col-sm-8"><input type="date" class="form-control"></div>
                     </div>
                     <div class="form-group  row">
-                        <label class="col-sm-2 col-form-label">找零金额：</label>
-                        <div class="col-sm-10"><input type="text" class="form-control"></div>
+                        <label class="col-sm-4 col-form-label">找零金额：</label>
+                        <div class="col-sm-8"><input type="text" class="form-control"></div>
                     </div>
                 </form>
             </div>
@@ -70,9 +70,9 @@
                 <div class="form-group  row">
                     <label class="col-sm-2 col-form-label">病历号：</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" name="medicalRecordID">
                         <br>
-                        <button type="button" class="btn btn-w-m btn-primary">搜索</button>
+                        <button type="button" class="btn btn-w-m btn-primary" id="searchPatient">搜索</button>
                     </div>
                 </div>
             </div>
@@ -83,16 +83,16 @@
             <div class="ibox-content">
                 <div class="form-group  row">
                     <label class="col-sm-2 col-form-label">姓名：</label>
-                    <div class="col-sm-10"><input type="text" class="form-control"></div>
+                    <div class="col-sm-10"><input type="text" class="form-control" name="name"></div>
                 </div>
 
                 <div class="form-group  row">
                     <label class="col-sm-2 col-form-label">身份证号：</label>
-                    <div class="col-sm-10"><input type="text" class="form-control"></div>
+                    <div class="col-sm-10"><input type="text" class="form-control" name="numID"></div>
                 </div>
                 <div class="form-group  row">
                     <label class="col-sm-2 col-form-label">家庭住址：</label>
-                    <div class="col-sm-10"><input type="text" class="form-control"></div>
+                    <div class="col-sm-10"><input type="text" class="form-control" name="address"></div>
                 </div>
             </div>
 
@@ -102,10 +102,10 @@
                 </div>
                 <div class="ibox-content">
                     <div class="table-responsive">
-                        <table class="table table-striped">
+                        <table class="table table-striped" id="chargeInfoTable">
                             <thead>
                             <tr>
-                                <th><input type="checkbox" checked class="i-checks" name="input[]"></th>
+                                <th><input type="checkbox" class="i-checks" id="selectAll"></th>
                                 <th>病历号</th>
                                 <th>姓名</th>
                                 <th>项目名称</th>
@@ -116,18 +116,6 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td><input type="checkbox" checked class="i-checks" name="input[]"></td>
-                                <td>乐高玩具
-                                    <small>例子</small>
-                                </td>
-                                <td><span class="pie">0.52/1.561</span></td>
-                                <td>20%</td>
-                                <td>2017年12月12日</td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -145,10 +133,69 @@
     </div>
 </div>
 <script>
+    // $(document).ready(function () {
+    //     $('.i-checks').iCheck({
+    //         checkboxClass: 'icheckbox_square-green'
+    //     });
+    // });
+    // $(document).ready(function () {
+    //     $("#selectAll").change(function () {
+    //         alert("aa");
+    //         $("input[type = 'checkbox']").attr('checked', true);
+    //     });
+    // });
+
     $(document).ready(function () {
-        $('.i-checks').iCheck({
-            checkboxClass: 'icheckbox_square-green',
-            radioClass: 'iradio_square-green',
+        $("#searchPatient").click(function () {
+            let medicalRecordID = $("input[name = 'medicalRecordID']").val();
+            if (medicalRecordID.length != 0) {
+                let sendJson = {};
+                sendJson['medicalRecordID'] = medicalRecordID;
+                $.ajax({
+                    url: "/getRegistrationInfo",
+                    type: "post",
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify(sendJson),
+                    success: function (RegistrationInfo) {
+                        $("input[name = 'medicalRecordID']").val(RegistrationInfo.medicalRecordID);
+                        if (true) {
+                            $("input[name = 'name']").val(RegistrationInfo.patientName);
+                            $("input[name = 'numID']").val(RegistrationInfo.numID);
+                            $("input[name = 'address']").val(RegistrationInfo.address);
+                        }
+                    }
+                });
+                $("#chargeInfoTable tbody").empty();
+                $.ajax({
+                    url: "/getChargeInfo",
+                    type: "post",
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify(sendJson),
+                    success: function (ChargeInfo) {
+                        let medicalRecordID = $("input[name = 'medicalRecordID']").val();
+                        let name = $("input[name = 'name']").val();
+                        for (let i = 0; i < ChargeInfo.length; i++) {
+                            $("#chargeInfoTable tbody").append(
+                                '<tr>' +
+                                '<td><input type="checkbox" class="i-checks" name="input[]" id="' + ChargeInfo[i].drugPreDetailID + '"></td>' +
+                                '<td>' + medicalRecordID + '</td>' +
+                                '<td>' + name + '</td>' +
+                                '<td>' + ChargeInfo[i].drugName + '</td>' +
+                                '<td>' + ChargeInfo[i].drugUnitPrice + '</td>' +
+                                '<td>' + ChargeInfo[i].amount + '</td>' +
+                                '<td>' + ChargeInfo[i].createTime + '</td>' +
+                                '<td>' + ChargeInfo[i].state + '</td>' +
+                                '</tr>');
+                        }
+                        $("input[type = 'checkbox']").attr('checked', false);
+                        // $('.i-checks').iCheck({
+                        //     checkboxClass: 'icheckbox_square-green'
+                        // });
+                    }
+                })
+            }
         });
     });
 </script>

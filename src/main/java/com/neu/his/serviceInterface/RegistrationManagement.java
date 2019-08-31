@@ -68,4 +68,12 @@ public interface RegistrationManagement {
      * @return
      */
     List<JSONObject> getRegistrationRecord(MedicalRecordIDDTO medicalRecordIDDTO);
+
+    /**
+     * 根据病历号得到该患者所有的处方明细
+     *
+     * @param medicalRecordIDDTO
+     * @return
+     */
+    List<JSONObject> getChargeInfo(MedicalRecordIDDTO medicalRecordIDDTO);
 }
