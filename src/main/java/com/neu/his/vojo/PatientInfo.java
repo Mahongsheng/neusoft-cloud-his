@@ -3,12 +3,9 @@ package com.neu.his.vojo;
 import lombok.Data;
 
 @Data
-public class RegistrationInfo {
+public class PatientInfo {
     private int medicalRecordID;
+    private int registrationID;
     private String patientName;
-    private String gender;
     private int age;
-    private String birthday;
-    private String numID;
-    private String address;
 }

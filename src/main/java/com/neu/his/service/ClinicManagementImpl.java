@@ -3,20 +3,19 @@ package com.neu.his.service;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.neu.his.dao.*;
-import com.neu.his.dto.ConfirmedDTO;
-import com.neu.his.dto.DrugPrescriptionDTO;
-import com.neu.his.dto.DrugPrescriptionDetailDTO;
-import com.neu.his.dto.MedicalRecordDTO;
-import com.neu.his.pojo.Confirmed;
-import com.neu.his.pojo.DrugPrescription;
-import com.neu.his.pojo.DrugPrescriptionDetail;
-import com.neu.his.pojo.MedicalRecord;
+import com.neu.his.dto.*;
+import com.neu.his.pojo.*;
 import com.neu.his.serviceInterface.ClinicManagement;
 import com.neu.his.util.ReturnState;
+import com.neu.his.vojo.PatientInfo;
+import com.neu.his.vojo.RegistrationInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 @Service
 public class ClinicManagementImpl implements ClinicManagement {
 
@@ -31,6 +30,12 @@ public class ClinicManagementImpl implements ClinicManagement {
 
     @Autowired
     private DrugPrescriptionDetailMapper drugPrescriptionDetailMapper;
+
+    @Autowired
+    private RegistrationRecordMapper registrationRecordMapper;
+
+    @Autowired
+    private PatientMapper patientMapper;
 
     /**
      * 填写病历首页
@@ -130,5 +135,78 @@ public class ClinicManagementImpl implements ClinicManagement {
             returnJson = (JSONObject) JSON.toJSON(returnState);
             return returnJson;
         }
+    }
+
+    /**
+     * 根据医生ID找到挂号到该医生的所有未诊断患者
+     *
+     * @param doctorIDDTO
+     * @return
+     */
+    @Override
+    public List<JSONObject> getAllPatientNotDiagnose(DoctorIDDTO doctorIDDTO) {
+        List<JSONObject> returnJsons = new ArrayList<>();
+        try {
+            RegistrationRecordExample registrationRecordExample = new RegistrationRecordExample();
+            RegistrationRecordExample.Criteria criteria = registrationRecordExample.createCriteria();
+            criteria.andDoctorIdEqualTo((short) doctorIDDTO.getDoctorID());
+            criteria.andRegistStateEqualTo("待诊");
+
+            List<RegistrationRecord> registrationRecords = registrationRecordMapper.selectByExample(registrationRecordExample);
+
+            for (RegistrationRecord r : registrationRecords) {
+                Patient patient = patientMapper.selectByPrimaryKey(r.getPatientRecordId());
+
+                PatientInfo patientInfo = new PatientInfo();
+                patientInfo.setMedicalRecordID(r.getPatientRecordId());
+                patientInfo.setRegistrationID(r.getRegistId());
+                patientInfo.setPatientName(patient.getPatientName());
+                patientInfo.setAge(patient.getPatientAge());
+
+                JSONObject returnJson = (JSONObject) JSON.toJSON(patientInfo);
+                returnJsons.add(returnJson);
+            }
+            return returnJsons;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * 根据医生ID找到挂号到该医生的已诊断患者信息
+     *
+     * @param doctorIDDTO
+     * @return
+     */
+    @Override
+    public List<JSONObject> getAllPatientDiagnose(DoctorIDDTO doctorIDDTO) {
+        List<JSONObject> returnJsons = new ArrayList<>();
+        try {
+            RegistrationRecordExample registrationRecordExample = new RegistrationRecordExample();
+            RegistrationRecordExample.Criteria criteria = registrationRecordExample.createCriteria();
+            criteria.andDoctorIdEqualTo((short) doctorIDDTO.getDoctorID());
+            criteria.andRegistStateEqualTo("诊毕");
+
+            List<RegistrationRecord> registrationRecords = registrationRecordMapper.selectByExample(registrationRecordExample);
+
+            for (RegistrationRecord r : registrationRecords) {
+                Patient patient = patientMapper.selectByPrimaryKey(r.getPatientRecordId());
+
+                PatientInfo patientInfo = new PatientInfo();
+                patientInfo.setMedicalRecordID(r.getPatientRecordId());
+                patientInfo.setRegistrationID(r.getRegistId());
+                patientInfo.setPatientName(patient.getPatientName());
+                patientInfo.setAge(patient.getPatientAge());
+
+                JSONObject returnJson = (JSONObject) JSON.toJSON(patientInfo);
+                returnJsons.add(returnJson);
+            }
+            return returnJsons;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
 }

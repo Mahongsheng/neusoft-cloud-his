@@ -2,57 +2,66 @@
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="container">
         <div class="row">
-            <div class="col-md-4" style="padding-right: 0">
+            <div class="col-md-4" style="padding-right: 0px">
                 <div class="ibox-title">
-                    <h5>患者选择：</h5>
-                    <button class="btn btn-sm btn-primary">
-                        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-                    </button>
-                    <div style="padding-top: 2px">
-                        <select class="form-control m-b">
-                            <option>全部</option>
-                            <option>未诊断</option>
-                            <option>已诊断</option>
-                        </select>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h4>患者选择：</h4>
+                        </div>
+                        <div class="col-sm-3">
+                            <button class="btn btn-block btn-primary" style="float: right"
+                                    onclick="refreshPatientInfo()">
+                                <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                            </button>
+                        </div>
                     </div>
+
+                    <!--                    <div class="form-inline">-->
+                    <!--                        <label>患者名：</label>-->
+                    <!--                        <div><input type="text"></div>-->
+                    <!--                        <button type="button" class="btn btn-default">-->
+                    <!--                            <i class="fa fa-search" aria-hidden="true"></i>-->
+                    <!--                        </button></div>-->
+                    <!--                    </div>-->
                 </div>
                 <div class="ibox-content">
+                    <h5>未诊患者：</h5>
                     <div class="table-responsive">
-                        <table class="table table-hover">
+                        <table class="table table-hover" id="patientNotDiagnose">
                             <thead>
                             <tr>
                                 <th>病历号</th>
                                 <th>姓名</th>
                                 <th>年龄</th>
-                                <th>状态</th>
                                 <th>操作</th>
                             </tr>
                             </thead>
                             <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h5>已诊患者：</h5>
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="patientDiagnose">
+                            <thead>
                             <tr>
-                                <td>12345</td>
-                                <td>张三</td>
-                                <td>12</td>
-                                <td>
-                                    <span class="label label-primary">未诊</span>
-                                </td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
+                                <th>病历号</th>
+                                <th>姓名</th>
+                                <th>年龄</th>
+                                <th>操作</th>
                             </tr>
-                            <tr>
-                                <td>12346</td>
-                                <td>马斯</td>
-                                <td>13</td>
-                                <td>
-                                    <span class="label label-primary">已诊</span>
-                                </td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                            </tr>
+                            </thead>
+                            <tbody>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            <div class="col-md-8" style="padding-left: 0">
+            <div class="col-md-8" style="padding-left: 0px;background: white">
+                <div class="form-inline">
+                    <button class="btn btn-lg btn-primary">隐藏患者栏</button>
+                    <h3 style="margin-left: 20px" id="diagnosingPatient">患者姓名：马洪升 病历号：600700 年龄：15 性别：男</h3>
+                </div>
                 <div class="tabs-container">
                     <ul class="nav nav-tabs">
                         <li><a class="nav-link active" data-toggle="tab" href="#tab-1">病历首页</a>
@@ -237,4 +246,62 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        refreshPatientInfo();
+    });
+
+    function refreshPatientInfo() {
+        let doctorID = 1;
+        let sendJson = {};
+
+        sendJson['doctorID'] = doctorID;
+        $.ajax({
+            url: "/getAllPatientNotDiagnose",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify(sendJson),
+            success: function (PatientInfo) {
+                $("#patientNotDiagnose tbody").empty();
+                for (let i = 0; i < PatientInfo.length; i++) {
+                    $("#patientNotDiagnose tbody").append(
+                        '<tr>' +
+                        '<td>' + PatientInfo[i].medicalRecordID + '</td>' +
+                        '<td>' + PatientInfo[i].patientName + '</td>' +
+                        '<td>' + PatientInfo[i].age + '</td>' +
+                        '<td><button type="button" class="btn btn-sm btn-primary" onclick="diagnoseNow(this)" value="' + PatientInfo[i].registrationID + '">' +
+                        '<i class="fa fa-medkit"></i></button></td>' +
+                        '</tr>');
+                }
+            }
+        });
+        $.ajax({
+            url: "/getAllPatientDiagnose",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify(sendJson),
+            success: function (PatientInfo) {
+                $("#patientDiagnose tbody").empty();
+                for (let i = 0; i < PatientInfo.length; i++) {
+                    $("#patientDiagnose tbody").append(
+                        '<tr>' +
+                        '<td>' + PatientInfo[i].medicalRecordID + '</td>' +
+                        '<td>' + PatientInfo[i].patientName + '</td>' +
+                        '<td>' + PatientInfo[i].age + '</td>' +
+                        '<td><button type="button" class="btn btn-sm btn-primary" disabled="disabled" onclick="diagnoseNow(this)" value="' + PatientInfo[i].registrationID + '">' +
+                        '<i class="fa fa-medkit"></i></button></td>' +
+                        '</tr>');
+                }
+            }
+        });
+    }
+
+    function diagnoseNow(obj) {
+        alert("正在确诊该患者");
+    }
+</script>
+
 </body>
