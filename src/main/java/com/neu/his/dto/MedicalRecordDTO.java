@@ -1,6 +1,5 @@
 package com.neu.his.dto;
 
-import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 
 import java.util.List;

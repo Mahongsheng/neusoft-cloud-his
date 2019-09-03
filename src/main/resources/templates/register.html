@@ -149,7 +149,7 @@
     $(document).ready(function () {
         $("#registerSubmit").click(function () {
             alert("正在挂号");
-            var formData = $("#registerInfo").serializeObject();
+            let formData = $("#registerInfo").serializeObject();
             console.log(formData);
             $.ajax({
                 url: "/register",

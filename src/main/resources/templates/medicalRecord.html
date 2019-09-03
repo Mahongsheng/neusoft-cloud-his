@@ -1,4 +1,55 @@
 <body>
+<div class="modal inmodal" id="searchDisease" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated flipInY">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h5 class="modal-title">搜索疾病</h5>
+            </div>
+            <div class="modal-body">
+                <div class="ibox ">
+                    <div class="ibox-content">
+                        <div class="search-form">
+                            <form>
+                                <div class="form-group">
+                                    <input type="text" placeholder="请输入疾病类别" name="searchDiseaseCategory"
+                                           class="form-control input-lg" list="diseaseCategoryList">
+                                    <datalist style="display:none;" id="diseaseCategoryList">
+                                    </datalist>
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" placeholder="请输入疾病名称" name="searchDisease"
+                                           class="form-control input-lg">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-lg btn-primary" type="button" id="searchNow">
+                                            搜索
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="search-result" id="searchResult">
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="text-center">
+                            <div class="btn-group">
+                                <button class="btn btn-white" type="button"><i class="fa fa-chevron-left"></i></button>
+                                <button class="btn btn-white">1</button>
+                                <button class="btn btn-white  active">2</button>
+                                <button class="btn btn-white">3</button>
+                                <button class="btn btn-white">4</button>
+                                <button class="btn btn-white" type="button"><i class="fa fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="container">
         <div class="row">
@@ -59,8 +110,8 @@
             </div>
             <div class="col-md-8" style="padding-left: 0px;background: white">
                 <div class="form-inline">
-                    <button class="btn btn-lg btn-primary">隐藏患者栏</button>
-                    <h3 style="margin-left: 20px" id="diagnosingPatient">患者姓名：马洪升 病历号：600700 年龄：15 性别：男</h3>
+                    <button class="btn btn-lg btn-primary" id="diagnosingPatientRegistrationID" value="">隐藏患者栏</button>
+                    <h3 style="margin-left: 20px" id="diagnosingPatient"></h3>
                 </div>
                 <div class="tabs-container">
                     <ul class="nav nav-tabs">
@@ -84,21 +135,25 @@
                             <div class="panel-body">
                                 <div class="ibox">
                                     <div class="ibox-content">
-                                        <form method="post">
+                                        <form id="medicalRecordInfo">
                                             <div class="container">
                                                 <div class="row">
                                                     <div class="col-md-3 text-center">
-                                                        <button class="btn btn-primary btn-sm" type="button">暂存</button>
-                                                    </div>
-                                                    <div class="col-md-3 text-center">
-                                                        <button class="btn btn-primary btn-sm" type="submit">提交</button>
-                                                    </div>
-                                                    <div class="col-md-3 text-center">
-                                                        <button class="btn btn-primary btn-sm" type="reset">清空所有
+                                                        <button class="btn btn-primary btn-xs" type="button"
+                                                                id="tempSubmit">暂存
                                                         </button>
                                                     </div>
                                                     <div class="col-md-3 text-center">
-                                                        <button class="btn btn-primary btn-sm" type="reset">刷新</button>
+                                                        <button class="btn btn-primary btn-xs" type="button"
+                                                                id="perSubmit">提交
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-md-3 text-center">
+                                                        <button class="btn btn-primary btn-xs" type="reset">清空所有
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-md-3 text-center">
+                                                        <button class="btn btn-primary btn-xs" type="reset">刷新</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -107,29 +162,87 @@
                                             <div><label>病史内容：</label></div>
                                             <div class="form-group  row">
                                                 <label class="col-sm-2 col-form-label">主诉：</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                                <div class="col-sm-10"><input type="text" class="form-control"
+                                                                              name="medicalRecordSaying"></div>
                                             </div>
                                             <div class="form-group  row">
                                                 <label class="col-sm-2 col-form-label">现病史：</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                                <div class="col-sm-10"><input type="text" class="form-control"
+                                                                              name="medicalRecordCurtIllness"></div>
                                             </div>
                                             <div class="form-group  row">
                                                 <label class="col-sm-2 col-form-label">现病治疗情况：</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                                <div class="col-sm-10"><input type="text" class="form-control"
+                                                                              name="medicalRecordTreat"></div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">既往史：</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                                <div class="col-sm-10"><input type="text" class="form-control"
+                                                                              name="medicalRecordPreIllness"></div>
                                             </div>
                                             <div class="form-group  row">
                                                 <label class="col-sm-2 col-form-label">过敏史：</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                                <div class="col-sm-10"><input type="text" class="form-control"
+                                                                              name="medicalRecordAllergy"></div>
                                             </div>
                                             <div class="form-group  row">
                                                 <label class="col-sm-2 col-form-label">体格检查：</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                                <div class="col-sm-10"><input type="text" class="form-control"
+                                                                              name="medicalRecordCheck"></div>
+                                            </div>
+                                            <div class="form-group  row">
+                                                <label class="col-sm-2 col-form-label">检察建议：</label>
+                                                <div class="col-sm-10"><input type="text" class="form-control"
+                                                                              name="medicalRecordCheckAdvice"></div>
+                                            </div>
+                                            <div class="form-group  row">
+                                                <label class="col-sm-2 col-form-label">注意事项：</label>
+                                                <div class="col-sm-10"><input type="text" class="form-control"
+                                                                              name="medicalRecordWarn"></div>
                                             </div>
                                         </form>
+                                    </div>
+                                </div>
+                                <div class="ibox ">
+                                    <div class="ibox-title">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-sm-10">
+                                                    <h5>评估/诊断：</h5>
+                                                    <button type="button" class="btn btn-info btn-xs"
+                                                            style="float: right"
+                                                            id="deleteConfirm">
+                                                        删除
+                                                    </button>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <button type="button" class="btn btn-info btn-xs"
+                                                            style="float: right"
+                                                            id="addConfirm" data-toggle="modal"
+                                                            data-target="#searchDisease">
+                                                        增加
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ibox-content">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped" id="confirmInfoTable">
+                                                <thead>
+                                                <tr>
+                                                    <th><input type="checkbox" checked class="i-checks"
+                                                               name="selectAll"></th>
+                                                    <th>ICD编码</th>
+                                                    <th>名称</th>
+                                                    <th></th>
+                                                    <th>发病时间</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -164,71 +277,100 @@
                             <div class="panel-body">
                                 <div class="ibox">
                                     <div class="ibox-content">
-                                        <form method="post">
-                                            <div class="container">
-                                                <div class="row">
-                                                    <div class="col-md-8 text-center">
-                                                        <div class="row">
-                                                            <div class="col-md-2">
-                                                                <button class="btn btn-primary btn-sm" type="button">增方
-                                                                </button>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <button class="btn btn-primary btn-sm" type="button">删方
-                                                                </button>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <button class="btn btn-primary btn-sm" type="button">开立
-                                                                </button>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <button class="btn btn-primary btn-sm" type="button">作废
-                                                                </button>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <button class="btn btn-primary btn-sm" type="button">刷新
-                                                                </button>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-8 text-right">
+                                                    <div class="row">
+                                                        <div class="col-md-2">
+                                                            <button class="btn btn-primary btn-xs" type="button">增方
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <button class="btn btn-primary btn-xs" type="button">删方
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <button class="btn btn-primary btn-xs" type="button">开立
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <button class="btn btn-primary btn-xs" type="button">作废
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <button class="btn btn-primary btn-xs" type="button">刷新
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 text-center">
+                                                    <button class="btn btn-primary btn-xs" type="submit"
+                                                            style="margin-right: 10px">
+                                                        增药
+                                                    </button>
+                                                    <button class="btn btn-primary btn-xs" type="submit">
+                                                        删药
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="hr-line-dashed"></div>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="ibox ">
+                                                        <div class="ibox-title">
+                                                            <h5>门诊处方：</h5>
+                                                        </div>
+                                                        <div class="ibox-content">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-striped"
+                                                                       id="preInfo">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th></th>
+                                                                        <th>名称</th>
+                                                                        <th>状态</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    </tbody>
+                                                                </table>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4 text-center">
-                                                        <button class="btn btn-primary btn-sm" type="submit"
-                                                                style="margin-right: 10px">
-                                                            增药
-                                                        </button>
-                                                        <button class="btn btn-primary btn-sm" type="submit">
-                                                            删药
-                                                        </button>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <div class="ibox ">
+                                                        <div class="ibox-title">
+                                                            <h5>本处方金额合计：25.31元</h5>
+                                                        </div>
+                                                        <div class="ibox-content">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-striped"
+                                                                       id="preDetailInfo">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th></th>
+                                                                        <th><input type="checkbox" checked
+                                                                                   class="i-checks"
+                                                                                   name="selectAll"></th>
+                                                                        <th>药品名称</th>
+                                                                        <th>规格</th>
+                                                                        <th>单价</th>
+                                                                        <th>用法</th>
+                                                                        <th>数量</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="hr-line-dashed"></div>
-                                            <div><h4>病史内容：</h4></div>
-                                            <div class="form-group  row">
-                                                <label class="col-sm-2 col-form-label">主诉：</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control"></div>
-                                            </div>
-                                            <div class="form-group  row">
-                                                <label class="col-sm-2 col-form-label">现病史：</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control"></div>
-                                            </div>
-                                            <div class="form-group  row">
-                                                <label class="col-sm-2 col-form-label">现病治疗情况：</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control"></div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">既往史：</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control"></div>
-                                            </div>
-                                            <div class="form-group  row">
-                                                <label class="col-sm-2 col-form-label">过敏史：</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control"></div>
-                                            </div>
-                                            <div class="form-group  row">
-                                                <label class="col-sm-2 col-form-label">体格检查：</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control"></div>
-                                            </div>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -251,6 +393,16 @@
     $(document).ready(function () {
         refreshPatientInfo();
     });
+
+    $.fn.serializeObject = function () {
+        var obj = {};
+        var formArray = this.serializeArray();
+        for (var i = 0; i < formArray.length; i++) {
+            obj[formArray[i].name] = formArray[i]['value'];
+        }
+        obj['registerUserID'] = 1;
+        return obj;
+    };
 
     function refreshPatientInfo() {
         let doctorID = 1;
@@ -291,7 +443,7 @@
                         '<td>' + PatientInfo[i].medicalRecordID + '</td>' +
                         '<td>' + PatientInfo[i].patientName + '</td>' +
                         '<td>' + PatientInfo[i].age + '</td>' +
-                        '<td><button type="button" class="btn btn-sm btn-primary" disabled="disabled" onclick="diagnoseNow(this)" value="' + PatientInfo[i].registrationID + '">' +
+                        '<td><button type="button" class="btn btn-sm btn-primary" onclick="diagnoseNow(this)" value="' + PatientInfo[i].registrationID + '">' +
                         '<i class="fa fa-medkit"></i></button></td>' +
                         '</tr>');
                 }
@@ -300,8 +452,90 @@
     }
 
     function diagnoseNow(obj) {
-        alert("正在确诊该患者");
+        let registrationID = obj.value;
+        let sendJson = {};
+        sendJson["registrationID"] = registrationID;
+
+        $.ajax({
+            url: "/getSpecificPatientInfo",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify(sendJson),
+            success: function (PatientInfo) {
+                let diagnosingPatient = "患者姓名：";
+                diagnosingPatient += PatientInfo.patientName;
+                diagnosingPatient += " 病历号：";
+                diagnosingPatient += PatientInfo.medicalRecordID;
+                diagnosingPatient += " 年龄：";
+                diagnosingPatient += PatientInfo.age;
+                diagnosingPatient += " 性别：";
+                diagnosingPatient += PatientInfo.gender;
+
+                $("#diagnosingPatient").text(diagnosingPatient);
+                $("#diagnosingPatientRegistrationID").attr("value", registrationID);
+            }
+        });
     }
+
+    $(document).ready(function () {
+        $("#tempSubmit").click(function () {
+            let formData = $("#medicalRecordInfo").serializeObject();
+            console.log(formData);
+
+        });
+
+        $("#perSubmit").click(function () {
+            let formData = $("#medicalRecordInfo").serializeObject();
+            console.log(formData);
+
+        });
+    });
+
+    $(document).ready(function () {
+        $("input[name='searchDiseaseCategory']").bind("input propertychange", function () {
+            let sendJson = {};
+            sendJson["pattern"] = $("input[name='searchDiseaseCategory']").val();
+            $.ajax({
+                url: "/findDiseaseCategory",
+                type: "post",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(sendJson),
+                success: function (DiseaseCategoryInfo) {
+                    $("#diseaseCategoryList").empty();
+                    for (let i = 0; i < DiseaseCategoryInfo.length; i++) {
+                        $("#diseaseCategoryList").append('<option name="' + DiseaseCategoryInfo[i].diseaseCateId + '">' + DiseaseCategoryInfo[i].diseaseCateName + '</option>');
+                    }
+                }
+            });
+        });
+    });
+
+    $(document).ready(function () {
+        $("#searchNow").click(function () {
+            let diseaseCategorySearch = $("input[name='searchDiseaseCategory']").val();
+            let diseaseSearch = $("input[name='searchDisease']").val();
+            let sendJson = {};
+            sendJson["diseaseCategory"] = diseaseCategorySearch;
+            sendJson["pattern"] = diseaseSearch;
+            sendJson["pageNum"] = 1;
+            sendJson["pageSize"] = 8;
+            $.ajax({
+                url: "/findDisease",
+                type: "post",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(sendJson),
+                success: function (DiseaseInfo) {
+                    $("#searchResult").empty();
+                    for (let i = 0; i < DiseaseInfo.length; i++) {
+                        $("#searchResult").append('<h3><button type="button" class="btn btn-link" id="' + DiseaseInfo[i].diseaseId + '">' + DiseaseInfo[i].diseaseIcd + ' ' + DiseaseInfo[i].diseaseName + ' ' + '</button></h3>');
+                    }
+                }
+            });
+        });
+    });
 </script>
 
 </body>

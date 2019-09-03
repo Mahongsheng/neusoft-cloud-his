@@ -1,9 +1,8 @@
 package com.neu.his.serviceInterface;
 
 import com.alibaba.fastjson.JSONObject;
-import com.neu.his.dto.DoctorIDDTO;
-import com.neu.his.dto.DrugPrescriptionDTO;
-import com.neu.his.dto.MedicalRecordDTO;
+import com.neu.his.dto.*;
+import com.neu.his.pojo.DiseaseCategory;
 
 import java.util.List;
 
@@ -38,5 +37,29 @@ public interface ClinicManagement {
      * @return
      */
     List<JSONObject> getAllPatientDiagnose(DoctorIDDTO doctorIDDTO);
+
+    /**
+     * 根据病历号得到该患者的一些信息
+     *
+     * @param registrationIDDTO
+     * @return
+     */
+    JSONObject getSpecificPatientInfo(RegistrationIDDTO registrationIDDTO);
+
+    /**
+     * 模糊匹配疾病类型
+     *
+     * @param findDiseaseCategoryDTO
+     * @return
+     */
+    List<JSONObject> findDiseaseCategory(FindDiseaseCategoryDTO findDiseaseCategoryDTO);
+
+    /**
+     * 模糊匹配疾病
+     *
+     * @param findDiseaseDTO
+     * @return
+     */
+    List<JSONObject> findDisease(FindDiseaseDTO findDiseaseDTO);
 
 }

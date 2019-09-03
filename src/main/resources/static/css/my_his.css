@@ -1,7 +1,19 @@
 body {
     padding-right: 0px !important;
 }
+
 *.modal-open {
     overflow-y: scroll;
     padding-right: 0 !important;
+}
+
+.myBorder {
+    BORDER-RIGHT: 3px double #000000;
+    BORDER-TOP: 3px double #000000;
+    BACKGROUND: #ffffff;
+    BORDER-LEFT: 3px double #000000;
+    WIDTH: 100%;
+    BORDER-BOTTOM: 3px double #000000;
+    HEIGHT: 100%;
+    align: left;
 }

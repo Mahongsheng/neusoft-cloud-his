@@ -2,11 +2,15 @@ package com.neu.his.service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.neu.his.dao.*;
 import com.neu.his.dto.*;
 import com.neu.his.pojo.*;
 import com.neu.his.serviceInterface.ClinicManagement;
 import com.neu.his.util.ReturnState;
+import com.neu.his.vojo.DiseaseBack;
 import com.neu.his.vojo.PatientInfo;
 import com.neu.his.vojo.RegistrationInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +40,12 @@ public class ClinicManagementImpl implements ClinicManagement {
 
     @Autowired
     private PatientMapper patientMapper;
+
+    @Autowired
+    private DiseaseCategoryMapper diseaseCategoryMapper;
+
+    @Autowired
+    private DiseaseCatalogMapper diseaseCatalogMapper;
 
     /**
      * 填写病历首页
@@ -208,5 +218,118 @@ public class ClinicManagementImpl implements ClinicManagement {
             return null;
         }
 
+    }
+
+    /**
+     * 根据病历号得到该患者的一些信息
+     *
+     * @param registrationIDDTO
+     * @return
+     */
+    @Override
+    public JSONObject getSpecificPatientInfo(RegistrationIDDTO registrationIDDTO) {
+        JSONObject returnJson;
+        try {
+            String gender = new String();
+            RegistrationRecord registrationRecord = registrationRecordMapper.selectByPrimaryKey(registrationIDDTO.getRegistrationID());
+
+            Patient patient = patientMapper.selectByPrimaryKey(registrationRecord.getPatientRecordId());
+
+            PatientInfo patientInfo = new PatientInfo();
+            patientInfo.setMedicalRecordID(patient.getPatientRecordId());
+            patientInfo.setPatientName(patient.getPatientName());
+            patientInfo.setAge(patient.getPatientAge());
+            if (patient.getPatientGender() == 71) {
+                gender = "男";
+            } else if (patient.getPatientGender() == 72) {
+                gender = "女";
+            }
+            patientInfo.setGender(gender);
+
+            returnJson = (JSONObject) JSON.toJSON(patientInfo);
+            return returnJson;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * 模糊匹配疾病类型
+     *
+     * @param findDiseaseCategoryDTO
+     * @return
+     */
+    @Override
+    public List<JSONObject> findDiseaseCategory(FindDiseaseCategoryDTO findDiseaseCategoryDTO) {
+        List<JSONObject> returnJsons = new ArrayList<>();
+        try {
+            String pattern = "%" + findDiseaseCategoryDTO.getPattern() + "%";
+            List<DiseaseCategory> diseaseCategories = diseaseCategoryMapper.findDiseaseCategory(pattern);
+
+            for (DiseaseCategory d : diseaseCategories) {
+                JSONObject returnJson = (JSONObject) JSON.toJSON(d);
+                returnJsons.add(returnJson);
+            }
+            return returnJsons;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * 模糊匹配疾病
+     *
+     * @param findDiseaseDTO
+     * @return
+     */
+    @Override
+    public List<JSONObject> findDisease(FindDiseaseDTO findDiseaseDTO) {
+        List<JSONObject> returnJsons = new ArrayList<>();
+        try {
+            if (findDiseaseDTO.getDiseaseCategory().equals("")) {
+                String pattern = "%" + findDiseaseDTO.getPattern() + "%";
+                Page page = PageHelper.startPage(findDiseaseDTO.getPageNum(), findDiseaseDTO.getPageSize());
+                List<DiseaseCatalog> diseaseCatalogs = diseaseCatalogMapper.findDiseaseCatalog(pattern);
+
+                for (DiseaseCatalog d : diseaseCatalogs) {
+                    DiseaseBack diseaseBack = new DiseaseBack();
+                    diseaseBack.setDiseaseIcd(d.getDiseaseIcd());
+                    diseaseBack.setDiseaseId(d.getDiseaseId());
+                    diseaseBack.setDiseaseName(d.getDiseaseName());
+                    diseaseBack.setWholePage(page.getPages());
+                    JSONObject returnJson = (JSONObject) JSON.toJSON(diseaseBack);
+                    returnJsons.add(returnJson);
+                }
+            } else {
+                String pattern = "%" + findDiseaseDTO.getPattern() + "%";
+                DiseaseCategoryExample diseaseCategoryExample = new DiseaseCategoryExample();
+                DiseaseCategoryExample.Criteria criteria = diseaseCategoryExample.createCriteria();
+                criteria.andDiseaseCateNameEqualTo(findDiseaseDTO.getDiseaseCategory());
+                List<DiseaseCategory> diseaseCategories = diseaseCategoryMapper.selectByExample(diseaseCategoryExample);
+
+                FindDiseaseDBDTO findDiseaseDBDTO = new FindDiseaseDBDTO();
+                findDiseaseDBDTO.setDiseaseCategoryID(diseaseCategories.get(0).getDiseaseCateId());
+                findDiseaseDBDTO.setPattern(pattern);
+
+                Page page = PageHelper.startPage(findDiseaseDTO.getPageNum(), findDiseaseDTO.getPageSize());
+                List<DiseaseCatalog> diseaseCatalogs = diseaseCatalogMapper.findDiseaseCatalogByCategory(findDiseaseDBDTO);
+
+                for (DiseaseCatalog d : diseaseCatalogs) {
+                    DiseaseBack diseaseBack = new DiseaseBack();
+                    diseaseBack.setDiseaseIcd(d.getDiseaseIcd());
+                    diseaseBack.setDiseaseId(d.getDiseaseId());
+                    diseaseBack.setDiseaseName(d.getDiseaseName());
+                    diseaseBack.setWholePage(page.getPages());
+                    JSONObject returnJson = (JSONObject) JSON.toJSON(diseaseBack);
+                    returnJsons.add(returnJson);
+                }
+            }
+            return returnJsons;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

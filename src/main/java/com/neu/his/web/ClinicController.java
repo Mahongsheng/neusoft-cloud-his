@@ -1,9 +1,7 @@
 package com.neu.his.web;
 
 import com.alibaba.fastjson.JSONObject;
-import com.neu.his.dto.DoctorIDDTO;
-import com.neu.his.dto.DrugPrescriptionDTO;
-import com.neu.his.dto.MedicalRecordDTO;
+import com.neu.his.dto.*;
 import com.neu.his.serviceInterface.ClinicManagement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -65,6 +63,42 @@ public class ClinicController {
     @RequestMapping(value = "/getAllPatientDiagnose", method = RequestMethod.POST)
     @ResponseBody
     public List<JSONObject> getAllPatientDiagnose(@RequestBody DoctorIDDTO doctorIDDTO) {
-        return clinicManagement.getAllPatientNotDiagnose(doctorIDDTO);
+        return clinicManagement.getAllPatientDiagnose(doctorIDDTO);
+    }
+
+    /**
+     * 根据病历号得到该患者的一些信息
+     *
+     * @param registrationIDDTO
+     * @return
+     */
+    @RequestMapping(value = "/getSpecificPatientInfo", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONObject getSpecificPatientInfo(@RequestBody RegistrationIDDTO registrationIDDTO) {
+        return clinicManagement.getSpecificPatientInfo(registrationIDDTO);
+    }
+
+    /**
+     * 模糊匹配疾病类型
+     *
+     * @param findDiseaseCategoryDTO
+     * @return
+     */
+    @RequestMapping(value = "/findDiseaseCategory", method = RequestMethod.POST)
+    @ResponseBody
+    public List<JSONObject> findDiseaseCategory(@RequestBody FindDiseaseCategoryDTO findDiseaseCategoryDTO) {
+        return clinicManagement.findDiseaseCategory(findDiseaseCategoryDTO);
+    }
+
+    /**
+     * 模糊匹配疾病
+     *
+     * @param findDiseaseDTO
+     * @return
+     */
+    @RequestMapping(value = "/findDisease", method = RequestMethod.POST)
+    @ResponseBody
+    public List<JSONObject> findDisease(@RequestBody FindDiseaseDTO findDiseaseDTO) {
+        return clinicManagement.findDisease(findDiseaseDTO);
     }
 }

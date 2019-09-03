@@ -8,4 +8,5 @@ public class PatientInfo {
     private int registrationID;
     private String patientName;
     private int age;
+    private String gender;
 }
