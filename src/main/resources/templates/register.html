@@ -206,7 +206,6 @@
                 dataType: "json",
                 data: JSON.stringify(sendJson),
                 success: function (RegistrationInfo) {
-                    $("input[name = 'medicalRecordID']").val(RegistrationInfo.medicalRecordID);
                     if (true) {
                         $("input[name = 'name']").val(RegistrationInfo.patientName);
                         $("select[name = 'gender']").val(RegistrationInfo.gender);

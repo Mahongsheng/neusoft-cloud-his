@@ -6,6 +6,6 @@ import java.util.Date;
 
 @Data
 public class ConfirmedDTO {
-    private String diseaseICD;
+    private Integer diseaseID;
     private Date diseaseTime;
 }

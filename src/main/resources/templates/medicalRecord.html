@@ -34,13 +34,7 @@
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="text-center">
-                            <div class="btn-group">
-                                <button class="btn btn-white" type="button"><i class="fa fa-chevron-left"></i></button>
-                                <button class="btn btn-white">1</button>
-                                <button class="btn btn-white  active">2</button>
-                                <button class="btn btn-white">3</button>
-                                <button class="btn btn-white">4</button>
-                                <button class="btn btn-white" type="button"><i class="fa fa-chevron-right"></i></button>
+                            <div class="btn-group" id="firstPageNum">
                             </div>
                         </div>
                     </div>
@@ -140,12 +134,12 @@
                                                 <div class="row">
                                                     <div class="col-md-3 text-center">
                                                         <button class="btn btn-primary btn-xs" type="button"
-                                                                id="tempSubmit">暂存
+                                                                onclick="submitMedicalRecord(this)">暂存
                                                         </button>
                                                     </div>
                                                     <div class="col-md-3 text-center">
                                                         <button class="btn btn-primary btn-xs" type="button"
-                                                                id="perSubmit">提交
+                                                                onclick="submitMedicalRecord(this)">提交
                                                         </button>
                                                     </div>
                                                     <div class="col-md-3 text-center">
@@ -232,7 +226,7 @@
                                                 <thead>
                                                 <tr>
                                                     <th><input type="checkbox" checked class="i-checks"
-                                                               name="selectAll"></th>
+                                                               name="selectAllDisease"></th>
                                                     <th>ICD编码</th>
                                                     <th>名称</th>
                                                     <th></th>
@@ -443,7 +437,7 @@
                         '<td>' + PatientInfo[i].medicalRecordID + '</td>' +
                         '<td>' + PatientInfo[i].patientName + '</td>' +
                         '<td>' + PatientInfo[i].age + '</td>' +
-                        '<td><button type="button" class="btn btn-sm btn-primary" onclick="diagnoseNow(this)" value="' + PatientInfo[i].registrationID + '">' +
+                        '<td><button type="button" class="btn btn-sm btn-primary" disabled="disabled" onclick="diagnoseNow(this)" value="' + PatientInfo[i].registrationID + '">' +
                         '<i class="fa fa-medkit"></i></button></td>' +
                         '</tr>');
                 }
@@ -452,7 +446,7 @@
     }
 
     function diagnoseNow(obj) {
-        let registrationID = obj.value;
+        let registrationID = $(obj).attr("value");
         let sendJson = {};
         sendJson["registrationID"] = registrationID;
 
@@ -479,20 +473,6 @@
     }
 
     $(document).ready(function () {
-        $("#tempSubmit").click(function () {
-            let formData = $("#medicalRecordInfo").serializeObject();
-            console.log(formData);
-
-        });
-
-        $("#perSubmit").click(function () {
-            let formData = $("#medicalRecordInfo").serializeObject();
-            console.log(formData);
-
-        });
-    });
-
-    $(document).ready(function () {
         $("input[name='searchDiseaseCategory']").bind("input propertychange", function () {
             let sendJson = {};
             sendJson["pattern"] = $("input[name='searchDiseaseCategory']").val();
@@ -512,15 +492,20 @@
         });
     });
 
-    $(document).ready(function () {
-        $("#searchNow").click(function () {
+    var pageNum = 1;
+    var wholePageNum = 0;
+
+    function findDiseaseNextPage() {
+        if (pageNum < wholePageNum) {
+            pageNum++;
             let diseaseCategorySearch = $("input[name='searchDiseaseCategory']").val();
             let diseaseSearch = $("input[name='searchDisease']").val();
             let sendJson = {};
             sendJson["diseaseCategory"] = diseaseCategorySearch;
             sendJson["pattern"] = diseaseSearch;
-            sendJson["pageNum"] = 1;
+            sendJson["pageNum"] = pageNum;
             sendJson["pageSize"] = 8;
+
             $.ajax({
                 url: "/findDisease",
                 type: "post",
@@ -530,12 +515,157 @@
                 success: function (DiseaseInfo) {
                     $("#searchResult").empty();
                     for (let i = 0; i < DiseaseInfo.length; i++) {
-                        $("#searchResult").append('<h3><button type="button" class="btn btn-link" id="' + DiseaseInfo[i].diseaseId + '">' + DiseaseInfo[i].diseaseIcd + ' ' + DiseaseInfo[i].diseaseName + ' ' + '</button></h3>');
+                        $("#searchResult").append('<h4><button type="button" class="btn btn-link" onclick="addDisease(this)" id="' + DiseaseInfo[i].diseaseId + '">' + DiseaseInfo[i].diseaseIcd + ' ' + '</button></h4>');
+                        $("#searchResult").append('<p id="' + DiseaseInfo[i].diseaseId + '">' + DiseaseInfo[i].diseaseName + ' ' + '</p>');
                     }
+                    $("#pageNum" + pageNum).attr("class", "btn btn-white active");
+                    $("#pageNum" + (pageNum - 1)).attr("class", "btn btn-white");
+                }
+            });
+        }
+    }
+
+    function findDiseaseLastPage() {
+        console.log(pageNum);
+        if (pageNum > 1) {
+            pageNum--;
+            let diseaseCategorySearch = $("input[name='searchDiseaseCategory']").val();
+            let diseaseSearch = $("input[name='searchDisease']").val();
+            let sendJson = {};
+            sendJson["diseaseCategory"] = diseaseCategorySearch;
+            sendJson["pattern"] = diseaseSearch;
+            sendJson["pageNum"] = pageNum;
+            sendJson["pageSize"] = 8;
+
+            $.ajax({
+                url: "/findDisease",
+                type: "post",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(sendJson),
+                success: function (DiseaseInfo) {
+                    $("#searchResult").empty();
+                    for (let i = 0; i < DiseaseInfo.length; i++) {
+                        $("#searchResult").append('<h4><button type="button" class="btn btn-link" onclick="addDisease(this)" id="' + DiseaseInfo[i].diseaseId + '">' + DiseaseInfo[i].diseaseIcd + ' ' + '</button></h4>');
+                        $("#searchResult").append('<p id="' + DiseaseInfo[i].diseaseId + '">' + DiseaseInfo[i].diseaseName + ' ' + '</p>');
+                    }
+                    $("#pageNum" + pageNum).attr("class", "btn btn-white active");
+                    $("#pageNum" + (pageNum + 1)).attr("class", "btn btn-white");
+                }
+            });
+        }
+    }
+
+    function findDiseaseThisPage(obj) {
+        $("#pageNum" + pageNum).attr("class", "btn btn-white");
+        pageNum = $(obj).text();
+        let diseaseCategorySearch = $("input[name='searchDiseaseCategory']").val();
+        let diseaseSearch = $("input[name='searchDisease']").val();
+        let sendJson = {};
+        sendJson["diseaseCategory"] = diseaseCategorySearch;
+        sendJson["pattern"] = diseaseSearch;
+        sendJson["pageNum"] = pageNum;
+        sendJson["pageSize"] = 8;
+        $.ajax({
+            url: "/findDisease",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify(sendJson),
+            success: function (DiseaseInfo) {
+                $("#searchResult").empty();
+                for (let i = 0; i < DiseaseInfo.length; i++) {
+                    $("#searchResult").append('<h4><button type="button" class="btn btn-link" onclick="addDisease(this)" id="' + DiseaseInfo[i].diseaseId + '">' + DiseaseInfo[i].diseaseIcd + ' ' + '</button></h4>');
+                    $("#searchResult").append('<p id="' + DiseaseInfo[i].diseaseId + '">' + DiseaseInfo[i].diseaseName + ' ' + '</p>');
+                }
+                $(obj).attr("class", "btn btn-white active");
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        $("#searchNow").click(function () {
+            pageNum = 1;
+            let diseaseCategorySearch = $("input[name='searchDiseaseCategory']").val();
+            let diseaseSearch = $("input[name='searchDisease']").val();
+            let sendJson = {};
+            sendJson["diseaseCategory"] = diseaseCategorySearch;
+            sendJson["pattern"] = diseaseSearch;
+            sendJson["pageNum"] = pageNum;
+            sendJson["pageSize"] = 8;
+            $.ajax({
+                url: "/findDisease",
+                type: "post",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(sendJson),
+                success: function (DiseaseInfo) {
+                    $("#searchResult").empty();
+                    wholePageNum = DiseaseInfo[0].wholePage;
+                    for (let i = 0; i < DiseaseInfo.length; i++) {
+                        $("#searchResult").append('<h4><button type="button" class="btn btn-link" onclick="addDisease(this)" id="' + DiseaseInfo[i].diseaseId + '">' + DiseaseInfo[i].diseaseIcd + '</button></h4>');
+                        $("#searchResult").append('<p id="' + DiseaseInfo[i].diseaseId + '">' + DiseaseInfo[i].diseaseName + ' ' + '</p>');
+                    }
+                    $("#firstPageNum").empty();
+                    $("#firstPageNum").append('<button class="btn btn-white" type="button" onclick="findDiseaseLastPage()"><i class="fa fa-chevron-left"></i></button>');
+                    for (let i = 0; i < DiseaseInfo[0].wholePage; i++) {
+                        if (i == 0) {
+                            $("#firstPageNum").append('<button class="btn btn-white active" onclick="findDiseaseThisPage(this)" id="pageNum' + (i + 1) + '">' + (i + 1) + '</button>');
+                        } else {
+                            $("#firstPageNum").append('<button class="btn btn-white" onclick="findDiseaseThisPage(this)" id="pageNum' + (i + 1) + '">' + (i + 1) + '</button>');
+                        }
+                    }
+                    $("#firstPageNum").append('<button class="btn btn-white" type="button"><i class="fa fa-chevron-right" onclick="findDiseaseNextPage()"></i></button>\n');
                 }
             });
         });
     });
+
+    function addDisease(obj) {
+        let diseaseID = $(obj).attr("id");
+        let diseaseName = $("p[id=" + diseaseID + "]").text();
+        let diseaseICD = $(obj).text();
+        $("#confirmInfoTable tbody").append(
+            '<tr>' +
+            '<td><input type="checkbox" class="i-checks" name="diseaseID" value="' + diseaseID + '"></td>' +
+            '<td>' + diseaseICD + '</td>' +
+            '<td>' + diseaseName + '</td>' +
+            '<td></td>' +
+            '<td><input class="form-control input-sm" type="date" name="' + diseaseID + '"></td>' +
+            '</tr>');
+    }
+
+    function submitMedicalRecord(obj) {
+        let confirmedList = [];
+        let medicalRecordState = $(obj).text();
+        let registrationID = $("#diagnosingPatientRegistrationID").attr("value");
+
+        let formData = $("#medicalRecordInfo").serializeObject();
+
+        $("input:checkbox[name=diseaseID]").each(function () {
+            let confirmed = {};
+            let diseaseID = $(this).attr("value");
+            confirmed["diseaseTime"] = $('input[name=' + diseaseID + ']').val();
+            confirmed["diseaseID"] = diseaseID;
+            confirmedList.push(confirmed);
+        });
+        formData["medicalRecordState"] = medicalRecordState;
+        formData["medicalConfirms"] = confirmedList;
+        formData["medicalRegisterId"] = registrationID;
+
+        $.ajax({
+            url: "/writeMedical",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify(formData),
+            success: function (ResultState) {
+                alert(ResultState.detail);
+                refreshPatientInfo();
+            }
+        });
+
+    }
 </script>
 
 </body>

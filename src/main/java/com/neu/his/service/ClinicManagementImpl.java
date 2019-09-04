@@ -78,9 +78,16 @@ public class ClinicManagementImpl implements ClinicManagement {
                 confirmed.setConfirmedCategory((byte) 1);
                 confirmed.setDiseaseTime(confirmedDTO.getDiseaseTime());
                 confirmed.setRegistId(medicalRecordDTO.getMedicalRegisterId());
-                confirmed.setDiseaseIcd(confirmedDTO.getDiseaseICD());
+                confirmed.setDiseaseId(confirmedDTO.getDiseaseID());
                 confirmedMapper.insert(confirmed);
             }
+
+            RegistrationRecord registrationRecord = new RegistrationRecord();
+            registrationRecord.setRegistId(medicalRecordDTO.getMedicalRegisterId());
+            registrationRecord.setRegistState("诊中");
+
+            registrationRecordMapper.updateByPrimaryKeySelective(registrationRecord);
+
             ReturnState returnState = new ReturnState();
             returnState.setState(505);
             returnState.setDetail("病历首页填写成功");

@@ -98,7 +98,7 @@
         $("#prescribeNow").click(function () {
             let sendJson = {};
             let preDetailIDs = [];
-            $("input:checkbox[name=drugPreDetailID]:checked").each(function (num) {
+            $("input:checkbox[name=drugPreDetailID]:checked").each(function () {
                 preDetailIDs.push($(this).val());
             });
             sendJson["drugPreIDs"] = preDetailIDs;

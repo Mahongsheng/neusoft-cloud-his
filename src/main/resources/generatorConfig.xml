@@ -29,9 +29,9 @@
         </javaClientGenerator>
 
 <!--        <table tableName="user" domainObjectName="User"></table>-->
-        <table tableName="charge_info" domainObjectName="ChargeInfo"></table>
+<!--        <table tableName="charge_info" domainObjectName="ChargeInfo"></table>-->
 <!--        <table tableName="charge_subject" domainObjectName="ChargeSubject"></table>-->
-<!--        <table tableName="confirmed" domainObjectName="Confirmed"></table>-->
+        <table tableName="confirmed" domainObjectName="Confirmed"></table>
 <!--        <table tableName="constant" domainObjectName="Constant"></table>-->
 <!--        <table tableName="constant_type" domainObjectName="ConstantType"></table>-->
 <!--        <table tableName="department" domainObjectName="Department"></table>-->
