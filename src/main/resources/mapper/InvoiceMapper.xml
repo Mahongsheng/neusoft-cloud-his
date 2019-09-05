@@ -348,4 +348,8 @@
       invoice_settle_state = #{invoiceSettleState,jdbcType=TINYINT}
     where invoice_id = #{invoiceId,jdbcType=INTEGER}
   </update>
+  <select id="findMaxID" resultType="java.lang.Integer">
+    select max(invoice_id)
+    from his.invoice
+  </select>
 </mapper>

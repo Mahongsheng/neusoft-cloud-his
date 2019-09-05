@@ -1,33 +1,33 @@
 <body>
 <!--发票开具界面-->
-<div class="modal fade" id="invoiceModal" tabindex="-1" role="dialog">
+<div class="modal inmodal" id="invoiceModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content animated flipInY">
             <div class="modal-header">
-                <h4 class="modal-title">发票信息（收费）</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h5 class="modal-title">发票信息（收费）</h5>
             </div>
             <div class="modal-body">
                 <form method="post">
                     <div class="form-group  row">
                         <label class="col-sm-4 col-form-label">发票号（可修改）：</label>
-                        <div class="col-sm-8"><input type="text" class="form-control"></div>
+                        <div class="col-sm-8"><input type="text" class="form-control" name="invoiceIDModal"></div>
                     </div>
 
                     <div class="form-group  row">
                         <label class="col-sm-4 col-form-label">病历号：</label>
-                        <div class="col-sm-8"><input type="text" class="form-control"></div>
+                        <div class="col-sm-8"><input type="text" class="form-control" name="medicalRecordIDModal"></div>
                     </div>
                     <div class="form-group  row">
                         <label class="col-sm-4 col-form-label">患者姓名：</label>
-                        <div class="col-sm-8"><input type="text" class="form-control"></div>
+                        <div class="col-sm-8"><input type="text" class="form-control" name="patientNameModal"></div>
 
                     </div>
                     <div class="form-group  row">
                         <label class="col-sm-4 col-form-label">支付方式：</label>
-                        <div class="col-sm-8"><select class="form-control m-b" name="account">
-                            <option>现金</option>
+                        <div class="col-sm-8"><select class="form-control m-b" name="accountTypeModal">
+                            <option selected>现金</option>
                             <option>医保卡</option>
                             <option>银行卡</option>
                             <option>信用卡</option>
@@ -40,21 +40,24 @@
                     </div>
                     <div class="form-group  row">
                         <label class="col-sm-4 col-form-label">应收金额：</label>
-                        <div class="col-sm-8"><input type="text" class="form-control"></div>
+                        <div class="col-sm-8"><input type="text" class="form-control" name="shouldPayMoneyModal"
+                                                     readonly="readonly"></div>
                     </div>
                     <div class="form-group  row">
                         <label class="col-sm-4 col-form-label">实收金额：</label>
-                        <div class="col-sm-8"><input type="date" class="form-control"></div>
+                        <div class="col-sm-8"><input type="text" class="form-control" name="paidMoneyModal"
+                        ></div>
                     </div>
                     <div class="form-group  row">
                         <label class="col-sm-4 col-form-label">找零金额：</label>
-                        <div class="col-sm-8"><input type="text" class="form-control"></div>
+                        <div class="col-sm-8"><input type="text" class="form-control" name="exchangeModal"
+                                                     readonly="readonly"></div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="submit" class="btn btn-primary">收费</button>
+                <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="chargeNow()">收费</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -122,7 +125,7 @@
                     <div class="form-group row">
                         <div class="col-sm-4 col-sm-offset-2">
                             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                                    data-target="#invoiceModal" id="chargeNow">
+                                    data-target="#invoiceModal" id="openInvoiceModal">
                                 收费
                             </button>
                         </div>
@@ -179,7 +182,7 @@
                         for (let i = 0; i < ChargeInfo.length; i++) {
                             $("#chargeInfoTable tbody").append(
                                 '<tr>' +
-                                '<td><input type="checkbox" class="i-checks" name="input[]" id="' + ChargeInfo[i].drugPreDetailID + '"></td>' +
+                                '<td><input type="checkbox" class="i-checks" name="drugPreDetail" id="' + ChargeInfo[i].drugPreDetailID + '"></td>' +
                                 '<td>' + medicalRecordID + '</td>' +
                                 '<td>' + name + '</td>' +
                                 '<td>' + ChargeInfo[i].drugName + '</td>' +
@@ -198,5 +201,81 @@
             }
         });
     });
+
+    $(document).ready(function () {
+        $("#openInvoiceModal").click(function () {
+            let shouldPayMoney;
+            let medicalRecordID = $("input[name = 'medicalRecordID']").val();
+            let name = $("input[name = 'name']").val();
+            $("input[name = 'medicalRecordIDModal']").val(medicalRecordID);
+            $("input[name = 'patientNameModal']").val(name);
+
+            let drugPreDetailIDs = [];
+            $("input:checkbox[name=drugPreDetail]:checked").each(function () {
+                let drugPreDetailID = $(this).attr("id");
+                drugPreDetailIDs.push(drugPreDetailID);
+            });
+
+            let sendJson = {};
+            sendJson["drugPreDetailIDs"] = drugPreDetailIDs;
+            $.ajax({
+                url: "/getDrugPreDetailInfo",
+                type: "post",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(sendJson),
+                success: function (ShouldPayMoney) {
+                    $("input[name = 'shouldPayMoneyModal']").val(ShouldPayMoney.wholeMoney);
+                }
+            });
+
+            $.ajax({
+                url: "/findAvailableInvoiceID",
+                type: "post",
+                success: function (MaxID) {
+                    $("input[name = 'invoiceIDModal']").val(MaxID.invoiceID);
+                }
+            });
+        });
+    });
+
+    $(document).ready(function () {
+        $("input[name='paidMoneyModal']").change(function () {
+            let exchange = $("input[name='paidMoneyModal']").val() - $("input[name = 'shouldPayMoneyModal']").val();
+            $("input[name='exchangeModal']").val(exchange);
+        });
+    });
+
+    function chargeNow() {
+        let chargeUserID = 1;//收费人员ID
+        let chargeType = $("select[name='accountTypeModal']").val();//收费方式
+        let chargeWholePrice = $("input[name = 'shouldPayMoneyModal']").val();//总价
+        let invoiceID = $("input[name = 'invoiceIDModal']").val();//发票ID
+        let drugPreIDs = [];//处方明细表ID
+
+        $("input:checkbox[name=drugPreDetail]:checked").each(function () {
+            let drugPreDetailID = $(this).attr("id");
+            drugPreIDs.push(drugPreDetailID);
+        });
+
+        let sendJson = {};
+        sendJson["chargeUserID"] = chargeUserID;
+        sendJson["chargeType"] = chargeType;
+        sendJson["chargeWholePrice"] = chargeWholePrice;
+        sendJson["invoiceID"] = invoiceID;
+        sendJson["drugPreIDs"] = drugPreIDs;
+
+        $.ajax({
+            url: "/charge",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify(sendJson),
+            success: function (ReturnState) {
+                alert(ReturnState.detail);
+            }
+        });
+
+    }
 </script>
 </body>

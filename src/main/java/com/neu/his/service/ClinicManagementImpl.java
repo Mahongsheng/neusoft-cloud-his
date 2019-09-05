@@ -11,6 +11,7 @@ import com.neu.his.pojo.*;
 import com.neu.his.serviceInterface.ClinicManagement;
 import com.neu.his.util.ReturnState;
 import com.neu.his.vojo.DiseaseBack;
+import com.neu.his.vojo.DrugBack;
 import com.neu.his.vojo.PatientInfo;
 import com.neu.his.vojo.RegistrationInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,12 @@ public class ClinicManagementImpl implements ClinicManagement {
 
     @Autowired
     private DiseaseCatalogMapper diseaseCatalogMapper;
+
+    @Autowired
+    private DrugMapper drugMapper;
+
+    @Autowired
+    private ConstantMapper constantMapper;
 
     /**
      * 填写病历首页
@@ -114,13 +121,15 @@ public class ClinicManagementImpl implements ClinicManagement {
     public JSONObject makePrescription(DrugPrescriptionDTO drugPrescriptionDTO) {
         JSONObject returnJson;
         try {
+            RegistrationRecord registrationRecord = registrationRecordMapper.selectByPrimaryKey(drugPrescriptionDTO.getRegisterId());
+            int medicalRecordID = registrationRecord.getPatientRecordId();
             //转换对象类型并进行插入
             DrugPrescription drugPrescription = new DrugPrescription();
             drugPrescription.setDrugPreId(null);
             drugPrescription.setDoctorId(drugPrescriptionDTO.getDoctorId());
             drugPrescription.setDrugPreName(drugPrescriptionDTO.getDrugPreName());
             drugPrescription.setDrugPreTime(new Date());
-            drugPrescription.setMedicalRecordId(drugPrescriptionDTO.getMedicalRecordId());
+            drugPrescription.setMedicalRecordId(medicalRecordID);
             drugPrescription.setRegistId(drugPrescriptionDTO.getRegisterId());
             //插入
             drugPrescriptionMapper.insert(drugPrescription);
@@ -334,6 +343,90 @@ public class ClinicManagementImpl implements ClinicManagement {
                 }
             }
             return returnJsons;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * 模糊匹配药品
+     *
+     * @param findDrugDTO
+     * @return
+     */
+    @Override
+    public List<JSONObject> findDrug(FindDrugDTO findDrugDTO) {
+        List<JSONObject> returnJsons = new ArrayList<>();
+        try {
+            String pattern = "%" + findDrugDTO.getPattern() + "%";
+            Page page = PageHelper.startPage(findDrugDTO.getPageNum(), findDrugDTO.getPageSize());
+            List<Drug> drugs = drugMapper.findDrug(pattern);
+
+            for (Drug d : drugs) {
+                String drugType;
+                String drugDosage;
+
+                Constant drugTypeConstant = constantMapper.selectByPrimaryKey(d.getDrugsTypeId());
+                Constant drugDosageConstant = constantMapper.selectByPrimaryKey(d.getDrugsDosageId());
+
+                drugType = drugTypeConstant.getConstantName();
+                drugDosage = drugDosageConstant.getConstantName();
+
+                DrugBack drugBack = new DrugBack();
+
+                drugBack.setDrugId(d.getDrugId());
+                drugBack.setDrugName(d.getDrugName());
+                drugBack.setDrugSpecif(d.getDrugSpecif());
+                drugBack.setDrugUnit(d.getDrugUnit());
+                drugBack.setDrugManufacturer(d.getDrugManufacturer());
+                drugBack.setDrugsDosage(drugDosage);
+                drugBack.setDrugsType(drugType);
+                drugBack.setDrugUnitPrice(d.getDrugUnitPrice());
+                drugBack.setWholePage(page.getPages());
+
+                JSONObject returnJson = (JSONObject) JSON.toJSON(drugBack);
+                returnJsons.add(returnJson);
+            }
+            return returnJsons;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * 找特定的药品
+     *
+     * @param drugIDDTO
+     * @return
+     */
+    @Override
+    public JSONObject findSpecifDrug(DrugIDDTO drugIDDTO) {
+        JSONObject returnJson;
+        try {
+            Drug d = drugMapper.selectByPrimaryKey(drugIDDTO.getDrugID());
+            String drugType;
+            String drugDosage;
+
+            Constant drugTypeConstant = constantMapper.selectByPrimaryKey(d.getDrugsTypeId());
+            Constant drugDosageConstant = constantMapper.selectByPrimaryKey(d.getDrugsDosageId());
+
+            drugType = drugTypeConstant.getConstantName();
+            drugDosage = drugDosageConstant.getConstantName();
+
+            DrugBack drugBack = new DrugBack();
+
+            drugBack.setDrugId(d.getDrugId());
+            drugBack.setDrugName(d.getDrugName());
+            drugBack.setDrugSpecif(d.getDrugSpecif());
+            drugBack.setDrugUnit(d.getDrugUnit());
+            drugBack.setDrugManufacturer(d.getDrugManufacturer());
+            drugBack.setDrugsDosage(drugDosage);
+            drugBack.setDrugsType(drugType);
+            drugBack.setDrugUnitPrice(d.getDrugUnitPrice());
+            returnJson = (JSONObject) JSON.toJSON(drugBack);
+            return returnJson;
         } catch (Exception e) {
             e.printStackTrace();
             return null;

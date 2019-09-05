@@ -2,7 +2,9 @@ package com.neu.his.dao;
 
 import com.neu.his.pojo.Drug;
 import com.neu.his.pojo.DrugExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -95,4 +97,12 @@ public interface DrugMapper {
      * @mbg.generated Mon Jul 22 23:45:36 CST 2019
      */
     int updateByPrimaryKey(Drug record);
+
+    /**
+     * 模糊匹配药品
+     *
+     * @param pattern
+     * @return
+     */
+    List<Drug> findDrug(String pattern);
 }

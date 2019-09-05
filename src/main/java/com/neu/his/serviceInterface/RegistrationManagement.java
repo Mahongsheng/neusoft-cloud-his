@@ -76,4 +76,19 @@ public interface RegistrationManagement {
      * @return
      */
     List<JSONObject> getChargeInfo(MedicalRecordIDDTO medicalRecordIDDTO);
+
+    /**
+     * 根据处方明细ID得到应收金额
+     *
+     * @param drugPreDetailIDDTO
+     * @return
+     */
+    JSONObject getDrugPreDetailInfo(DrugPreDetailIDDTO drugPreDetailIDDTO);
+
+    /**
+     * 找到可用发票号
+     *
+     * @return
+     */
+    JSONObject findAvailableInvoiceID();
 }

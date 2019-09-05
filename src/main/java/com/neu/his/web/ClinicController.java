@@ -101,4 +101,28 @@ public class ClinicController {
     public List<JSONObject> findDisease(@RequestBody FindDiseaseDTO findDiseaseDTO) {
         return clinicManagement.findDisease(findDiseaseDTO);
     }
+
+    /**
+     * 模糊匹配药品
+     *
+     * @param findDrugDTO
+     * @return
+     */
+    @RequestMapping(value = "/findDrug", method = RequestMethod.POST)
+    @ResponseBody
+    public List<JSONObject> findDrug(@RequestBody FindDrugDTO findDrugDTO) {
+        return clinicManagement.findDrug(findDrugDTO);
+    }
+
+    /**
+     * 找特定的药品
+     *
+     * @param drugIDDTO
+     * @return
+     */
+    @RequestMapping(value = "/findSpecifDrug", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONObject findSpecifDrug(@RequestBody DrugIDDTO drugIDDTO) {
+        return clinicManagement.findSpecifDrug(drugIDDTO);
+    }
 }

@@ -616,52 +616,52 @@ public class DrugExample implements Serializable {
             return (Criteria) this;
         }
 
-        public Criteria andDrugsDosageIdEqualTo(Byte value) {
+        public Criteria andDrugsDosageIdEqualTo(Integer value) {
             addCriterion("drugs_dosage_id =", value, "drugsDosageId");
             return (Criteria) this;
         }
 
-        public Criteria andDrugsDosageIdNotEqualTo(Byte value) {
+        public Criteria andDrugsDosageIdNotEqualTo(Integer value) {
             addCriterion("drugs_dosage_id <>", value, "drugsDosageId");
             return (Criteria) this;
         }
 
-        public Criteria andDrugsDosageIdGreaterThan(Byte value) {
+        public Criteria andDrugsDosageIdGreaterThan(Integer value) {
             addCriterion("drugs_dosage_id >", value, "drugsDosageId");
             return (Criteria) this;
         }
 
-        public Criteria andDrugsDosageIdGreaterThanOrEqualTo(Byte value) {
+        public Criteria andDrugsDosageIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("drugs_dosage_id >=", value, "drugsDosageId");
             return (Criteria) this;
         }
 
-        public Criteria andDrugsDosageIdLessThan(Byte value) {
+        public Criteria andDrugsDosageIdLessThan(Integer value) {
             addCriterion("drugs_dosage_id <", value, "drugsDosageId");
             return (Criteria) this;
         }
 
-        public Criteria andDrugsDosageIdLessThanOrEqualTo(Byte value) {
+        public Criteria andDrugsDosageIdLessThanOrEqualTo(Integer value) {
             addCriterion("drugs_dosage_id <=", value, "drugsDosageId");
             return (Criteria) this;
         }
 
-        public Criteria andDrugsDosageIdIn(List<Byte> values) {
+        public Criteria andDrugsDosageIdIn(List<Integer> values) {
             addCriterion("drugs_dosage_id in", values, "drugsDosageId");
             return (Criteria) this;
         }
 
-        public Criteria andDrugsDosageIdNotIn(List<Byte> values) {
+        public Criteria andDrugsDosageIdNotIn(List<Integer> values) {
             addCriterion("drugs_dosage_id not in", values, "drugsDosageId");
             return (Criteria) this;
         }
 
-        public Criteria andDrugsDosageIdBetween(Byte value1, Byte value2) {
+        public Criteria andDrugsDosageIdBetween(Integer value1, Integer value2) {
             addCriterion("drugs_dosage_id between", value1, value2, "drugsDosageId");
             return (Criteria) this;
         }
 
-        public Criteria andDrugsDosageIdNotBetween(Byte value1, Byte value2) {
+        public Criteria andDrugsDosageIdNotBetween(Integer value1, Integer value2) {
             addCriterion("drugs_dosage_id not between", value1, value2, "drugsDosageId");
             return (Criteria) this;
         }
@@ -676,52 +676,52 @@ public class DrugExample implements Serializable {
             return (Criteria) this;
         }
 
-        public Criteria andDrugsTypeIdEqualTo(Byte value) {
+        public Criteria andDrugsTypeIdEqualTo(Integer value) {
             addCriterion("drugs_type_id =", value, "drugsTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andDrugsTypeIdNotEqualTo(Byte value) {
+        public Criteria andDrugsTypeIdNotEqualTo(Integer value) {
             addCriterion("drugs_type_id <>", value, "drugsTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andDrugsTypeIdGreaterThan(Byte value) {
+        public Criteria andDrugsTypeIdGreaterThan(Integer value) {
             addCriterion("drugs_type_id >", value, "drugsTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andDrugsTypeIdGreaterThanOrEqualTo(Byte value) {
+        public Criteria andDrugsTypeIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("drugs_type_id >=", value, "drugsTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andDrugsTypeIdLessThan(Byte value) {
+        public Criteria andDrugsTypeIdLessThan(Integer value) {
             addCriterion("drugs_type_id <", value, "drugsTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andDrugsTypeIdLessThanOrEqualTo(Byte value) {
+        public Criteria andDrugsTypeIdLessThanOrEqualTo(Integer value) {
             addCriterion("drugs_type_id <=", value, "drugsTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andDrugsTypeIdIn(List<Byte> values) {
+        public Criteria andDrugsTypeIdIn(List<Integer> values) {
             addCriterion("drugs_type_id in", values, "drugsTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andDrugsTypeIdNotIn(List<Byte> values) {
+        public Criteria andDrugsTypeIdNotIn(List<Integer> values) {
             addCriterion("drugs_type_id not in", values, "drugsTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andDrugsTypeIdBetween(Byte value1, Byte value2) {
+        public Criteria andDrugsTypeIdBetween(Integer value1, Integer value2) {
             addCriterion("drugs_type_id between", value1, value2, "drugsTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andDrugsTypeIdNotBetween(Byte value1, Byte value2) {
+        public Criteria andDrugsTypeIdNotBetween(Integer value1, Integer value2) {
             addCriterion("drugs_type_id not between", value1, value2, "drugsTypeId");
             return (Criteria) this;
         }

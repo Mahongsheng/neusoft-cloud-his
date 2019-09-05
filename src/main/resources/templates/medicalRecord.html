@@ -44,10 +44,69 @@
     </div>
 </div>
 
+<div class="modal inmodal" id="addPreModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated flipInY">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title">增加处方</h4>
+            </div>
+            <div class="modal-body">
+                <input type="text" placeholder="请输入处方名称" name="preName"
+                       class="form-control input-lg">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="addPreName()" data-dismiss="modal">增加</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal inmodal" id="searchDrug" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated flipInY">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h5 class="modal-title">搜索药品</h5>
+            </div>
+            <div class="modal-body">
+                <div class="ibox ">
+                    <div class="ibox-content">
+                        <div class="search-form">
+                            <form>
+                                <div class="input-group">
+                                    <input type="text" placeholder="请输入疾病名称" name="searchDrug"
+                                           class="form-control input-lg">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-lg btn-primary" type="button" id="searchDrugNow">
+                                            搜索
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="search-result" id="searchDrugResult">
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="text-center">
+                            <div class="btn-group" id="firstDrugPageNum">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="container">
         <div class="row">
-            <div class="col-md-4" style="padding-right: 0px">
+            <div class="col-md-4" style="padding-right: 0px" id="patientSelectDiv">
                 <div class="ibox-title">
                     <div class="row">
                         <div class="col-sm-9">
@@ -102,9 +161,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8" style="padding-left: 0px;background: white">
+            <div class="col-md-8" style="padding-left: 0px;background: white" id="patientFunctionDiv">
                 <div class="form-inline">
-                    <button class="btn btn-lg btn-primary" id="diagnosingPatientRegistrationID" value="">隐藏患者栏</button>
+                    <button class="btn btn-lg btn-primary" id="diagnosingPatientRegistrationID" value="">隐藏患者栏
+                    </button>
                     <h3 style="margin-left: 20px" id="diagnosingPatient"></h3>
                 </div>
                 <div class="tabs-container">
@@ -222,7 +282,7 @@
                                     </div>
                                     <div class="ibox-content">
                                         <div class="table-responsive">
-                                            <table class="table table-striped" id="confirmInfoTable">
+                                            <table class="table" id="confirmInfoTable">
                                                 <thead>
                                                 <tr>
                                                     <th><input type="checkbox" checked class="i-checks"
@@ -248,23 +308,17 @@
                         </div>
                         <div id="tab-3" class="tab-pane fade">
                             <div class="panel-body">
-                                <p>近日沃尔沃宣布将联合瑞典汽车安全公司奥托立夫(AUTOLIV)成立一个独立子公司，该公司将专攻瞄准未来车型自动驾驶技
-                                    术相关的研发。奥托立夫公司(AUTOLIV)是在瑞典设立的一家国际跨国公司，公司多年来研发汽车电子安全系统、电子控制单元，汽车方向盘系统以及夜视
-                                    和雷达传感系统，新的合作能够让新公司吸取Autoliv多年来在汽车驾驶安全配件制造方面的经验，研发未来用于沃尔沃或其它厂商的无人驾驶软件系统。</p>
+                                <p>检验申请</p>
                             </div>
                         </div>
                         <div id="tab-4" class="tab-pane fade">
                             <div class="panel-body">
-                                <p>近日沃尔沃宣布将联合瑞典汽车安全公司奥托立夫(AUTOLIV)成立一个独立子公司，该公司将专攻瞄准未来车型自动驾驶技
-                                    术相关的研发。奥托立夫公司(AUTOLIV)是在瑞典设立的一家国际跨国公司，公司多年来研发汽车电子安全系统、电子控制单元，汽车方向盘系统以及夜视
-                                    和雷达传感系统，新的合作能够让新公司吸取Autoliv多年来在汽车驾驶安全配件制造方面的经验，研发未来用于沃尔沃或其它厂商的无人驾驶软件系统。</p>
+                                <p>门诊确诊</p>
                             </div>
                         </div>
                         <div id="tab-5" class="tab-pane fade">
                             <div class="panel-body">
-                                <p>近日沃尔沃宣布将联合瑞典汽车安全公司奥托立夫(AUTOLIV)成立一个独立子公司，该公司将专攻瞄准未来车型自动驾驶技
-                                    术相关的研发。奥托立夫公司(AUTOLIV)是在瑞典设立的一家国际跨国公司，公司多年来研发汽车电子安全系统、电子控制单元，汽车方向盘系统以及夜视
-                                    和雷达传感系统，新的合作能够让新公司吸取Autoliv多年来在汽车驾驶安全配件制造方面的经验，研发未来用于沃尔沃或其它厂商的无人驾驶软件系统。</p>
+                                <p>处置申请</p>
                             </div>
                         </div>
                         <div id="tab-6" class="tab-pane fade">
@@ -276,7 +330,9 @@
                                                 <div class="col-md-8 text-right">
                                                     <div class="row">
                                                         <div class="col-md-2">
-                                                            <button class="btn btn-primary btn-xs" type="button">增方
+                                                            <button class="btn btn-primary btn-xs" type="button"
+                                                                    id="addPre" data-toggle="modal"
+                                                                    data-target="#addPreModal">增方
                                                             </button>
                                                         </div>
                                                         <div class="col-md-2">
@@ -284,7 +340,7 @@
                                                             </button>
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <button class="btn btn-primary btn-xs" type="button">开立
+                                                            <button class="btn btn-primary btn-xs" type="button" onclick="makePre()">开立
                                                             </button>
                                                         </div>
                                                         <div class="col-md-2">
@@ -292,17 +348,18 @@
                                                             </button>
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <button class="btn btn-primary btn-xs" type="button">刷新
+                                                            <button class="btn btn-primary btn-xs" type="reset">刷新
                                                             </button>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 text-center">
-                                                    <button class="btn btn-primary btn-xs" type="submit"
-                                                            style="margin-right: 10px">
+                                                    <button class="btn btn-primary btn-xs" type="button" id="addDrug"
+                                                            style="margin-right: 10px" data-toggle="modal"
+                                                            data-target="#searchDrug">
                                                         增药
                                                     </button>
-                                                    <button class="btn btn-primary btn-xs" type="submit">
+                                                    <button class="btn btn-primary btn-xs" type="button">
                                                         删药
                                                     </button>
                                                 </div>
@@ -311,14 +368,14 @@
                                         <div class="hr-line-dashed"></div>
                                         <div class="container">
                                             <div class="row">
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-3">
                                                     <div class="ibox ">
                                                         <div class="ibox-title">
-                                                            <h5>门诊处方：</h5>
+                                                            <h5>处方：</h5>
                                                         </div>
                                                         <div class="ibox-content">
                                                             <div class="table-responsive">
-                                                                <table class="table table-striped"
+                                                                <table class="table"
                                                                        id="preInfo">
                                                                     <thead>
                                                                     <tr>
@@ -334,18 +391,17 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-8">
+                                                <div class="col-sm-9">
                                                     <div class="ibox ">
                                                         <div class="ibox-title">
                                                             <h5>本处方金额合计：25.31元</h5>
                                                         </div>
                                                         <div class="ibox-content">
                                                             <div class="table-responsive">
-                                                                <table class="table table-striped"
+                                                                <table class="table"
                                                                        id="preDetailInfo">
                                                                     <thead>
                                                                     <tr>
-                                                                        <th></th>
                                                                         <th><input type="checkbox" checked
                                                                                    class="i-checks"
                                                                                    name="selectAll"></th>
@@ -353,6 +409,8 @@
                                                                         <th>规格</th>
                                                                         <th>单价</th>
                                                                         <th>用法</th>
+                                                                        <th>用量</th>
+                                                                        <th>频次</th>
                                                                         <th>数量</th>
                                                                     </tr>
                                                                     </thead>
@@ -371,9 +429,7 @@
                         </div>
                         <div id="tab-7" class="tab-pane fade">
                             <div class="panel-body">
-                                <p>近日沃尔沃宣布将联合瑞典汽车安全公司奥托立夫(AUTOLIV)成立一个独立子公司，该公司将专攻瞄准未来车型自动驾驶技
-                                    术相关的研发。奥托立夫公司(AUTOLIV)是在瑞典设立的一家国际跨国公司，公司多年来研发汽车电子安全系统、电子控制单元，汽车方向盘系统以及夜视
-                                    和雷达传感系统，新的合作能够让新公司吸取Autoliv多年来在汽车驾驶安全配件制造方面的经验，研发未来用于沃尔沃或其它厂商的无人驾驶软件系统。</p>
+                                <p>费用查询</p>
                             </div>
                         </div>
                     </div>
@@ -664,8 +720,251 @@
                 refreshPatientInfo();
             }
         });
+    }
+
+    $(document).ready(function () {
+        $("#diagnosingPatientRegistrationID").click(function () {
+            if ($("#patientSelectDiv").is(':hidden')) {
+                $("#patientSelectDiv").fadeIn();
+                $("#patientFunctionDiv").attr("class", "col-md-8");
+            } else {
+                $("#patientSelectDiv").hide();
+                $("#patientFunctionDiv").attr("class", "col-md-12");
+            }
+        });
+    });
+
+    var drugPageNum = 1;
+    var drugWholePage = 0;
+
+    $(document).ready(function () {
+        $("#searchDrugNow").click(function () {
+            drugPageNum = 1;
+            let drugSearch = $("input[name='searchDrug']").val();
+            let sendJson = {};
+            sendJson["pattern"] = drugSearch;
+            sendJson["pageNum"] = drugPageNum;
+            sendJson["pageSize"] = 8;
+            $.ajax({
+                url: "/findDrug",
+                type: "post",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(sendJson),
+                success: function (DrugInfo) {
+                    console.log(DrugInfo);
+                    $("#searchDrugResult").empty();
+                    drugWholePage = DrugInfo[0].wholePage;
+                    for (let i = 0; i < DrugInfo.length; i++) {
+                        $("#searchDrugResult").append('<h3><button type="button" class="btn btn-link" onclick="addDrug(this)" id="' + DrugInfo[i].drugId + '">' + DrugInfo[i].drugName + '</button></h3>');
+                        $("#searchDrugResult").append('<p>规格：' + DrugInfo[i].drugSpecif + ' ' +
+                            '生产厂家：' + DrugInfo[i].drugManufacturer + ' ' +
+                            '剂型：' + DrugInfo[i].drugsDosage + ' ' +
+                            '类型：' + DrugInfo[i].drugsType + ' ' +
+                            '包装单位：' + DrugInfo[i].drugUnit + ' ' +
+                            '单价：' + DrugInfo[i].drugUnitPrice +
+                            '</p>');
+                    }
+                    $("#firstDrugPageNum").empty();
+                    $("#firstDrugPageNum").append('<button class="btn btn-white" type="button" onclick="findDrugLastPage()"><i class="fa fa-chevron-left"></i></button>');
+                    for (let i = 0; i < DrugInfo[0].wholePage; i++) {
+                        if (i == 0) {
+                            $("#firstDrugPageNum").append('<button class="btn btn-white active" onclick="findDrugThisPage(this)" id="drugPageNum' + (i + 1) + '">' + (i + 1) + '</button>');
+                        } else {
+                            $("#firstDrugPageNum").append('<button class="btn btn-white" onclick="findDrugThisPage(this)" id="drugPageNum' + (i + 1) + '">' + (i + 1) + '</button>');
+                        }
+                    }
+                    $("#firstDrugPageNum").append('<button class="btn btn-white" type="button"><i class="fa fa-chevron-right" onclick="findDrugNextPage()"></i></button>\n');
+                }
+            });
+        });
+    });
+
+    function addDrug(obj) {
+        let drugID = $(obj).attr("id");
+        let sendJson = {};
+        sendJson["drugID"] = drugID;
+
+        $.ajax({
+            url: "/findSpecifDrug",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify(sendJson),
+            success: function (DrugInfo) {
+                $("#preDetailInfo tbody").append(
+                    '<tr>' +
+                    '<td><input type="checkbox" class="i-checks" name="drugID" value="' + drugID + '"></td>' +
+                    '<td>' + DrugInfo.drugName + '</td>' +
+                    '<td>' + DrugInfo.drugSpecif + '</td>' +
+                    '<td>' + DrugInfo.drugUnitPrice + '</td>' +
+                    '<td><input class="form-control col-sm-8" type="text" name="drugUsage' + drugID + '"></td>' +
+                    '<td><input class="form-control col-sm-8" type="text" name="drugUsageNum' + drugID + '"></td>' +
+                    '<td><input class="form-control col-sm-8" type="text" name="drugFreq' + drugID + '"></td>' +
+                    '<td><input class="form-control col-sm-8" type="number" name="drugAmount' + drugID + '"></td>' +
+                    '</tr>');
+            }
+        });
+    }
+
+    function findDrugNextPage() {
+        if (drugPageNum < drugWholePage) {
+            drugPageNum++;
+
+            let drugSearch = $("input[name='searchDrug']").val();
+            let sendJson = {};
+            sendJson["pattern"] = drugSearch;
+            sendJson["pageNum"] = drugPageNum;
+            sendJson["pageSize"] = 8;
+            $.ajax({
+                url: "/findDrug",
+                type: "post",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(sendJson),
+                success: function (DrugInfo) {
+                    console.log(DrugInfo);
+                    $("#searchDrugResult").empty();
+                    drugWholePage = DrugInfo[0].wholePage;
+                    for (let i = 0; i < DrugInfo.length; i++) {
+                        $("#searchDrugResult").append('<h3><button type="button" class="btn btn-link" onclick="addDrug(this)" id="' + DrugInfo[i].drugId + '">' + DrugInfo[i].drugName + '</button></h3>');
+                        $("#searchDrugResult").append('<p>规格：' + DrugInfo[i].drugSpecif + ' ' +
+                            '生产厂家：' + DrugInfo[i].drugManufacturer + ' ' +
+                            '剂型：' + DrugInfo[i].drugsDosage + ' ' +
+                            '类型：' + DrugInfo[i].drugsType + ' ' +
+                            '包装单位：' + DrugInfo[i].drugUnit + ' ' +
+                            '单价：' + DrugInfo[i].drugUnitPrice +
+                            '</p>');
+                    }
+                    $("#drugPageNum" + drugPageNum).attr("class", "btn btn-white active");
+                    $("#drugPageNum" + (drugPageNum - 1)).attr("class", "btn btn-white");
+                }
+            });
+        }
+    }
+
+    function findDrugLastPage() {
+        if (drugPageNum > 1) {
+            drugPageNum--;
+
+            let drugSearch = $("input[name='searchDrug']").val();
+            let sendJson = {};
+            sendJson["pattern"] = drugSearch;
+            sendJson["pageNum"] = drugPageNum;
+            sendJson["pageSize"] = 8;
+            $.ajax({
+                url: "/findDrug",
+                type: "post",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(sendJson),
+                success: function (DrugInfo) {
+                    console.log(DrugInfo);
+                    $("#searchDrugResult").empty();
+                    drugWholePage = DrugInfo[0].wholePage;
+                    for (let i = 0; i < DrugInfo.length; i++) {
+                        $("#searchDrugResult").append('<h3><button type="button" class="btn btn-link" onclick="addDrug(this)" id="' + DrugInfo[i].drugId + '">' + DrugInfo[i].drugName + '</button></h3>');
+                        $("#searchDrugResult").append('<p>规格：' + DrugInfo[i].drugSpecif + ' ' +
+                            '生产厂家：' + DrugInfo[i].drugManufacturer + ' ' +
+                            '剂型：' + DrugInfo[i].drugsDosage + ' ' +
+                            '类型：' + DrugInfo[i].drugsType + ' ' +
+                            '包装单位：' + DrugInfo[i].drugUnit + ' ' +
+                            '单价：' + DrugInfo[i].drugUnitPrice +
+                            '</p>');
+                    }
+                    $("#drugPageNum" + drugPageNum).attr("class", "btn btn-white active");
+                    $("#drugPageNum" + (drugPageNum + 1)).attr("class", "btn btn-white");
+                }
+            });
+        }
+    }
+
+    function findDrugThisPage(obj) {
+        $("#drugPageNum" + drugPageNum).attr("class", "btn btn-white");
+        drugPageNum = $(obj).text();
+        let drugSearch = $("input[name='searchDrug']").val();
+        let sendJson = {};
+        sendJson["pattern"] = drugSearch;
+        sendJson["pageNum"] = drugPageNum;
+        sendJson["pageSize"] = 8;
+        $.ajax({
+            url: "/findDrug",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify(sendJson),
+            success: function (DrugInfo) {
+                console.log(DrugInfo);
+                $("#searchDrugResult").empty();
+                drugWholePage = DrugInfo[0].wholePage;
+                for (let i = 0; i < DrugInfo.length; i++) {
+                    $("#searchDrugResult").append('<h3><button type="button" class="btn btn-link" onclick="addDrug(this)" id="' + DrugInfo[i].drugId + '">' + DrugInfo[i].drugName + '</button></h3>');
+                    $("#searchDrugResult").append('<p>规格：' + DrugInfo[i].drugSpecif + ' ' +
+                        '生产厂家：' + DrugInfo[i].drugManufacturer + ' ' +
+                        '剂型：' + DrugInfo[i].drugsDosage + ' ' +
+                        '类型：' + DrugInfo[i].drugsType + ' ' +
+                        '包装单位：' + DrugInfo[i].drugUnit + ' ' +
+                        '单价：' + DrugInfo[i].drugUnitPrice +
+                        '</p>');
+                }
+                $(obj).attr("class", "btn btn-white active");
+            }
+        });
+    }
+
+    function addPreName() {
+        let preName = $("input[name=preName]").val();
+        $("#preInfo tbody").append('<tr>' +
+            '<td><button class="btn btn-primary btn-xs active" id="' + preName + '"></button></td>' +
+            '<td>' + preName + '</td>' +
+            '<td>暂存</td>' +
+            '</tr>');
+    }
+
+    function makePre() {
+        alert('a ');
+        let sendJson = {};
+        let preName = $("button[class='btn btn-primary btn-xs active']").attr("id");
+        let registrationID = $("#diagnosingPatientRegistrationID").attr("value");
+        let doctorID = 1;
+
+        let drugPrescriptionDetailList = [];
+        $("input:checkbox[name=drugID]").each(function () {
+            let drugPrescriptionDetail = {};
+
+            let drugID = $(this).attr("value");
+
+            let drugPreDetailUsage = $("input[name='drugUsage" + drugID + "']").val();
+            let drugPreDetailAmount = $("input[name='drugUsageNum" + drugID + "']").val();
+            let drugPreDetailFreq = $("input[name='drugFreq" + drugID + "']").val();
+            let drugPreDetailNum = $("input[name='drugAmount" + drugID + "']").val();
+
+            drugPrescriptionDetail["drugId"] = drugID;
+            drugPrescriptionDetail["drugPreDetailUsage"] = drugPreDetailUsage;
+            drugPrescriptionDetail["drugPreDetailAmount"] = drugPreDetailAmount;
+            drugPrescriptionDetail["drugPreDetailFreq"] = drugPreDetailFreq;
+            drugPrescriptionDetail["drugPreDetailNum"] = drugPreDetailNum;
+
+            drugPrescriptionDetailList.push(drugPrescriptionDetail);
+        });
+        sendJson["registerId"] = registrationID;
+        sendJson["doctorId"] = doctorID;
+        sendJson["drugPreName"] = preName;
+        sendJson["drugPrescriptionDetails"] = drugPrescriptionDetailList;
+        console.log(sendJson);
+        $.ajax({
+            url: "/makePrescription",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify(sendJson),
+            success: function (ResultState) {
+                alert(ResultState.detail);
+            }
+        });
 
     }
+
 </script>
 
 </body>

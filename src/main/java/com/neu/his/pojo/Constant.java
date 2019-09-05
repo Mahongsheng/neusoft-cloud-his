@@ -10,7 +10,7 @@ public class Constant implements Serializable {
      *
      * @mbg.generated Mon Jul 22 23:45:36 CST 2019
      */
-    private Short constantId;
+    private Integer constantId;
 
     /**
      *
@@ -47,7 +47,7 @@ public class Constant implements Serializable {
      *
      * @mbg.generated Mon Jul 22 23:45:36 CST 2019
      */
-    public Short getConstantId() {
+    public Integer getConstantId() {
         return constantId;
     }
 
@@ -59,7 +59,7 @@ public class Constant implements Serializable {
      *
      * @mbg.generated Mon Jul 22 23:45:36 CST 2019
      */
-    public void setConstantId(Short constantId) {
+    public void setConstantId(Integer constantId) {
         this.constantId = constantId;
     }
 

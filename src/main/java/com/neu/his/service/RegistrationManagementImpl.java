@@ -527,5 +527,59 @@ public class RegistrationManagementImpl implements RegistrationManagement {
         }
     }
 
+    /**
+     * 根据处方明细ID得到应收金额
+     *
+     * @param drugPreDetailIDDTO
+     * @return
+     */
+    @Override
+    public JSONObject getDrugPreDetailInfo(DrugPreDetailIDDTO drugPreDetailIDDTO) {
+        JSONObject returnJson;
+        try {
+            float wholeMoney = 0;
+            List<Integer> drugPreDetailIDs = drugPreDetailIDDTO.getDrugPreDetailIDs();
+            for (int i = 0; i < drugPreDetailIDs.size(); i++) {
+                DrugPrescriptionDetail drugPrescriptionDetail = drugPrescriptionDetailMapper.selectByPrimaryKey(drugPreDetailIDs.get(i));
+                int amount = drugPrescriptionDetail.getDrugPreDetailNum();
+                Drug drug = drugMapper.selectByPrimaryKey(drugPrescriptionDetail.getDrugId());
+                float unitPrice = drug.getDrugUnitPrice();
+
+                float money = amount * unitPrice;
+                wholeMoney += money;
+            }
+
+            ChargeMoneyBack chargeMoneyBack = new ChargeMoneyBack();
+            chargeMoneyBack.setWholeMoney(wholeMoney);
+
+            returnJson = (JSONObject) JSON.toJSON(chargeMoneyBack);
+            return returnJson;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+    /**
+     * 找到可用发票号
+     *
+     * @return
+     */
+    @Override
+    public JSONObject findAvailableInvoiceID() {
+        JSONObject returnJson;
+        try {
+            int maxID = invoiceMapper.findMaxID();
+            AvailableInvoiceID availableInvoiceID = new AvailableInvoiceID();
+            availableInvoiceID.setInvoiceID(maxID);
+            returnJson = (JSONObject) JSON.toJSON(availableInvoiceID);
+            return returnJson;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
 }

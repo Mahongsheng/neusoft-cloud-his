@@ -65,7 +65,7 @@ public class Drug implements Serializable {
      *
      * @mbg.generated Mon Jul 22 23:45:36 CST 2019
      */
-    private Byte drugsDosageId;
+    private Integer drugsDosageId;
 
     /**
      *
@@ -74,7 +74,7 @@ public class Drug implements Serializable {
      *
      * @mbg.generated Mon Jul 22 23:45:36 CST 2019
      */
-    private Byte drugsTypeId;
+    private Integer drugsTypeId;
 
     /**
      *
@@ -255,7 +255,7 @@ public class Drug implements Serializable {
      *
      * @mbg.generated Mon Jul 22 23:45:36 CST 2019
      */
-    public Byte getDrugsDosageId() {
+    public Integer getDrugsDosageId() {
         return drugsDosageId;
     }
 
@@ -267,7 +267,7 @@ public class Drug implements Serializable {
      *
      * @mbg.generated Mon Jul 22 23:45:36 CST 2019
      */
-    public void setDrugsDosageId(Byte drugsDosageId) {
+    public void setDrugsDosageId(Integer drugsDosageId) {
         this.drugsDosageId = drugsDosageId;
     }
 
@@ -279,7 +279,7 @@ public class Drug implements Serializable {
      *
      * @mbg.generated Mon Jul 22 23:45:36 CST 2019
      */
-    public Byte getDrugsTypeId() {
+    public Integer getDrugsTypeId() {
         return drugsTypeId;
     }
 
@@ -291,7 +291,7 @@ public class Drug implements Serializable {
      *
      * @mbg.generated Mon Jul 22 23:45:36 CST 2019
      */
-    public void setDrugsTypeId(Byte drugsTypeId) {
+    public void setDrugsTypeId(Integer drugsTypeId) {
         this.drugsTypeId = drugsTypeId;
     }
 

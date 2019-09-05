@@ -6,7 +6,7 @@ import lombok.Data;
 public class DrugPreDetailInfo {
     private int drugPreDetailID;
     private String drugName;
-    private double drugUnitPrice;
+    private float drugUnitPrice;
     private int amount;
     private String createTime;
     private String state;

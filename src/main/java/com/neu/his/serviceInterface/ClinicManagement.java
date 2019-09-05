@@ -62,4 +62,19 @@ public interface ClinicManagement {
      */
     List<JSONObject> findDisease(FindDiseaseDTO findDiseaseDTO);
 
+    /**
+     * 模糊匹配药品
+     *
+     * @param findDrugDTO
+     * @return
+     */
+    List<JSONObject> findDrug(FindDrugDTO findDrugDTO);
+
+    /**
+     * 找特定的药品
+     *
+     * @param drugIDDTO
+     * @return
+     */
+    JSONObject findSpecifDrug(DrugIDDTO drugIDDTO);
 }

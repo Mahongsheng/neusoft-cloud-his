@@ -2,7 +2,9 @@ package com.neu.his.dao;
 
 import com.neu.his.pojo.Invoice;
 import com.neu.his.pojo.InvoiceExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -95,4 +97,11 @@ public interface InvoiceMapper {
      * @mbg.generated Thu Jul 25 15:50:19 CST 2019
      */
     int updateByPrimaryKey(Invoice record);
+
+    /**
+     * 找到最大ID
+     *
+     * @return
+     */
+    int findMaxID();
 }

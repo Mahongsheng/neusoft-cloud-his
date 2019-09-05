@@ -123,4 +123,27 @@ public class RegistrationController {
     public List<JSONObject> getChargeInfo(@RequestBody MedicalRecordIDDTO medicalRecordIDDTO) {
         return registrationManagement.getChargeInfo(medicalRecordIDDTO);
     }
+
+    /**
+     * 根据处方明细ID得到应收金额
+     *
+     * @param drugPreDetailIDDTO
+     * @return
+     */
+    @RequestMapping(value = "/getDrugPreDetailInfo", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONObject getDrugPreDetailInfo(@RequestBody DrugPreDetailIDDTO drugPreDetailIDDTO) {
+        return registrationManagement.getDrugPreDetailInfo(drugPreDetailIDDTO);
+    }
+
+    /**
+     * 找到最大可用发票号
+     *
+     * @return
+     */
+    @RequestMapping(value = "/findAvailableInvoiceID", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONObject findAvailableInvoiceID() {
+        return registrationManagement.findAvailableInvoiceID();
+    }
 }

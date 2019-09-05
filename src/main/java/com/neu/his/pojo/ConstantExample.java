@@ -205,52 +205,52 @@ public class ConstantExample implements Serializable {
             return (Criteria) this;
         }
 
-        public Criteria andConstantIdEqualTo(Short value) {
+        public Criteria andConstantIdEqualTo(Integer value) {
             addCriterion("constant_id =", value, "constantId");
             return (Criteria) this;
         }
 
-        public Criteria andConstantIdNotEqualTo(Short value) {
+        public Criteria andConstantIdNotEqualTo(Integer value) {
             addCriterion("constant_id <>", value, "constantId");
             return (Criteria) this;
         }
 
-        public Criteria andConstantIdGreaterThan(Short value) {
+        public Criteria andConstantIdGreaterThan(Integer value) {
             addCriterion("constant_id >", value, "constantId");
             return (Criteria) this;
         }
 
-        public Criteria andConstantIdGreaterThanOrEqualTo(Short value) {
+        public Criteria andConstantIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("constant_id >=", value, "constantId");
             return (Criteria) this;
         }
 
-        public Criteria andConstantIdLessThan(Short value) {
+        public Criteria andConstantIdLessThan(Integer value) {
             addCriterion("constant_id <", value, "constantId");
             return (Criteria) this;
         }
 
-        public Criteria andConstantIdLessThanOrEqualTo(Short value) {
+        public Criteria andConstantIdLessThanOrEqualTo(Integer value) {
             addCriterion("constant_id <=", value, "constantId");
             return (Criteria) this;
         }
 
-        public Criteria andConstantIdIn(List<Short> values) {
+        public Criteria andConstantIdIn(List<Integer> values) {
             addCriterion("constant_id in", values, "constantId");
             return (Criteria) this;
         }
 
-        public Criteria andConstantIdNotIn(List<Short> values) {
+        public Criteria andConstantIdNotIn(List<Integer> values) {
             addCriterion("constant_id not in", values, "constantId");
             return (Criteria) this;
         }
 
-        public Criteria andConstantIdBetween(Short value1, Short value2) {
+        public Criteria andConstantIdBetween(Integer value1, Integer value2) {
             addCriterion("constant_id between", value1, value2, "constantId");
             return (Criteria) this;
         }
 
-        public Criteria andConstantIdNotBetween(Short value1, Short value2) {
+        public Criteria andConstantIdNotBetween(Integer value1, Integer value2) {
             addCriterion("constant_id not between", value1, value2, "constantId");
             return (Criteria) this;
         }
