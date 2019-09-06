@@ -32,7 +32,7 @@ public class LoginController {
         userLoginDTO.setUserPsw(password);
         LoginReturn loginReturn = loginManagement.login(userLoginDTO, response);
         if (loginReturn.isIfNameRight() && loginReturn.isIfPswRight()) {
-            return "redirect:/";
+            return "redirect:/doctorID=" + 1;
         } else {
             return "redirect:/404";
         }

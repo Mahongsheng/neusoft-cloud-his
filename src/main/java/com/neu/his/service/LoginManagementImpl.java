@@ -59,26 +59,28 @@ public class LoginManagementImpl implements LoginManagement {
                 if (userList.isEmpty()) {
                     //都没有检索到该用户，用户名不存在
                     loginReturn.setIfNameRight(false);
-                } else if (userList.get(0).getUserPsw() != userLoginDTO.getUserPsw()) {
+                } else if (!userList.get(0).getUserPsw().equals(userLoginDTO.getUserPsw())) {
                     loginReturn.setIfNameRight(true);
                     loginReturn.setIfPswRight(false);
                     return loginReturn;
                 } else {
                     loginReturn.setIfNameRight(true);
                     loginReturn.setIfPswRight(true);
+                    loginReturn.setUserID(userList.get(0).getUserId());
                     loginReturn.setUserName(userList.get(0).getUserName());
                     loginReturn.setUserType("管理员");
                     //列表不为空，写cookie
                     response.addCookie(new Cookie("token", userList.get(0).getUserId().toString()));
                     return loginReturn;
                 }
-            } else if (doctorList.get(0).getDoctorPsw() != userLoginDTO.getUserPsw()) {
+            } else if (!doctorList.get(0).getDoctorPsw().equals(userLoginDTO.getUserPsw())) {
                 loginReturn.setIfNameRight(true);
                 loginReturn.setIfPswRight(false);
                 return loginReturn;
             } else {
                 loginReturn.setIfNameRight(true);
                 loginReturn.setIfPswRight(true);
+                loginReturn.setUserID(doctorList.get(0).getDoctorId());
                 loginReturn.setUserName(doctorList.get(0).getDoctorName());
                 loginReturn.setUserType("医生");
                 //列表不为空，写cookie
