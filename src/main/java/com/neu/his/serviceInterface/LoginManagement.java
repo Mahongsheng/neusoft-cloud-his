@@ -15,5 +15,5 @@ public interface LoginManagement {
      * @param userLoginDTO
      * @return
      */
-    LoginReturn login(UserLoginDTO userLoginDTO, HttpServletResponse response);
+    LoginReturn login(UserLoginDTO userLoginDTO);
 }

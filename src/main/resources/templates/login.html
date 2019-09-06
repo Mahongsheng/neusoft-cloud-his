@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -32,7 +32,7 @@
             <h1 class="logo-name">neu</h1>
         </div>
         <h3>欢迎登录东软云医院HIS系统</h3>
-        <p>让看病更加轻松</p>
+        <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
         <form class="m-t" role="form" action="/loginPost" method="post">
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="用户名" required="" name="userName">

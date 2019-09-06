@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 /**
  * 用户管理控制类
@@ -26,15 +28,24 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/loginPost", method = RequestMethod.POST)
-    public String loginPost(@RequestParam("userName") String userName, @RequestParam("password") String password, HttpServletResponse response) {
+    public String loginPost(@RequestParam("userName") String userName,
+                            @RequestParam("password") String password,
+                            HttpSession session,
+                            Map<String,Object> map) {
         UserLoginDTO userLoginDTO = new UserLoginDTO();
         userLoginDTO.setUserLoginName(userName);
         userLoginDTO.setUserPsw(password);
-        LoginReturn loginReturn = loginManagement.login(userLoginDTO, response);
+        LoginReturn loginReturn = loginManagement.login(userLoginDTO);
         if (loginReturn.isIfNameRight() && loginReturn.isIfPswRight()) {
-            return "redirect:/doctorID=" + 1;
+            //登录成功
+            session.setAttribute("userName",loginReturn.getUserName());
+            session.setAttribute("userType",loginReturn.getUserType());
+            session.setAttribute("userID",loginReturn.getUserID());
+            return "redirect:/index";
         } else {
-            return "redirect:/404";
+            //登录失败
+            map.put("msg","用户名密码错误");
+            return "login";
         }
     }
 }

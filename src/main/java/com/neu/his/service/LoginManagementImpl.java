@@ -38,7 +38,7 @@ public class LoginManagementImpl implements LoginManagement {
      * @return
      */
     @Override
-    public LoginReturn login(UserLoginDTO userLoginDTO, HttpServletResponse response) {
+    public LoginReturn login(UserLoginDTO userLoginDTO) {
         //实例化返回值
         LoginReturn loginReturn = new LoginReturn();
         //监测任何异常
@@ -70,7 +70,7 @@ public class LoginManagementImpl implements LoginManagement {
                     loginReturn.setUserName(userList.get(0).getUserName());
                     loginReturn.setUserType("管理员");
                     //列表不为空，写cookie
-                    response.addCookie(new Cookie("token", userList.get(0).getUserId().toString()));
+//                    response.addCookie(new Cookie("token", userList.get(0).getUserId().toString()));
                     return loginReturn;
                 }
             } else if (!doctorList.get(0).getDoctorPsw().equals(userLoginDTO.getUserPsw())) {
@@ -84,7 +84,7 @@ public class LoginManagementImpl implements LoginManagement {
                 loginReturn.setUserName(doctorList.get(0).getDoctorName());
                 loginReturn.setUserType("医生");
                 //列表不为空，写cookie
-                response.addCookie(new Cookie("token", doctorList.get(0).getDoctorId().toString()));
+//                response.addCookie(new Cookie("token", doctorList.get(0).getDoctorId().toString()));
                 return loginReturn;
             }
         } catch (Exception e) {

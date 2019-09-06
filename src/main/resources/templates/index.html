@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,8 +31,8 @@
                     <div class="dropdown profile-element">
                         <img alt="image" class="rounded-circle" src="img/profile_small.jpg"/>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="block m-t-xs font-bold" id="userName">郭家恺</span>
-                            <span class="text-muted text-xs block" id="userType">管理员<b class="caret"></b></span>
+                            <span class="block m-t-xs font-bold" id="userName">[[${session.userName}]]</span>
+                            <span class="text-muted text-xs block" id="userType">[[${session.userType}]]<b class="caret"></b></span>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a class="dropdown-item" href="profile.html">个人信息</a></li>
@@ -298,7 +298,7 @@
                 showMethod: 'slideDown',
                 timeOut: 4000
             };
-            toastr.success('东软云医院HIS系统', '欢迎您郭医生');
+            toastr.success('东软云医院HIS系统', '欢迎您!');
 
         }, 1300);
 

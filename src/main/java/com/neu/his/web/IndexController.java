@@ -18,7 +18,7 @@ public class IndexController {
     @Autowired
     private DoctorMapper doctorMapper;
 
-    @GetMapping("/")
+    @GetMapping("/index")
     public String index(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
         for (Cookie cookie : cookies) {
