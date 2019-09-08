@@ -450,12 +450,12 @@
         for (var i = 0; i < formArray.length; i++) {
             obj[formArray[i].name] = formArray[i]['value'];
         }
-        obj['registerUserID'] = 1;
+        obj['registerUserID'] = [[${session.userID}]];
         return obj;
     };
 
     function refreshPatientInfo() {
-        let doctorID = 1;
+        let doctorID = [[${session.userID}]];
         let sendJson = {};
 
         sendJson['doctorID'] = doctorID;
@@ -479,6 +479,7 @@
                 }
             }
         });
+
         $.ajax({
             url: "/getAllPatientDiagnose",
             type: "post",
@@ -922,11 +923,10 @@
     }
 
     function makePre() {
-        alert('a ');
         let sendJson = {};
         let preName = $("button[class='btn btn-primary btn-xs active']").attr("id");
         let registrationID = $("#diagnosingPatientRegistrationID").attr("value");
-        let doctorID = 1;
+        let doctorID = [[${session.userID}]];
 
         let drugPrescriptionDetailList = [];
         $("input:checkbox[name=drugID]").each(function () {

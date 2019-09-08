@@ -5,10 +5,7 @@ import com.neu.his.dto.*;
 import com.neu.his.serviceInterface.RegistrationManagement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -145,5 +142,16 @@ public class RegistrationController {
     @ResponseBody
     public JSONObject findAvailableInvoiceID() {
         return registrationManagement.findAvailableInvoiceID();
+    }
+
+    /**
+     * 得到该挂号级别对应的挂号金额
+     *
+     * @param registerLevelDTO
+     */
+    @PostMapping(value = "/getRegisterLevelMoney")
+    @ResponseBody
+    public JSONObject getRegisterLevelMoney(@RequestBody RegisterLevelDTO registerLevelDTO) {
+        return registrationManagement.getRegisterLevelMoney(registerLevelDTO);
     }
 }

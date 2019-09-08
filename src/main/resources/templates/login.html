@@ -31,30 +31,30 @@
         <div>
             <h1 class="logo-name">neu</h1>
         </div>
-        <h3>欢迎登录东软云医院HIS系统</h3>
+        <h3 style="color: #e6e6e6"><strong>欢迎登录东软云医院HIS系统</strong></h3>
         <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
         <form class="m-t" role="form" action="/loginPost" method="post">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="用户名" required="" name="userName">
+                <input type="text" class="form-control" placeholder="用户名" required="required" name="userName">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="密码" required="" name="password">
+                <input type="password" class="form-control" placeholder="密码" required="required" name="password">
             </div>
             <button type="submit" class="btn btn-primary block full-width m-b">登录</button>
 
             <a href="#">
-                <small>忘记密码?</small>
+                <small><strong>忘记密码?</strong></small>
             </a>
         </form>
         <p class="m-t">
-            <small>Copyright</strong> 马洪升 &copy; 2018-2019</small>
+            <small><strong>Copyright 马洪升 &copy; 2018-2019</strong></small>
         </p>
     </div>
 </div>
 
 
 <!-- Mainly scripts -->
-<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>

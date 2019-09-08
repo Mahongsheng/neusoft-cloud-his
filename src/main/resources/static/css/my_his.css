@@ -17,3 +17,8 @@ body {
     HEIGHT: 100%;
     align: left;
 }
+
+.input-error{
+    color: #56000a;
+    display: none;
+}

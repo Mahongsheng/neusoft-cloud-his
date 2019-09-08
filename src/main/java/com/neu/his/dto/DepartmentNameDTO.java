@@ -5,4 +5,5 @@ import lombok.Data;
 @Data
 public class DepartmentNameDTO {
     private String departmentName;
+    private String doctorLevel;
 }

@@ -31,13 +31,13 @@
 <!--        <table tableName="user" domainObjectName="User"></table>-->
 <!--        <table tableName="charge_info" domainObjectName="ChargeInfo"></table>-->
 <!--        <table tableName="charge_subject" domainObjectName="ChargeSubject"></table>-->
-        <table tableName="confirmed" domainObjectName="Confirmed"></table>
+<!--        <table tableName="confirmed" domainObjectName="Confirmed"></table>-->
 <!--        <table tableName="constant" domainObjectName="Constant"></table>-->
 <!--        <table tableName="constant_type" domainObjectName="ConstantType"></table>-->
 <!--        <table tableName="department" domainObjectName="Department"></table>-->
 <!--        <table tableName="disease_catalog" domainObjectName="DiseaseCatalog"></table>-->
 <!--        <table tableName="disease_category" domainObjectName="DiseaseCategory"></table>-->
-<!--        <table tableName="doctor" domainObjectName="Doctor"></table>-->
+        <table tableName="doctor" domainObjectName="Doctor"></table>
 <!--        <table tableName="drug" domainObjectName="Drug"></table>-->
 <!--        <table tableName="drug_prescription" domainObjectName="DrugPrescription"></table>-->
 <!--        <table tableName="drug_prescription_detail" domainObjectName="DrugPrescriptionDetail"></table>-->
@@ -62,6 +62,5 @@
 <!--        <table tableName="scheduling" domainObjectName="Scheduling"></table>-->
 <!--        <table tableName="settlement" domainObjectName="Settlement"></table>-->
 <!--        <table tableName="drug_template_detail" domainObjectName="DrugTemplateDetail"></table>-->
-
     </context>
 </generatorConfiguration>

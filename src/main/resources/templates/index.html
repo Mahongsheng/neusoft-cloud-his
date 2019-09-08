@@ -20,6 +20,7 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
     <link href="css/my_his.css" rel="stylesheet">
+    <script src="js/my_his.js"></script>
 </head>
 
 <body>
@@ -32,14 +33,15 @@
                         <img alt="image" class="rounded-circle" src="img/profile_small.jpg"/>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="block m-t-xs font-bold" id="userName">[[${session.userName}]]</span>
-                            <span class="text-muted text-xs block" id="userType">[[${session.userType}]]<b class="caret"></b></span>
+                            <span class="text-muted text-xs block" id="userType">[[${session.userType}]]<b
+                                    class="caret"></b></span>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a class="dropdown-item" href="profile.html">个人信息</a></li>
-                            <li><a class="dropdown-item" href="contacts.html">好友</a></li>
-                            <li><a class="dropdown-item" href="mailbox.html">信箱</a></li>
+                            <li><a class="dropdown-item">个人信息</a></li>
+                            <li><a class="dropdown-item">好友</a></li>
+                            <li><a class="dropdown-item">信箱</a></li>
                             <li class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="login.html">登出</a></li>
+                            <li><a class="dropdown-item" href="/login">登出</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">
@@ -50,7 +52,7 @@
                     <a href="/"><i class="fa fa-star"></i> <span class="nav-label">医院首页</span><span
                             class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li class="active"><a href="/">医院新闻</a></li>
+                        <li class="active"><a href="/index">医院新闻</a></li>
                         <li><a href="/">党团建设</a></li>
                     </ul>
                 </li>
@@ -187,9 +189,8 @@
                             </li>
                         </ul>
                     </li>
-
                     <li>
-                        <a href="login.html">
+                        <a href="/login">
                             <i class="fa fa-sign-out"></i> 注销
                         </a>
                     </li>
@@ -244,9 +245,7 @@
     </div>
 </div>
 
-
 <!-- Mainly scripts -->
-<script src="js/jquery-3.1.1.min.js"></script>
 <script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.js"></script>
@@ -289,6 +288,8 @@
 <!-- iCheck -->
 <script src="js/plugins/iCheck/icheck.min.js"></script>
 
+<script src="js/plugins/flot/excanvas.min.js"></script>
+
 <script>
     $(document).ready(function () {
         setTimeout(function () {
@@ -301,7 +302,6 @@
             toastr.success('东软云医院HIS系统', '欢迎您!');
 
         }, 1300);
-
 
         var data1 = [
             [0, 4], [1, 8], [2, 5], [3, 10], [4, 4], [5, 16], [6, 5], [7, 11], [8, 6], [9, 11], [10, 30], [11, 10], [12, 13], [13, 4], [14, 3], [15, 3], [16, 6]
@@ -363,8 +363,8 @@
         };
 
 
-        var ctx4 = document.getElementById("doughnutChart").getContext("2d");
-        new Chart(ctx4, {type: 'doughnut', data: doughnutData, options: doughnutOptions});
+        // var ctx4 = document.getElementById("doughnutChart").getContext("2d");
+        // new Chart(ctx4, {type: 'doughnut', data: doughnutData, options: doughnutOptions});
 
         var doughnutData = {
             labels: ["App", "Software", "Laptop"],
@@ -383,8 +383,8 @@
         };
 
 
-        var ctx4 = document.getElementById("doughnutChart2").getContext("2d");
-        new Chart(ctx4, {type: 'doughnut', data: doughnutData, options: doughnutOptions});
+        // var ctx4 = document.getElementById("doughnutChart2").getContext("2d");
+        // new Chart(ctx4, {type: 'doughnut', data: doughnutData, options: doughnutOptions});
 
     });
 </script>
@@ -415,7 +415,7 @@
             <div class="title">
                 配置 <br>
                 <small style="text-transform: none;font-weight: 400">
-                    配置框设计用户演示目的，所有选项课通过代码获得。
+                    请选择您喜好的配置。
                 </small>
             </div>
             <div class="setings-item">
@@ -450,7 +450,7 @@
             </div>
             <div class="setings-item">
                     <span>
-                        顶级导航栏
+                        顶级导航栏V.1
                     </span>
 
                 <div class="switch">
@@ -466,8 +466,6 @@
             <div class="setings-item">
                     <span>
                         顶部导航栏V.2
-                        <br>
-                        <small>*主要布局</small>
                     </span>
 
                 <div class="switch">
@@ -765,69 +763,65 @@
 <!--同步官网模板结束-->
 <!--局部页面刷新-->
 <script>
+    //加载挂号界面
     $(document).ready(function () {
         $("#register").click(function () {
             $.ajax({
                 url: "register.html", //这里是静态页的地址
                 type: "GET", //静态页用get方法，否则服务器会抛出405错误
                 success: function (register) {
-                    console.log(register);
                     $("#playPicture").hide();
                     $("#hideElement").html(register);
                 }
             });
         });
     });
-
+    //加载退号界面
     $(document).ready(function () {
         $("#registerBack").click(function () {
             $.ajax({
                 url: "registerBack.html", //这里是静态页的地址
                 type: "GET", //静态页用get方法，否则服务器会抛出405错误
                 success: function (registerBack) {
-                    console.log(registerBack);
                     $("#playPicture").hide();
                     $("#hideElement").html(registerBack);
                 }
             });
         });
     });
-
+    //加载收费界面
     $(document).ready(function () {
         $("#charge").click(function () {
             $.ajax({
                 url: "charge.html", //这里是静态页的地址
                 type: "GET", //静态页用get方法，否则服务器会抛出405错误
                 success: function (charge) {
-                    console.log(charge);
                     $("#playPicture").hide();
                     $("#hideElement").html(charge);
                 }
             });
         });
     });
-
+    //加载发药界面
     $(document).ready(function () {
         $("#prescribe").click(function () {
             $.ajax({
                 url: "prescribe.html", //这里是静态页的地址
                 type: "GET", //静态页用get方法，否则服务器会抛出405错误
                 success: function (prescribe) {
-                    console.log(prescribe);
                     $("#playPicture").hide();
                     $("#hideElement").html(prescribe);
                 }
             });
         });
     });
-
+    //加载门诊病历界面
     $(document).ready(function () {
         $("#medicalRecord").click(function () {
             $.ajax({
                 url: "medicalRecord.html", //这里是静态页的地址
                 type: "GET", //静态页用get方法，否则服务器会抛出405错误
                 success: function (medicalRecord) {
-                    console.log(medicalRecord);
                     $("#playPicture").hide();
                     $("#hideElement").html(medicalRecord);
                 }

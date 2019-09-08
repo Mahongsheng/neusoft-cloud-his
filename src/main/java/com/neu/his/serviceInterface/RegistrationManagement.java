@@ -91,4 +91,11 @@ public interface RegistrationManagement {
      * @return
      */
     JSONObject findAvailableInvoiceID();
+
+    /**
+     * 得到挂号金额
+     *
+     * @return
+     */
+    JSONObject getRegisterLevelMoney(RegisterLevelDTO registerLevelDTO);
 }

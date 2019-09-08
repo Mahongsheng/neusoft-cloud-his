@@ -7,17 +7,18 @@
                     <form id="registerInfo">
                         <div class="form-group  row">
                             <label class="col-sm-2 col-form-label">发票号：</label>
-                            <div class="col-sm-10"><input type="text" class="form-control" name="invoiceID"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="invoiceID"
+                                                          readonly="readonly"></div>
                         </div>
                         <div class="hr-line-dashed"></div>
-                        <div><label>挂号信息</label></div>
+                        <div><h4>挂号信息</h4></div>
                         <div class="form-group  row">
                             <label class="col-sm-2 col-form-label">病历号：</label>
                             <div class="col-sm-10"><input type="text" class="form-control" name="medicalRecordID"></div>
                         </div>
                         <div class="form-group  row">
                             <label class="col-sm-2 col-form-label">姓名：</label>
-                            <div class="col-sm-10"><input type="text" class="form-control" name="name"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="name" required=""></div>
                         </div>
                         <div class="form-group row"><label class="col-sm-2 col-form-label">性别：</label>
                             <div class="col-sm-10"><select class="form-control m-b" name="gender">
@@ -28,7 +29,7 @@
                         </div>
                         <div class="form-group  row">
                             <label class="col-sm-2 col-form-label">年龄：</label>
-                            <div class="col-sm-10"><input type="text" class="form-control" name="age"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="age" required=""></div>
                         </div>
                         <div class="form-group row"><label class="col-sm-2 col-form-label">年龄类别：</label>
                             <div class="col-sm-10"><select class="form-control m-b" name="ageType">
@@ -40,15 +41,15 @@
                         </div>
                         <div class="form-group  row">
                             <label class="col-sm-2 col-form-label">出生日期：</label>
-                            <div class="col-sm-10"><input type="date" class="form-control" name="birthday"></div>
+                            <div class="col-sm-10"><input type="date" class="form-control" name="birthday" required=""></div>
                         </div>
                         <div class="form-group  row">
                             <label class="col-sm-2 col-form-label">身份证号：</label>
-                            <div class="col-sm-10"><input type="text" class="form-control" name="numID"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="numID" required=""></div>
                         </div>
                         <div class="form-group  row">
                             <label class="col-sm-2 col-form-label">家庭住址：</label>
-                            <div class="col-sm-10"><input type="text" class="form-control" name="address"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="address" required=""></div>
                         </div>
                         <div class="form-group row"><label class="col-sm-2 col-form-label">结算类别：</label>
                             <div class="col-sm-10"><select class="form-control m-b" name="chargeType">
@@ -59,7 +60,7 @@
                         </div>
                         <div class="form-group  row">
                             <label class="col-sm-2 col-form-label">看诊日期：</label>
-                            <div class="col-sm-10"><input type="date" class="form-control" name="registerDate"></div>
+                            <div class="col-sm-10"><input type="date" class="form-control" name="registerDate" required=""></div>
                         </div>
                         <div class="form-group row"><label class="col-sm-2 col-form-label">午别：</label>
                             <div class="col-sm-10"><select class="form-control m-b" name="registerNoon">
@@ -82,7 +83,7 @@
                             </div>
                         </div>
                         <div class="form-group row"><label class="col-sm-2 col-form-label">看诊医生：</label>
-                            <div class="col-sm-10"><select class="form-control m-b" name="doctorName">
+                            <div class="col-sm-10"><select class="form-control m-b" name="doctorID">
                                 <option value="请选择">请选择</option>
                             </select>
                             </div>
@@ -137,33 +138,6 @@
     </div>
 </div>
 <script>
-    $.fn.serializeObject = function () {
-        var obj = {};
-        var formArray = this.serializeArray();
-        for (var i = 0; i < formArray.length; i++) {
-            obj[formArray[i].name] = formArray[i]['value'];
-        }
-        obj['registerUserID'] = 1;
-        return obj;
-    };
-    $(document).ready(function () {
-        $("#registerSubmit").click(function () {
-            alert("正在挂号");
-            let formData = $("#registerInfo").serializeObject();
-            console.log(formData);
-            $.ajax({
-                url: "/register",
-                type: "post",
-                contentType: "application/json",
-                dataType: "json",
-                data: JSON.stringify(formData),
-                success: function () {
-                    alert("挂号成功");
-                }
-            });
-        });
-    });
-
     //初始化挂号界面的病历号、挂号科室
     $(document).ready(function () {
         var medicalRecordID = $("input[name = 'medicalRecordID']").val();
@@ -192,8 +166,44 @@
                 }
             }
         })
+        $.ajax({
+            url: "/findAvailableInvoiceID",
+            type: "post",
+            success: function (MaxID) {
+                $("input[name = 'invoiceID']").val(MaxID.invoiceID);
+            }
+        });
     });
 
+    //将表单数据序列化并加入医生ID
+    $.fn.serializeObject = function () {
+        var obj = {};
+        var formArray = this.serializeArray();
+        for (var i = 0; i < formArray.length; i++) {
+            obj[formArray[i].name] = formArray[i]['value'];
+        }
+        obj['registerUserID'] = [[${session.userID}]];
+        return obj;
+    };
+    //挂号操作
+    $(document).ready(function () {
+        $("#registerSubmit").click(function () {
+            let formData = $("#registerInfo").serializeObject();
+            console.log(formData);
+            $.ajax({
+                url: "/register",
+                type: "post",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(formData),
+                success: function () {
+                    alert("挂号成功");
+                }
+            });
+        });
+    });
+
+    //根据病历号更新病人信息
     $(document).ready(function () {
         $("input[name = 'medicalRecordID']").change(function () {
             let medicalRecordID = $("input[name = 'medicalRecordID']").val();
@@ -218,42 +228,59 @@
             });
         });
     });
+    //根据挂号级别更新挂号金额
     $(document).ready(function () {
+        //根据挂号级别更新挂号金额
         $("select[name = 'registerLevel']").change(function () {
-            if ($("select[name = 'registerLevel']").val() == "普通号") {
-                $("input[name = 'money']").val(8);
-            } else if ($("select[name = 'registerLevel']").val() == "专家号") {
-                $("input[name = 'money']").val(50);
-            }
+            let registerLevel = $("select[name = 'registerLevel']").val();
+            let sendJson = {};
+            sendJson["registerLevel"] = registerLevel;
+            $.ajax({
+                url: "/getRegisterLevelMoney",
+                type: "post",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(sendJson),
+                success: function (result) {
+                    $("input[name='money']").val(result.invoiceID);
+                }
+            });
+            refreshDoctor();
         });
     });
 
+    //根据科室和挂号级别更新医生
+    function refreshDoctor() {
+        let deptNameJson = {};
+        deptNameJson["departmentName"] = $("select[name = 'department']").val();
+        deptNameJson["doctorLevel"] = $("select[name = 'registerLevel']").val();
+        if (deptNameJson["departmentName"] != "请选择") {
+            $.ajax({
+                url: "/getDoctorNameByDept",
+                type: "post",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(deptNameJson),
+                success: function (DoctorName) {
+                    $("select[name = 'doctorID']").empty();
+                    $("select[name = 'doctorID']").append("<option value='请选择'>请选择</option>>")
+                    for (let i = 0; i < DoctorName.length; i++) {
+                        $("select[name = 'doctorID']").append("<option value = '" + DoctorName[i].doctorID + "'>" + DoctorName[i].doctorName + "</option>");
+                    }
+                }
+            });
+        }
+    }
+
     $(document).ready(function () {
         $($("select[name = 'department']")).change(function () {
-            let deptNameJson = {};
-            deptNameJson["departmentName"] = $("select[name = 'department']").val();
-            if (deptNameJson["departmentName"] != "请选择") {
-                $.ajax({
-                    url: "/getDoctorNameByDept",
-                    type: "post",
-                    contentType: "application/json",
-                    dataType: "json",
-                    data: JSON.stringify(deptNameJson),
-                    success: function (DoctorName) {
-                        $("select[name = 'doctorName']").empty();
-                        $("select[name = 'doctorName']").append("<option value='请选择'>请选择</option>>")
-                        for (let i = 0; i < DoctorName.length; i++) {
-                            $("select[name = 'doctorName']").append("<option value = '" + DoctorName[i].doctorID + "'>" + DoctorName[i].doctorName + "</option>");
-                        }
-                    }
-                });
-            }
+            refreshDoctor();
         });
     });
     $(document).ready(function () {
-        $($("select[name = 'doctorName']")).change(function () {
+        $($("select[name = 'doctorID']")).change(function () {
             let docIDJson = {};
-            docIDJson["doctorID"] = $("select[name = 'doctorName']").val();
+            docIDJson["doctorID"] = $("select[name = 'doctorID']").val();
             if (docIDJson["doctorID"] != "请选择") {
                 $.ajax({
                     url: "/getRegistrationNum",
@@ -268,8 +295,10 @@
                 });
             }
         });
-
     });
 
 </script>
+<script src="js/validator.js"></script>
+<script src="js/input.js"></script>
+<script src="js/main.js"></script>
 </body>

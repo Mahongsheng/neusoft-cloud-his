@@ -17,7 +17,9 @@ import com.neu.his.vojo.RegistrationInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -173,12 +175,8 @@ public class ClinicManagementImpl implements ClinicManagement {
     public List<JSONObject> getAllPatientNotDiagnose(DoctorIDDTO doctorIDDTO) {
         List<JSONObject> returnJsons = new ArrayList<>();
         try {
-            RegistrationRecordExample registrationRecordExample = new RegistrationRecordExample();
-            RegistrationRecordExample.Criteria criteria = registrationRecordExample.createCriteria();
-            criteria.andDoctorIdEqualTo((short) doctorIDDTO.getDoctorID());
-            criteria.andRegistStateEqualTo("待诊");
 
-            List<RegistrationRecord> registrationRecords = registrationRecordMapper.selectByExample(registrationRecordExample);
+            List<RegistrationRecord> registrationRecords = registrationRecordMapper.getAllPatientNotDiagnose(doctorIDDTO.getDoctorID());
 
             for (RegistrationRecord r : registrationRecords) {
                 Patient patient = patientMapper.selectByPrimaryKey(r.getPatientRecordId());
@@ -209,12 +207,8 @@ public class ClinicManagementImpl implements ClinicManagement {
     public List<JSONObject> getAllPatientDiagnose(DoctorIDDTO doctorIDDTO) {
         List<JSONObject> returnJsons = new ArrayList<>();
         try {
-            RegistrationRecordExample registrationRecordExample = new RegistrationRecordExample();
-            RegistrationRecordExample.Criteria criteria = registrationRecordExample.createCriteria();
-            criteria.andDoctorIdEqualTo((short) doctorIDDTO.getDoctorID());
-            criteria.andRegistStateEqualTo("诊毕");
 
-            List<RegistrationRecord> registrationRecords = registrationRecordMapper.selectByExample(registrationRecordExample);
+            List<RegistrationRecord> registrationRecords = registrationRecordMapper.getAllPatientDiagnose(doctorIDDTO.getDoctorID());
 
             for (RegistrationRecord r : registrationRecords) {
                 Patient patient = patientMapper.selectByPrimaryKey(r.getPatientRecordId());

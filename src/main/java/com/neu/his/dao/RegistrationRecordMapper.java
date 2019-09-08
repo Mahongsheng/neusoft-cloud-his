@@ -100,8 +100,14 @@ public interface RegistrationRecordMapper {
 
     /**
      * 更新为退号
+     *
      * @param registerID
      * @return
      */
     int updateStateByPrimaryKey(Integer registerID);
+
+    List<RegistrationRecord> getAllPatientDiagnose(Integer doctorID);
+
+    List<RegistrationRecord> getAllPatientNotDiagnose(Integer doctorID);
+
 }

@@ -400,4 +400,14 @@
     set regist_state = '退号'
     where regist_id = #{registId,jdbcType=INTEGER}
   </update>
+  <select id="getAllPatientDiagnose" parameterType="java.lang.Integer" resultType="com.neu.his.pojo.RegistrationRecord">
+    select *
+    from registration_record
+    where regist_date = CURDATE() and regist_state = '诊毕' and doctor_id = #{doctorID,jdbcType=INTEGER}
+  </select>
+  <select id="getAllPatientNotDiagnose" parameterType="java.lang.Integer" resultType="com.neu.his.pojo.RegistrationRecord">
+    select *
+    from registration_record
+    where regist_date = CURDATE() and regist_state = '待诊' and doctor_id = #{doctorID,jdbcType=INTEGER}
+  </select>
 </mapper>

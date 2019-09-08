@@ -247,7 +247,7 @@
     });
 
     function chargeNow() {
-        let chargeUserID = 1;//收费人员ID
+        let chargeUserID = [[${session.userID}]];//收费人员ID
         let chargeType = $("select[name='accountTypeModal']").val();//收费方式
         let chargeWholePrice = $("input[name = 'shouldPayMoneyModal']").val();//总价
         let invoiceID = $("input[name = 'invoiceIDModal']").val();//发票ID

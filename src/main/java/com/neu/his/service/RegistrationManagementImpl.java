@@ -61,6 +61,39 @@ public class RegistrationManagementImpl implements RegistrationManagement {
     public JSONObject register(RegisterDTO registerDTO) {
         JSONObject returnJson;
         try {
+            int maxMedicalID = patientMapper.findMaxID();
+            //若为新病人，则插入病人数据库表。否则只做病人信息的修改
+            if (registerDTO.getMedicalRecordID() == (maxMedicalID + 1)) {
+                Patient patient = new Patient();
+                patient.setPatientRecordId(registerDTO.getMedicalRecordID());
+                patient.setPatientName(registerDTO.getName());
+
+                byte gender;
+                if (registerDTO.getGender().equals("男")) {
+                    gender = 71;
+                } else {
+                    gender = 72;
+                }
+
+                patient.setPatientGender(gender);
+                patient.setPatientIdNum(registerDTO.getNumID());
+                patient.setPatientAge(registerDTO.getAge());
+                patient.setPatientAgeType(registerDTO.getAgeType());
+                patient.setPatientAddress(registerDTO.getAddress());
+                patient.setPatientBirthday(registerDTO.getBirthday());
+                patientMapper.insert(patient);
+            } else {
+                PatientExample patientExample = new PatientExample();
+                PatientExample.Criteria criteria = patientExample.createCriteria();
+                criteria.andPatientRecordIdEqualTo(registerDTO.getMedicalRecordID());
+
+                Patient patient = new Patient();
+                patient.setPatientName(registerDTO.getName());
+                patient.setPatientAge(registerDTO.getAge());
+                patient.setPatientAgeType(registerDTO.getAgeType());
+                patient.setPatientAddress(registerDTO.getAddress());
+                patientMapper.updateByExampleSelective(patient, patientExample);
+            }
             //插入数据库挂号信息表中
             RegistrationRecord newRecord = new RegistrationRecord();
 
@@ -77,13 +110,7 @@ public class RegistrationManagementImpl implements RegistrationManagement {
             List<Department> departments = departmentMapper.selectByExample(departmentExample);
             departmentID = departments.get(0).getDeptId();
 
-            //由医生姓名+科室名称转换为医生ID
-            DoctorExample doctorExample = new DoctorExample();
-            DoctorExample.Criteria doctorCriteria = doctorExample.createCriteria();
-            doctorCriteria.andDoctorNameEqualTo(registerDTO.getDoctorName());
-            doctorCriteria.andDeptIdEqualTo((short) departmentID);
-            List<Doctor> doctors = doctorMapper.selectByExample(doctorExample);
-            doctorID = doctors.get(0).getDoctorId();
+            doctorID = registerDTO.getDoctorID();
 
             //挂号等级需要转换
             if (registerDTO.getRegisterLevel().equals("专家号")) {
@@ -116,10 +143,10 @@ public class RegistrationManagementImpl implements RegistrationManagement {
             newRecord.setRegistDate(registerDTO.getRegisterDate());
 
             registrationRecordMapper.insert(newRecord);
-//            addInvoice(registerDTO);
-            //日后再去判断，挂号目前成功
-//            addPatient(registerDTO);
-            //Json转换出现一定问题
+
+            addChargeInfoAndInvoice(registerDTO, newRecord.getPatientRecordId());
+
+            //返回挂号成功信息
             ReturnState returnState = new ReturnState();
             returnState.setState(503);
             returnState.setDetail("挂号成功");
@@ -136,6 +163,82 @@ public class RegistrationManagementImpl implements RegistrationManagement {
     }
 
     /**
+     * 添加收费信息以及发票信息
+     *
+     * @param registerDTO
+     * @param registerID
+     */
+    private void addChargeInfoAndInvoice(RegisterDTO registerDTO, int registerID) {
+        //收费信息属性
+        short charge_refund_user_id = registerDTO.getRegisterUserID();//已有
+        String item_name = "挂号费";
+        double wholeMoney = registerDTO.getMoney();
+        double price = registerDTO.getMoney();
+        double unitPrice = registerDTO.getMoney();
+        short amount = 1;
+        short deptID;
+        int invoice_id = registerDTO.getInvoiceID();//已有
+        int itemID = 1;
+        byte itemType = 1;
+        byte charge_type = 51;
+
+        //转换收费类型
+        if (registerDTO.getChargeType().equals("现金")) {
+            charge_type = 51;
+        } else if (registerDTO.getChargeType().equals("医保卡")) {
+            charge_type = 52;
+        } else if (registerDTO.getChargeType().equals("银行卡")) {
+            charge_type = 53;
+        } else if (registerDTO.getChargeType().equals("信用卡")) {
+            charge_type = 54;
+        } else if (registerDTO.getChargeType().equals("微信")) {
+            charge_type = 55;
+        } else if (registerDTO.getChargeType().equals("支付宝")) {
+            charge_type = 56;
+        } else if (registerDTO.getChargeType().equals("云闪付")) {
+            charge_type = 57;
+        } else if (registerDTO.getChargeType().equals("其他")) {
+            charge_type = 58;
+        }
+
+        DepartmentExample departmentExample = new DepartmentExample();
+        DepartmentExample.Criteria criteria = departmentExample.createCriteria();
+        criteria.andDeptNameEqualTo(registerDTO.getDepartment());
+
+        List<Department> departments = departmentMapper.selectByExample(departmentExample);
+
+        deptID = departments.get(0).getDeptId();
+
+        ChargeInfo chargeInfo = new ChargeInfo();
+
+        chargeInfo.setRegistId(registerID);
+        chargeInfo.setInvoiceId(invoice_id);
+        chargeInfo.setItemId((short) itemID);
+        chargeInfo.setItemType(itemType);
+        chargeInfo.setItemName(item_name);
+        chargeInfo.setChargeInfoUnitPrice(unitPrice);
+        chargeInfo.setChargeInfoAmount(amount);
+        chargeInfo.setDeptId(deptID);
+        chargeInfo.setChargeRefundTime(new Date());
+        chargeInfo.setChargeRefundUserId(charge_refund_user_id);
+        chargeInfo.setChargeBeginTime(new Date());
+        chargeInfo.setChargeBeginUserid(charge_refund_user_id);
+        chargeInfo.setChargeType(charge_type);
+        chargeInfo.setChargeWholePrice(price);
+        chargeInfoMapper.insert(chargeInfo);
+
+
+        Invoice invoice = new Invoice();
+        invoice.setInvoicePrice((float) wholeMoney);
+        invoice.setInvoiceState((byte) 1);
+        invoice.setInvoiceOperaTime(new Date());
+        invoice.setChargeUserId(charge_refund_user_id);
+        invoice.setRegistId(registerID);
+        invoice.setChargeType(charge_type);
+        invoiceMapper.insert(invoice);
+    }
+
+    /**
      * 患者退号
      *
      * @param registerBackDTO
@@ -146,6 +249,9 @@ public class RegistrationManagementImpl implements RegistrationManagement {
         JSONObject returnJson;
         try {
             registrationRecordMapper.updateStateByPrimaryKey(registerBackDTO.getRegistrationID());
+
+            //收费表加一条冲红
+            //发票表加一条冲红
 
             ReturnState returnState = new ReturnState();
             returnState.setState(507);
@@ -376,9 +482,17 @@ public class RegistrationManagementImpl implements RegistrationManagement {
 
             List<Department> departments = departmentMapper.selectByExample(departmentExample);
 
+            byte registerLevel;
+            if (departmentNameDTO.getDoctorLevel().equals("普通号")) {
+                registerLevel = 2;
+            } else {
+                registerLevel = 1;
+            }
+
             DoctorExample doctorExample = new DoctorExample();
             DoctorExample.Criteria docCriteria = doctorExample.createCriteria();
             docCriteria.andDeptIdEqualTo(departments.get(0).getDeptId());
+            docCriteria.andDoctorRegistLevelEqualTo(registerLevel);
 
             List<Doctor> doctors = doctorMapper.selectByExample(doctorExample);
 
@@ -581,5 +695,28 @@ public class RegistrationManagementImpl implements RegistrationManagement {
         }
     }
 
+    /**
+     * 得到挂号金额
+     *
+     * @return
+     */
+    @Override
+    public JSONObject getRegisterLevelMoney(RegisterLevelDTO registerLevelDTO) {
+        JSONObject returnJson;
+        try {
+            RegistLevelExample example = new RegistLevelExample();
+            RegistLevelExample.Criteria criteria = example.createCriteria();
+            criteria.andRegistLevelNameEqualTo(registerLevelDTO.getRegisterLevel());
 
+            List<RegistLevel> registLevels = registLevelMapper.selectByExample(example);
+
+            AvailableInvoiceID availableInvoiceID = new AvailableInvoiceID();
+            availableInvoiceID.setInvoiceID(registLevels.get(0).getRegistLevelPrice());
+            returnJson = (JSONObject) JSON.toJSON(availableInvoiceID);
+            return returnJson;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
