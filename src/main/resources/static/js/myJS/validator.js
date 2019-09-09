@@ -5,8 +5,8 @@ $(function () {
 
         this.is_valid = function (new_val) {
             let key;
-            if (new_val !== undefined)
-                val = new_val || val;
+            if (new_val !== val)
+                val = new_val;
 
             if (!rule.required && !val) return true;
 
@@ -30,6 +30,11 @@ $(function () {
             return val <= rule.max;
         };
 
+        this.validate_fixedLength = function () {
+            val = val.toString();
+            return val.length === rule.fixedLength;
+        };
+
         this.validate_maxlength = function () {
             val = val.toString();
             return val.length <= rule.maxlength;
@@ -48,12 +53,31 @@ $(function () {
             let real = $.trim(val);
             if (!real && real !== 0) return false;
             return true;
-
         };
 
-        this.validate_pattren = function () {
+        this.validate_pattern = function () {
             let reg = new RegExp(rule.pattern);
             return reg.test(val);
-        }
+        };
+
+        this.validate_afterIncludeToday = function () {
+            val = Date.parse(val);
+            let today = new Date();
+            today.setHours(0);
+            today.setMinutes(0);
+            today.setSeconds(0);
+            today.setMilliseconds(0);
+            return val >= today;
+        };
+
+        this.validate_beforeIncludeToday = function () {
+            val = Date.parse(val);
+            let today = new Date();
+            today.setHours(0);
+            today.setMinutes(0);
+            today.setSeconds(0);
+            today.setMilliseconds(0);
+            return val <= today;
+        };
     }
 });

@@ -18,7 +18,6 @@ $(function () {
         this.load_validator = function () {
             let val = me.get_ele();
             this.validator = new Validator(val, rule);
-
         };
 
         this.get_ele = function () {

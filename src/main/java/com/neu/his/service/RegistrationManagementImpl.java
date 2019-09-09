@@ -615,6 +615,7 @@ public class RegistrationManagementImpl implements RegistrationManagement {
                 DrugPrescriptionDetailExample drugPrescriptionDetailExample = new DrugPrescriptionDetailExample();
                 DrugPrescriptionDetailExample.Criteria drugPrescriptionDetailExampleCriteria = drugPrescriptionDetailExample.createCriteria();
                 drugPrescriptionDetailExampleCriteria.andDrugPreIdEqualTo(drugPre.getDrugPreId());
+                drugPrescriptionDetailExampleCriteria.andDrugPreDetailStateEqualTo("未缴费");
 
                 List<DrugPrescriptionDetail> findDrugPreDetails = drugPrescriptionDetailMapper.selectByExample(drugPrescriptionDetailExample);
 
