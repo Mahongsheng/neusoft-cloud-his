@@ -410,4 +410,8 @@
     from registration_record
     where regist_date = CURDATE() and regist_state = '待诊' and doctor_id = #{doctorID,jdbcType=INTEGER}
   </select>
+  <select id="findMaxID" resultType="java.lang.Integer">
+    select max(regist_id)
+    from his.registration_record
+  </select>
 </mapper>

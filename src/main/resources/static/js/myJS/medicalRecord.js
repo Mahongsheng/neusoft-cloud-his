@@ -72,7 +72,7 @@ function findDiseaseNextPage() {
             success: function (DiseaseInfo) {
                 $("#searchResult").empty();
                 for (let i = 0; i < DiseaseInfo.length; i++) {
-                    $("#searchResult").append('<h4><button type="button" class="btn btn-link" onclick="addDisease(this)" id="' + DiseaseInfo[i].diseaseId + '">' + DiseaseInfo[i].diseaseIcd + ' ' + '</button></h4>');
+                    $("#searchResult").append('<h3><button type="button" class="btn btn-link" onclick="addDisease(this)" id="' + DiseaseInfo[i].diseaseId + '">' + DiseaseInfo[i].diseaseIcd + ' ' + '</button></h3>');
                     $("#searchResult").append('<p id="' + DiseaseInfo[i].diseaseId + '">' + DiseaseInfo[i].diseaseName + ' ' + '</p>');
                 }
                 $("#pageNum" + pageNum).attr("class", "btn btn-white active");
@@ -103,7 +103,7 @@ function findDiseaseLastPage() {
             success: function (DiseaseInfo) {
                 $("#searchResult").empty();
                 for (let i = 0; i < DiseaseInfo.length; i++) {
-                    $("#searchResult").append('<h4><button type="button" class="btn btn-link" onclick="addDisease(this)" id="' + DiseaseInfo[i].diseaseId + '">' + DiseaseInfo[i].diseaseIcd + ' ' + '</button></h4>');
+                    $("#searchResult").append('<h3><button type="button" class="btn btn-link" onclick="addDisease(this)" id="' + DiseaseInfo[i].diseaseId + '">' + DiseaseInfo[i].diseaseIcd + ' ' + '</button></h3>');
                     $("#searchResult").append('<p id="' + DiseaseInfo[i].diseaseId + '">' + DiseaseInfo[i].diseaseName + ' ' + '</p>');
                 }
                 $("#pageNum" + pageNum).attr("class", "btn btn-white active");
@@ -132,7 +132,7 @@ function findDiseaseThisPage(obj) {
         success: function (DiseaseInfo) {
             $("#searchResult").empty();
             for (let i = 0; i < DiseaseInfo.length; i++) {
-                $("#searchResult").append('<h4><button type="button" class="btn btn-link" onclick="addDisease(this)" id="' + DiseaseInfo[i].diseaseId + '">' + DiseaseInfo[i].diseaseIcd + ' ' + '</button></h4>');
+                $("#searchResult").append('<h3><button type="button" class="btn btn-link" onclick="addDisease(this)" id="' + DiseaseInfo[i].diseaseId + '">' + DiseaseInfo[i].diseaseIcd + ' ' + '</button></h3>');
                 $("#searchResult").append('<p id="' + DiseaseInfo[i].diseaseId + '">' + DiseaseInfo[i].diseaseName + ' ' + '</p>');
             }
             $(obj).attr("class", "btn btn-white active");
@@ -160,7 +160,7 @@ $(document).ready(function () {
                 $("#searchResult").empty();
                 wholePageNum = DiseaseInfo[0].wholePage;
                 for (let i = 0; i < DiseaseInfo.length; i++) {
-                    $("#searchResult").append('<h4><button type="button" class="btn btn-link" onclick="addDisease(this)" id="' + DiseaseInfo[i].diseaseId + '">' + DiseaseInfo[i].diseaseIcd + '</button></h4>');
+                    $("#searchResult").append('<h3><button type="button" class="btn btn-link" onclick="addDisease(this)" id="' + DiseaseInfo[i].diseaseId + '">' + DiseaseInfo[i].diseaseIcd + '</button></h3>');
                     $("#searchResult").append('<p id="' + DiseaseInfo[i].diseaseId + '">' + DiseaseInfo[i].diseaseName + ' ' + '</p>');
                 }
                 $("#firstPageNum").empty();

@@ -17,7 +17,7 @@ function submit_validate() {
         let item = inputs[i];
         let result = item.validator.is_valid();
         if (!result){
-            return false;
+            return result;
         }
     }
     return true;

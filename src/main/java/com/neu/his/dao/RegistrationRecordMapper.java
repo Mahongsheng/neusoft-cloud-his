@@ -110,4 +110,6 @@ public interface RegistrationRecordMapper {
 
     List<RegistrationRecord> getAllPatientNotDiagnose(Integer doctorID);
 
+    int findMaxID();
+
 }

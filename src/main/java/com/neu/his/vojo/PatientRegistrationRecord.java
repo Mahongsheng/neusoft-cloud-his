@@ -9,4 +9,6 @@ public class PatientRegistrationRecord {
     private String registrationNoon;
     private String department;
     private String registrationState;
+
+    private int wholePage;
 }

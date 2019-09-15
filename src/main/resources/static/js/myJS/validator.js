@@ -5,7 +5,7 @@ $(function () {
 
         this.is_valid = function (new_val) {
             let key;
-            if (new_val !== val)
+            if (new_val !== undefined)
                 val = new_val;
 
             if (!rule.required && !val) return true;
@@ -61,7 +61,9 @@ $(function () {
         };
 
         this.validate_afterIncludeToday = function () {
-            val = Date.parse(val);
+            if (!$.isNumeric(val)) {
+                val = Date.parse(val);
+            }
             let today = new Date();
             today.setHours(0);
             today.setMinutes(0);
@@ -71,7 +73,9 @@ $(function () {
         };
 
         this.validate_beforeIncludeToday = function () {
-            val = Date.parse(val);
+            if (!$.isNumeric(val)) {
+                val = Date.parse(val);
+            }
             let today = new Date();
             today.setHours(0);
             today.setMinutes(0);

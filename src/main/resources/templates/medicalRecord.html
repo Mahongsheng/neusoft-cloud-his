@@ -110,11 +110,11 @@
             <div class="col-md-4" style="padding-right: 0px" id="patientSelectDiv">
                 <div class="ibox-title">
                     <div class="row">
-                        <div class="col-sm-9">
+                        <div class="col-sm-8">
                             <h4>患者选择：</h4>
                         </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-block btn-primary" style="float: right"
+                        <div class="col-sm-4">
+                            <button class="btn btn-xs btn-primary" style="float: right"
                                     onclick="refreshPatientInfo()">
                                 <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
                             </button>
@@ -481,7 +481,7 @@
                         '<td>' + PatientInfo[i].medicalRecordID + '</td>' +
                         '<td>' + PatientInfo[i].patientName + '</td>' +
                         '<td>' + PatientInfo[i].age + '</td>' +
-                        '<td><button type="button" class="btn btn-sm btn-primary" disabled="disabled" onclick="diagnoseNow(this)" value="' + PatientInfo[i].registrationID + '">' +
+                        '<td><button type="button" class="btn btn-sm btn-primary" disabled="disabled" value="' + PatientInfo[i].registrationID + '">' +
                         '<i class="fa fa-medkit"></i></button></td>' +
                         '</tr>');
                 }

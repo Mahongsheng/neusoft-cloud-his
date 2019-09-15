@@ -2,6 +2,8 @@ package com.neu.his.service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.neu.his.dao.*;
 import com.neu.his.dto.*;
 import com.neu.his.pojo.*;
@@ -144,7 +146,9 @@ public class RegistrationManagementImpl implements RegistrationManagement {
 
             registrationRecordMapper.insert(newRecord);
 
-            addChargeInfoAndInvoice(registerDTO, newRecord.getPatientRecordId());
+            int registerID = registrationRecordMapper.findMaxID();
+
+            addChargeInfoAndInvoice(registerDTO, registerID);
 
             //返回挂号成功信息
             ReturnState returnState = new ReturnState();
@@ -235,6 +239,7 @@ public class RegistrationManagementImpl implements RegistrationManagement {
         invoice.setChargeUserId(charge_refund_user_id);
         invoice.setRegistId(registerID);
         invoice.setChargeType(charge_type);
+        invoice.setInvoiceSettleState((byte) 0);
         invoiceMapper.insert(invoice);
     }
 
@@ -251,7 +256,37 @@ public class RegistrationManagementImpl implements RegistrationManagement {
             registrationRecordMapper.updateStateByPrimaryKey(registerBackDTO.getRegistrationID());
 
             //收费表加一条冲红
+            ChargeInfoExample chargeInfoExample = new ChargeInfoExample();
+            ChargeInfoExample.Criteria criteria = chargeInfoExample.createCriteria();
+            criteria.andRegistIdEqualTo(registerBackDTO.getRegistrationID());
+            criteria.andItemNameEqualTo("挂号费");
+
+
+            ChargeInfo chargeInfo = chargeInfoMapper.selectByExample(chargeInfoExample).get(0);
+
+            int beforeInvoiceID = chargeInfo.getInvoiceId();
+            int afterInvoiceID = invoiceMapper.findMaxID() + 1;
+
+            chargeInfo.setChargeInforId(null);
+            chargeInfo.setInvoiceId(afterInvoiceID);
+            chargeInfo.setChargeBeginTime(new Date());
+            chargeInfo.setChargeRefundTime(new Date());
+            chargeInfo.setChargeInfoUnitPrice(-chargeInfo.getChargeInfoUnitPrice());
+            chargeInfo.setChargeWholePrice(-chargeInfo.getChargeWholePrice());
+
+            chargeInfoMapper.insert(chargeInfo);
+
+
             //发票表加一条冲红
+            Invoice invoice = invoiceMapper.selectByPrimaryKey(beforeInvoiceID);
+            invoice.setInvoiceRedId(afterInvoiceID);
+            invoiceMapper.updateByPrimaryKey(invoice);
+
+            invoice.setInvoiceId(null);
+            invoice.setInvoiceOperaTime(new Date());
+            invoice.setInvoicePrice(-invoice.getInvoicePrice());
+            invoice.setInvoiceRedId(null);
+            invoiceMapper.insert(invoice);
 
             ReturnState returnState = new ReturnState();
             returnState.setState(507);
@@ -569,6 +604,9 @@ public class RegistrationManagementImpl implements RegistrationManagement {
             RegistrationRecordExample registrationRecordExample = new RegistrationRecordExample();
             RegistrationRecordExample.Criteria criteria = registrationRecordExample.createCriteria();
             criteria.andPatientRecordIdEqualTo(medicalRecordIDDTO.getMedicalRecordID());
+
+            System.out.println(medicalRecordIDDTO.getPageNum());
+            Page page = PageHelper.startPage(medicalRecordIDDTO.getPageNum(), medicalRecordIDDTO.getPageSize());
             List<RegistrationRecord> registrationRecords = registrationRecordMapper.selectByExample(registrationRecordExample);
 
             for (RegistrationRecord r : registrationRecords) {
@@ -583,6 +621,7 @@ public class RegistrationManagementImpl implements RegistrationManagement {
                 patientRegistrationRecord.setRegistrationDate(simpleDateFormat.format(r.getRegistDate()));
                 patientRegistrationRecord.setRegistrationNoon(r.getRegistNoon());
                 patientRegistrationRecord.setRegistrationState(r.getRegistState());
+                patientRegistrationRecord.setWholePage(page.getPages());
 
                 JSONObject jsonObject = (JSONObject) JSON.toJSON(patientRegistrationRecord);
 

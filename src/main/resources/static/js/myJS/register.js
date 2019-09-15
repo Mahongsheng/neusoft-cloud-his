@@ -41,7 +41,6 @@ function getMedicalRecordID(medicalRecordID, medicalIDJson) {
 }
 
 
-
 //根据病历号更新病人信息
 $(document).ready(function () {
     $("input[name = 'medicalRecordID']").change(function () {
@@ -98,22 +97,20 @@ function refreshDoctor() {
     let deptNameJson = {};
     deptNameJson["departmentName"] = $("select[name = 'department']").val();
     deptNameJson["doctorLevel"] = $("select[name = 'registerLevel']").val();
-    if (deptNameJson["departmentName"] != "请选择") {
-        $.ajax({
-            url: "/getDoctorNameByDept",
-            type: "post",
-            contentType: "application/json",
-            dataType: "json",
-            data: JSON.stringify(deptNameJson),
-            success: function (DoctorName) {
-                $("select[name = 'doctorID']").empty();
-                $("select[name = 'doctorID']").append("<option value='请选择'>请选择</option>>")
-                for (let i = 0; i < DoctorName.length; i++) {
-                    $("select[name = 'doctorID']").append("<option value = '" + DoctorName[i].doctorID + "'>" + DoctorName[i].doctorName + "</option>");
-                }
+    $.ajax({
+        url: "/getDoctorNameByDept",
+        type: "post",
+        contentType: "application/json",
+        dataType: "json",
+        data: JSON.stringify(deptNameJson),
+        success: function (DoctorName) {
+            $("select[name = 'doctorID']").empty();
+            $("select[name='doctorID']").append("<option disabled selected hidden value=\"请选择\">请选择</option>");
+            for (let i = 0; i < DoctorName.length; i++) {
+                $("select[name = 'doctorID']").append("<option value = '" + DoctorName[i].doctorID + "'>" + DoctorName[i].doctorName + "</option>");
             }
-        });
-    }
+        }
+    });
 }
 
 $(document).ready(function () {
@@ -125,18 +122,16 @@ $(document).ready(function () {
     $($("select[name = 'doctorID']")).change(function () {
         let docIDJson = {};
         docIDJson["doctorID"] = $("select[name = 'doctorID']").val();
-        if (docIDJson["doctorID"] != "请选择") {
-            $.ajax({
-                url: "/getRegistrationNum",
-                type: "post",
-                contentType: "application/json",
-                dataType: "json",
-                data: JSON.stringify(docIDJson),
-                success: function (DoctorRegistrationNum) {
-                    $("input[name = 'registerNum']").val(DoctorRegistrationNum.doctorRegistrationNum);
-                    $("input[name = 'registerUsedNum']").val(DoctorRegistrationNum.doctorUsedRegistrationNum);
-                }
-            });
-        }
+        $.ajax({
+            url: "/getRegistrationNum",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify(docIDJson),
+            success: function (DoctorRegistrationNum) {
+                $("input[name = 'registerNum']").val(DoctorRegistrationNum.doctorRegistrationNum);
+                $("input[name = 'registerUsedNum']").val(DoctorRegistrationNum.doctorUsedRegistrationNum);
+            }
+        });
     });
 });
