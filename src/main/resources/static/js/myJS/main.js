@@ -11,6 +11,18 @@ $(function () {
     })
 });
 
+function getInputsByFunc() {
+    'use strict';
+
+    inputs = [];
+    $inputs = $('[data-rule]');
+
+    $inputs.each(function (index, node) {
+        let temp = new Input(node);
+        inputs.push(temp);
+    })
+}
+
 function submit_validate() {
     $inputs.trigger('blur');
     for (let i = 0; i < inputs.length; i++) {

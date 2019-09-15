@@ -1,10 +1,10 @@
 $(document).ready(function () {
     $('input[name="selectAll"]').change(function () {
-        if ($(this).is(":checked")){
-            $(this).attr('checked',true);
+        if ($(this).is(":checked")) {
+            $(this).attr('checked', true);
             $("input[name='drugPreDetailID']").attr({'checked': true});
-        }else {
-            $(this).attr('checked',false);
+        } else {
+            $(this).attr('checked', false);
             $("input[name='drugPreDetailID").attr({'checked': false});
         }
     });
@@ -60,7 +60,7 @@ $(document).ready(function () {
             dataType: "json",
             data: JSON.stringify(sendJson),
             success: function (returnJson) {
-                alert(returnJson.state + returnJson.detail);
+                $('.alert').html('开药成功').addClass('alert-success').show().delay(1400).fadeOut();
                 let medicalRecordID = $("input[name = 'medicalRecordID']").val();
                 let drugPreTime = $("input[name = 'drugPreTime']").val();
 

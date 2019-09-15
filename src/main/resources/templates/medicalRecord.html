@@ -1,5 +1,5 @@
 <body>
-<script src="js/myJS/medicalRecord.js"></script>
+
 <div class="modal inmodal" id="searchDisease" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content animated flipInY">
@@ -396,7 +396,7 @@
                                                 <div class="col-sm-9">
                                                     <div class="ibox ">
                                                         <div class="ibox-title">
-                                                            <h5>本处方金额合计：25.31元</h5>
+                                                            <h5>本处方明细：</h5>
                                                         </div>
                                                         <div class="ibox-content">
                                                             <div class="table-responsive">
@@ -440,6 +440,10 @@
         </div>
     </div>
 </div>
+<script src="js/myJS/validator.js"></script>
+<script src="js/myJS/input.js"></script>
+<script src="js/myJS/main.js"></script>
+<script src="js/myJS/medicalRecord.js"></script>
 <script>
     function refreshPatientInfo() {
         let doctorID = [[${session.userID}]];
@@ -523,7 +527,7 @@
             dataType: "json",
             data: JSON.stringify(formData),
             success: function (ResultState) {
-                alert(ResultState.detail);
+                $('.alert').html('提交成功').addClass('alert-warning').show().delay(1400).fadeOut();
                 refreshPatientInfo();
             }
         });
@@ -566,10 +570,9 @@
             dataType: "json",
             data: JSON.stringify(sendJson),
             success: function (ResultState) {
-                alert(ResultState.detail);
+                $('.alert').html('开立成功').addClass('alert-success').show().delay(1400).fadeOut();
             }
         });
     }
-
 </script>
 </body>

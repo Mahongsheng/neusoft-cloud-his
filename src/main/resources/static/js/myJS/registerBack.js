@@ -11,7 +11,7 @@ function registerBack(obj) {
         dataType: "json",
         data: JSON.stringify(registrationJson),
         success: function (ReturnState) {
-            alert(ReturnState.state + "  " + ReturnState.detail);
+            $('.alert').html('退号成功').addClass('alert-success').show().delay(1400).fadeOut();
             $("#RegistrationRecordInfo tbody").empty();
 
             if (medicalRecordID.length != 0) {

@@ -1,7 +1,9 @@
+//界面加载完毕后刷新患者列表
 $(document).ready(function () {
     refreshPatientInfo();
 });
 
+//点击某患者按钮后开始诊断该患者
 function diagnoseNow(obj) {
     let registrationID = $(obj).attr("value");
     let sendJson = {};
@@ -29,6 +31,8 @@ function diagnoseNow(obj) {
     });
 }
 
+//坚持疾病类别是否输入内容，如果输入内容则触发。
+//在数据库中搜索用户输入的疾病类别，实时返回到前端并展示出来
 $(document).ready(function () {
     $("input[name='searchDiseaseCategory']").bind("input propertychange", function () {
         let sendJson = {};
@@ -49,9 +53,11 @@ $(document).ready(function () {
     });
 });
 
+//定义当前疾病页数和疾病总页数以便分页
 var pageNum = 1;
 var wholePageNum = 0;
 
+//切换到下一页搜索到的疾病
 function findDiseaseNextPage() {
     if (pageNum < wholePageNum) {
         pageNum++;
@@ -82,6 +88,7 @@ function findDiseaseNextPage() {
     }
 }
 
+//切换到上一页搜索到的疾病
 function findDiseaseLastPage() {
     console.log(pageNum);
     if (pageNum > 1) {
@@ -113,6 +120,7 @@ function findDiseaseLastPage() {
     }
 }
 
+//切换到某一特定页搜索到的疾病
 function findDiseaseThisPage(obj) {
     $("#pageNum" + pageNum).attr("class", "btn btn-white");
     pageNum = $(obj).text();
@@ -140,6 +148,7 @@ function findDiseaseThisPage(obj) {
     });
 }
 
+//检测搜索按钮，从数据库中搜索疾病并分页展示
 $(document).ready(function () {
     $("#searchNow").click(function () {
         pageNum = 1;
@@ -178,6 +187,7 @@ $(document).ready(function () {
     });
 });
 
+//添加疾病
 function addDisease(obj) {
     let diseaseID = $(obj).attr("id");
     let diseaseName = $("p[id=" + diseaseID + "]").text();
@@ -188,10 +198,12 @@ function addDisease(obj) {
         '<td>' + diseaseICD + '</td>' +
         '<td>' + diseaseName + '</td>' +
         '<td></td>' +
-        '<td><input class="form-control input-sm" type="date" name="' + diseaseID + '"></td>' +
+        '<td><input class="form-control input-sm" type="date" data-rule="required:true|validate_beforeIncludeToday:true" name="' + diseaseID + '"><div style="color: red;display: none" id="' + diseaseID + '-input-error">该项不能为空，且日期应小于等于今日</div></td>' +
         '</tr>');
+    getInputsByFunc();
 }
 
+//隐藏患者列表
 $(document).ready(function () {
     $("#diagnosingPatientRegistrationID").click(function () {
         if ($("#patientSelectDiv").is(':hidden')) {
@@ -204,9 +216,11 @@ $(document).ready(function () {
     });
 });
 
+//定义药品当前页码和总页数
 var drugPageNum = 1;
 var drugWholePage = 0;
 
+//采用模糊匹配搜索药品并展示
 $(document).ready(function () {
     $("#searchDrugNow").click(function () {
         drugPageNum = 1;
@@ -250,6 +264,7 @@ $(document).ready(function () {
     });
 });
 
+//添加药品
 function addDrug(obj) {
     let drugID = $(obj).attr("id");
     let sendJson = {};
@@ -268,15 +283,17 @@ function addDrug(obj) {
                 '<td>' + DrugInfo.drugName + '</td>' +
                 '<td>' + DrugInfo.drugSpecif + '</td>' +
                 '<td>' + DrugInfo.drugUnitPrice + '</td>' +
-                '<td><input class="form-control col-sm-8" type="text" name="drugUsage' + drugID + '"></td>' +
-                '<td><input class="form-control col-sm-8" type="text" name="drugUsageNum' + drugID + '"></td>' +
-                '<td><input class="form-control col-sm-8" type="text" name="drugFreq' + drugID + '"></td>' +
-                '<td><input class="form-control col-sm-8" type="number" name="drugAmount' + drugID + '"></td>' +
+                '<td><input class="form-control col-sm-8" type="text" data-rule="required:true" name="drugUsage' + drugID + '"><div style="color: red;display: none" id="drugUsage' + drugID + '-input-error">该项不能为空</div></td>' +
+                '<td><input class="form-control col-sm-8" type="text" data-rule="required:true" name="drugUsageNum' + drugID + '"><div style="color: red;display: none" id="drugUsageNum' + drugID + '-input-error">该项不能为空</div></td>' +
+                '<td><input class="form-control col-sm-8" type="text" data-rule="required:true" name="drugFreq' + drugID + '"><div style="color: red;display: none" id="drugFreq' + drugID + '-input-error">该项不能为空</div></td>' +
+                '<td><input class="form-control col-sm-8" type="number" min="1" data-rule="required:true" name="drugAmount' + drugID + '"><div style="color: red;display: none" id="drugAmount' + drugID + '-input-error">该项不能为空</div></td>' +
                 '</tr>');
+            getInputsByFunc();
         }
     });
 }
 
+//找到下一页药品并展示
 function findDrugNextPage() {
     if (drugPageNum < drugWholePage) {
         drugPageNum++;
@@ -313,6 +330,7 @@ function findDrugNextPage() {
     }
 }
 
+//找到上一页药品并展示
 function findDrugLastPage() {
     if (drugPageNum > 1) {
         drugPageNum--;
@@ -349,6 +367,7 @@ function findDrugLastPage() {
     }
 }
 
+//找到特定页药品并展示
 function findDrugThisPage(obj) {
     $("#drugPageNum" + drugPageNum).attr("class", "btn btn-white");
     drugPageNum = $(obj).text();
@@ -382,6 +401,7 @@ function findDrugThisPage(obj) {
     });
 }
 
+//添加处方名称
 function addPreName() {
     let preName = $("input[name=preName]").val();
     $("#preInfo tbody").append('<tr>' +

@@ -76,7 +76,9 @@
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="medicalRecordID">
                         <br>
-                        <button type="button" class="btn btn-w-m btn-primary" id="searchPatient">搜索</button>
+                        <button type="button" class="btn btn-w-m btn-primary" id="searchPatient"
+                                onclick="searchPatient()">搜索
+                        </button>
                     </div>
                 </div>
             </div>
@@ -174,7 +176,8 @@
             dataType: "json",
             data: JSON.stringify(sendJson),
             success: function (ReturnState) {
-                alert(ReturnState.detail);
+                $('.alert').html('收费成功').addClass('alert-success').show().delay(1400).fadeOut();
+                searchPatient();
             }
         });
     }

@@ -179,14 +179,13 @@
             let formData = $("#registerInfo").serializeObject();
             if (submit_validate()) {
                 if ($("select[name='department']").val() == null) {
-                    alert("就诊科室不能为空");
+                    $('.alert').html('就诊科室不能为空').addClass('alert-warning').show().delay(1400).fadeOut();
                     return;
                 }
                 if ($("select[name='doctorID']").val() == null) {
-                    alert("就诊医生不能为空");
+                    $('.alert').html('就诊医生不能为空').addClass('alert-warning').show().delay(1400).fadeOut();
                     return;
                 }
-                alert("挂号中");
                 $.ajax({
                     url: "/register",
                     type: "post",
@@ -194,7 +193,8 @@
                     dataType: "json",
                     data: JSON.stringify(formData),
                     success: function () {
-                        alert("挂号成功");
+                        $('.alert').html('挂号成功').addClass('alert-success').show().delay(1400).fadeOut();
+
                         $.ajax({
                             url: "register.html", //这里是静态页的地址
                             type: "GET", //静态页用get方法，否则服务器会抛出405错误
@@ -205,9 +205,8 @@
                     }
                 });
             } else {
-                alert("挂号失败");
+                $('.alert').html('挂号失败').addClass('alert-warning').show().delay(1400).fadeOut();
             }
-            console.log(formData);
         });
     });
 </script>
