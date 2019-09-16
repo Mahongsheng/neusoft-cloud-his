@@ -3,6 +3,8 @@ package com.neu.his.web;
 import com.neu.his.dto.UserLoginDTO;
 import com.neu.his.serviceInterface.LoginManagement;
 import com.neu.his.vojo.LoginReturn;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -27,11 +29,14 @@ public class LoginController {
         return "login";
     }
 
+    Logger logger = LoggerFactory.getLogger(LoginController.class);
+
     @RequestMapping(value = "/loginPost", method = RequestMethod.POST)
     public String loginPost(@RequestParam("userName") String userName,
                             @RequestParam("password") String password,
                             HttpSession session,
                             Map<String,Object> map) {
+        logger.info("登录验证中");
         UserLoginDTO userLoginDTO = new UserLoginDTO();
         userLoginDTO.setUserLoginName(userName);
         userLoginDTO.setUserPsw(password);
@@ -41,10 +46,12 @@ public class LoginController {
             session.setAttribute("userName",loginReturn.getUserName());
             session.setAttribute("userType",loginReturn.getUserType());
             session.setAttribute("userID",loginReturn.getUserID());
+            logger.info("登录成功");
             return "redirect:/index";
         } else {
             //登录失败
             map.put("msg","用户名密码错误");
+            logger.info("登录失败");
             return "login";
         }
     }

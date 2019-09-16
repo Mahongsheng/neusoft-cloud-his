@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class RoutingController {
+
     @GetMapping("/register.html")
     public String registerHtml() {
         return "register";

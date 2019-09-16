@@ -1,0 +1,35 @@
+2019-09-16 10:08:14.253  INFO 6884 --- [main] com.neu.his.HisApplication               : Starting HisApplication on LAPTOP-ICT3KM42 with PID 6884 (C:\Users\lenovo\Desktop\JavaWebDesign\his\target\classes started by lenovo in C:\Users\lenovo\Desktop\JavaWebDesign\his)
+2019-09-16 10:08:14.259  INFO 6884 --- [main] com.neu.his.HisApplication               : No active profile set, falling back to default profiles: default
+2019-09-16 10:08:17.370  INFO 6884 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$31b135d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-16 10:08:17.853  INFO 6884 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2019-09-16 10:08:17.897  INFO 6884 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-16 10:08:17.898  INFO 6884 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-16 10:08:18.201  INFO 6884 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-16 10:08:18.202  INFO 6884 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3799 ms
+2019-09-16 10:08:20.083  INFO 6884 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-16 10:08:20.302  INFO 6884 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-09-16 10:08:20.463  INFO 6884 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-09-16 10:08:20.485  INFO 6884 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-09-16 10:08:20.504  INFO 6884 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-09-16 10:08:20.985  INFO 6884 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2019-09-16 10:08:20.989  INFO 6884 --- [main] com.neu.his.HisApplication               : Started HisApplication in 7.552 seconds (JVM running for 9.715)
+2019-09-16 10:09:43.636  INFO 6884 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-16 10:09:43.637  INFO 6884 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-16 10:09:43.656  INFO 6884 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 17 ms
+2019-09-16 10:09:52.757  INFO 6884 --- [http-nio-8888-exec-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-16 10:09:53.914  INFO 6884 --- [http-nio-8888-exec-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-16 10:10:01.273  INFO 6884 --- [http-nio-8888-exec-10] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的未诊断患者信息
+2019-09-16 10:10:01.273  INFO 6884 --- [http-nio-8888-exec-3] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的已诊断患者信息
+2019-09-16 10:10:05.470  INFO 6884 --- [http-nio-8888-exec-5] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 10:10:05.751  INFO 6884 --- [http-nio-8888-exec-4] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 10:10:05.851  INFO 6884 --- [http-nio-8888-exec-2] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 10:10:05.880  INFO 6884 --- [http-nio-8888-exec-8] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 10:10:06.005  INFO 6884 --- [http-nio-8888-exec-9] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 10:10:06.091  INFO 6884 --- [http-nio-8888-exec-7] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 10:10:06.176  INFO 6884 --- [http-nio-8888-exec-1] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 10:10:06.344  INFO 6884 --- [http-nio-8888-exec-6] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 10:10:07.133  INFO 6884 --- [http-nio-8888-exec-10] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 10:10:10.521  INFO 6884 --- [http-nio-8888-exec-3] com.neu.his.web.ClinicController         : 模糊匹配疾病
+2019-09-16 10:11:23.471  INFO 6884 --- [http-nio-8888-exec-1] com.neu.his.web.ClinicController         : 模糊匹配药品
+2019-09-16 10:11:26.125  INFO 6884 --- [http-nio-8888-exec-6] com.neu.his.web.ClinicController         : 找特定的药品
+2019-09-16 10:11:26.717  INFO 6884 --- [http-nio-8888-exec-10] com.neu.his.web.ClinicController         : 找特定的药品

@@ -3,6 +3,8 @@ package com.neu.his.web;
 import com.alibaba.fastjson.JSONObject;
 import com.neu.his.dto.*;
 import com.neu.his.serviceInterface.ClinicManagement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +20,8 @@ public class ClinicController {
     @Autowired
     private ClinicManagement clinicManagement;
 
+    Logger logger = LoggerFactory.getLogger(ClinicController.class);
+
     /**
      * 填写病历首页
      *
@@ -27,6 +31,7 @@ public class ClinicController {
     @RequestMapping(value = "/writeMedical", method = RequestMethod.POST)
     @ResponseBody
     public JSONObject writeMedical(@RequestBody MedicalRecordDTO medicalRecordDTO) {
+        logger.info("填写病历首页");
         return clinicManagement.writeMedical(medicalRecordDTO);
     }
 
@@ -39,6 +44,7 @@ public class ClinicController {
     @RequestMapping(value = "/makePrescription", method = RequestMethod.POST)
     @ResponseBody
     public JSONObject makePrescription(@RequestBody DrugPrescriptionDTO drugPrescriptionDTO) {
+        logger.info("医生开立处方");
         return clinicManagement.makePrescription(drugPrescriptionDTO);
     }
 
@@ -51,6 +57,7 @@ public class ClinicController {
     @RequestMapping(value = "/getAllPatientNotDiagnose", method = RequestMethod.POST)
     @ResponseBody
     public List<JSONObject> getAllPatientNotDiagnose(@RequestBody DoctorIDDTO doctorIDDTO) {
+        logger.info("根据医生ID找到挂号到该医生的未诊断患者信息");
         return clinicManagement.getAllPatientNotDiagnose(doctorIDDTO);
     }
 
@@ -63,6 +70,7 @@ public class ClinicController {
     @RequestMapping(value = "/getAllPatientDiagnose", method = RequestMethod.POST)
     @ResponseBody
     public List<JSONObject> getAllPatientDiagnose(@RequestBody DoctorIDDTO doctorIDDTO) {
+        logger.info("根据医生ID找到挂号到该医生的已诊断患者信息");
         return clinicManagement.getAllPatientDiagnose(doctorIDDTO);
     }
 
@@ -75,6 +83,7 @@ public class ClinicController {
     @RequestMapping(value = "/getSpecificPatientInfo", method = RequestMethod.POST)
     @ResponseBody
     public JSONObject getSpecificPatientInfo(@RequestBody RegistrationIDDTO registrationIDDTO) {
+        logger.info("根据病历号得到该患者的一些信息");
         return clinicManagement.getSpecificPatientInfo(registrationIDDTO);
     }
 
@@ -87,6 +96,7 @@ public class ClinicController {
     @RequestMapping(value = "/findDiseaseCategory", method = RequestMethod.POST)
     @ResponseBody
     public List<JSONObject> findDiseaseCategory(@RequestBody FindDiseaseCategoryDTO findDiseaseCategoryDTO) {
+        logger.info("模糊匹配疾病类型");
         return clinicManagement.findDiseaseCategory(findDiseaseCategoryDTO);
     }
 
@@ -99,6 +109,7 @@ public class ClinicController {
     @RequestMapping(value = "/findDisease", method = RequestMethod.POST)
     @ResponseBody
     public List<JSONObject> findDisease(@RequestBody FindDiseaseDTO findDiseaseDTO) {
+        logger.info("模糊匹配疾病");
         return clinicManagement.findDisease(findDiseaseDTO);
     }
 
@@ -111,6 +122,7 @@ public class ClinicController {
     @RequestMapping(value = "/findDrug", method = RequestMethod.POST)
     @ResponseBody
     public List<JSONObject> findDrug(@RequestBody FindDrugDTO findDrugDTO) {
+        logger.info("模糊匹配药品");
         return clinicManagement.findDrug(findDrugDTO);
     }
 
@@ -123,6 +135,7 @@ public class ClinicController {
     @RequestMapping(value = "/findSpecifDrug", method = RequestMethod.POST)
     @ResponseBody
     public JSONObject findSpecifDrug(@RequestBody DrugIDDTO drugIDDTO) {
+        logger.info("找特定的药品");
         return clinicManagement.findSpecifDrug(drugIDDTO);
     }
 }
