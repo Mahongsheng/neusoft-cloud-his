@@ -18,6 +18,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 药房管理部分实现层
+ */
 @Service
 public class DrugManagementImpl implements DrugManagement {
 

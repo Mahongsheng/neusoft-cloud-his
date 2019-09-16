@@ -1,3 +1,4 @@
+// 全选框的实现
 $(document).ready(function () {
     $('input[name="selectAll"]').change(function () {
         if ($(this).is(":checked")) {
@@ -9,7 +10,7 @@ $(document).ready(function () {
         }
     });
 });
-
+//搜索应当进行发药的处方明细信息
 $(document).ready(function () {
     $("#searchPrescribeInfo").click(function () {
         let medicalRecordID = $("input[name = 'medicalRecordID']").val();
@@ -44,7 +45,7 @@ $(document).ready(function () {
         }
     });
 });
-
+//发药操作
 $(document).ready(function () {
     $("#prescribeNow").click(function () {
         let sendJson = {};

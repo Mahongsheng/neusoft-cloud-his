@@ -33,3 +33,494 @@
 2019-09-16 10:11:23.471  INFO 6884 --- [http-nio-8888-exec-1] com.neu.his.web.ClinicController         : 模糊匹配药品
 2019-09-16 10:11:26.125  INFO 6884 --- [http-nio-8888-exec-6] com.neu.his.web.ClinicController         : 找特定的药品
 2019-09-16 10:11:26.717  INFO 6884 --- [http-nio-8888-exec-10] com.neu.his.web.ClinicController         : 找特定的药品
+2019-09-16 17:07:39.675  INFO 15152 --- [main] com.neu.his.HisApplication               : Starting HisApplication on LAPTOP-ICT3KM42 with PID 15152 (C:\Users\lenovo\Desktop\JavaWebDesign\his\target\classes started by lenovo in C:\Users\lenovo\Desktop\JavaWebDesign\his)
+2019-09-16 17:07:39.681  INFO 15152 --- [main] com.neu.his.HisApplication               : No active profile set, falling back to default profiles: default
+2019-09-16 17:07:42.250  INFO 15152 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$6758e35b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-16 17:07:42.574  INFO 15152 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2019-09-16 17:07:42.603  INFO 15152 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-16 17:07:42.603  INFO 15152 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-16 17:07:42.824  INFO 15152 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-16 17:07:42.825  INFO 15152 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3063 ms
+2019-09-16 17:07:44.303  INFO 15152 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-16 17:07:44.453  INFO 15152 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-09-16 17:07:44.573  INFO 15152 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-09-16 17:07:44.597  INFO 15152 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-09-16 17:07:44.614  INFO 15152 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-09-16 17:07:44.970  INFO 15152 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2019-09-16 17:07:44.973  INFO 15152 --- [main] com.neu.his.HisApplication               : Started HisApplication in 6.334 seconds (JVM running for 8.279)
+2019-09-16 17:07:55.831  INFO 15152 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-16 17:07:55.833  INFO 15152 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-16 17:07:55.848  INFO 15152 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 14 ms
+2019-09-16 17:08:04.611  INFO 15152 --- [http-nio-8888-exec-3] com.neu.his.web.LoginController          : 登录验证中
+2019-09-16 17:08:04.735  INFO 15152 --- [http-nio-8888-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-16 17:08:05.708  INFO 15152 --- [http-nio-8888-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-16 17:08:05.780  INFO 15152 --- [http-nio-8888-exec-3] com.neu.his.web.LoginController          : 登录成功
+2019-09-16 17:08:05.803  INFO 15152 --- [http-nio-8888-exec-4] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 17:08:12.203  INFO 15152 --- [http-nio-8888-exec-9] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的未诊断患者信息
+2019-09-16 17:08:12.203  INFO 15152 --- [http-nio-8888-exec-10] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的已诊断患者信息
+2019-09-16 17:12:51.212  INFO 17312 --- [main] com.neu.his.HisApplication               : Starting HisApplication on LAPTOP-ICT3KM42 with PID 17312 (C:\Users\lenovo\Desktop\JavaWebDesign\his\target\classes started by lenovo in C:\Users\lenovo\Desktop\JavaWebDesign\his)
+2019-09-16 17:12:51.216  INFO 17312 --- [main] com.neu.his.HisApplication               : No active profile set, falling back to default profiles: default
+2019-09-16 17:12:53.835  INFO 17312 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$eb628307] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-16 17:12:54.333  INFO 17312 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2019-09-16 17:12:54.372  INFO 17312 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-16 17:12:54.372  INFO 17312 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-16 17:12:54.774  INFO 17312 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-16 17:12:54.775  INFO 17312 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3459 ms
+2019-09-16 17:12:56.616  INFO 17312 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-16 17:12:56.767  INFO 17312 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-09-16 17:12:56.904  INFO 17312 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-09-16 17:12:56.927  INFO 17312 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-09-16 17:12:56.949  INFO 17312 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-09-16 17:12:57.412  INFO 17312 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2019-09-16 17:12:57.418  INFO 17312 --- [main] com.neu.his.HisApplication               : Started HisApplication in 6.92 seconds (JVM running for 8.636)
+2019-09-16 17:13:00.080  INFO 17312 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-16 17:13:00.081  INFO 17312 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-16 17:13:00.092  INFO 17312 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2019-09-16 17:13:05.170  INFO 17312 --- [http-nio-8888-exec-10] com.neu.his.web.LoginController          : 登录验证中
+2019-09-16 17:13:05.247  INFO 17312 --- [http-nio-8888-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-16 17:13:05.803  INFO 17312 --- [http-nio-8888-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-16 17:13:05.848  INFO 17312 --- [http-nio-8888-exec-10] com.neu.his.web.LoginController          : 登录成功
+2019-09-16 17:13:05.859  INFO 17312 --- [http-nio-8888-exec-4] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 17:13:11.278  INFO 17312 --- [http-nio-8888-exec-3] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的已诊断患者信息
+2019-09-16 17:13:11.278  INFO 17312 --- [http-nio-8888-exec-7] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的未诊断患者信息
+2019-09-16 17:13:59.319  INFO 13716 --- [main] com.neu.his.HisApplication               : Starting HisApplication on LAPTOP-ICT3KM42 with PID 13716 (C:\Users\lenovo\Desktop\JavaWebDesign\his\target\classes started by lenovo in C:\Users\lenovo\Desktop\JavaWebDesign\his)
+2019-09-16 17:13:59.325  INFO 13716 --- [main] com.neu.his.HisApplication               : No active profile set, falling back to default profiles: default
+2019-09-16 17:14:01.799  INFO 13716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d33660c4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-16 17:14:02.410  INFO 13716 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2019-09-16 17:14:02.466  INFO 13716 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-16 17:14:02.467  INFO 13716 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-16 17:14:02.844  INFO 13716 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-16 17:14:02.845  INFO 13716 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3431 ms
+2019-09-16 17:14:04.502  INFO 13716 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-16 17:14:04.637  INFO 13716 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-09-16 17:14:04.753  INFO 13716 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-09-16 17:14:04.772  INFO 13716 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-09-16 17:14:04.788  INFO 13716 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-09-16 17:14:05.141  INFO 13716 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2019-09-16 17:14:05.145  INFO 13716 --- [main] com.neu.his.HisApplication               : Started HisApplication in 6.472 seconds (JVM running for 7.888)
+2019-09-16 17:14:24.363  INFO 13716 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-16 17:14:24.364  INFO 13716 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-16 17:14:24.375  INFO 13716 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+2019-09-16 17:14:29.848  INFO 13716 --- [http-nio-8888-exec-10] com.neu.his.web.LoginController          : 登录验证中
+2019-09-16 17:14:29.924  INFO 13716 --- [http-nio-8888-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-16 17:14:30.477  INFO 13716 --- [http-nio-8888-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-16 17:14:30.519  INFO 13716 --- [http-nio-8888-exec-10] com.neu.his.web.LoginController          : 登录成功
+2019-09-16 17:14:30.532  INFO 13716 --- [http-nio-8888-exec-1] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 17:14:33.413  INFO 13716 --- [http-nio-8888-exec-10] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的未诊断患者信息
+2019-09-16 17:14:33.413  INFO 13716 --- [http-nio-8888-exec-3] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的已诊断患者信息
+2019-09-16 17:16:03.857  INFO 13716 --- [http-nio-8888-exec-9] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 17:16:06.706  INFO 13716 --- [http-nio-8888-exec-10] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的未诊断患者信息
+2019-09-16 17:16:06.709  INFO 13716 --- [http-nio-8888-exec-2] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的已诊断患者信息
+2019-09-16 17:16:07.946  INFO 13716 --- [http-nio-8888-exec-8] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 17:16:12.590  INFO 13716 --- [http-nio-8888-exec-7] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的未诊断患者信息
+2019-09-16 17:16:12.591  INFO 13716 --- [http-nio-8888-exec-1] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的已诊断患者信息
+2019-09-16 17:16:19.923  INFO 15744 --- [main] com.neu.his.HisApplication               : Starting HisApplication on LAPTOP-ICT3KM42 with PID 15744 (C:\Users\lenovo\Desktop\JavaWebDesign\his\target\classes started by lenovo in C:\Users\lenovo\Desktop\JavaWebDesign\his)
+2019-09-16 17:16:19.929  INFO 15744 --- [main] com.neu.his.HisApplication               : No active profile set, falling back to default profiles: default
+2019-09-16 17:16:22.597  INFO 15744 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d88f4ac0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-16 17:16:23.136  INFO 15744 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2019-09-16 17:16:23.177  INFO 15744 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-16 17:16:23.177  INFO 15744 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-16 17:16:23.506  INFO 15744 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-16 17:16:23.507  INFO 15744 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3491 ms
+2019-09-16 17:16:25.163  INFO 15744 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-16 17:16:25.306  INFO 15744 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-09-16 17:16:25.453  INFO 15744 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-09-16 17:16:25.476  INFO 15744 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-09-16 17:16:25.500  INFO 15744 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-09-16 17:16:25.914  INFO 15744 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2019-09-16 17:16:25.919  INFO 15744 --- [main] com.neu.his.HisApplication               : Started HisApplication in 6.687 seconds (JVM running for 8.06)
+2019-09-16 17:16:27.746  INFO 15744 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-16 17:16:27.747  INFO 15744 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-16 17:16:27.757  INFO 15744 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2019-09-16 17:16:33.009  INFO 15744 --- [http-nio-8888-exec-10] com.neu.his.web.LoginController          : 登录验证中
+2019-09-16 17:16:33.083  INFO 15744 --- [http-nio-8888-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-16 17:16:33.659  INFO 15744 --- [http-nio-8888-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-16 17:16:33.727  INFO 15744 --- [http-nio-8888-exec-10] com.neu.his.web.LoginController          : 登录成功
+2019-09-16 17:16:33.742  INFO 15744 --- [http-nio-8888-exec-1] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 17:16:36.818  INFO 15744 --- [http-nio-8888-exec-7] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的未诊断患者信息
+2019-09-16 17:16:36.818  INFO 15744 --- [http-nio-8888-exec-4] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的已诊断患者信息
+2019-09-16 17:17:52.571  INFO 11784 --- [main] com.neu.his.HisApplication               : Starting HisApplication on LAPTOP-ICT3KM42 with PID 11784 (C:\Users\lenovo\Desktop\JavaWebDesign\his\target\classes started by lenovo in C:\Users\lenovo\Desktop\JavaWebDesign\his)
+2019-09-16 17:17:52.576  INFO 11784 --- [main] com.neu.his.HisApplication               : No active profile set, falling back to default profiles: default
+2019-09-16 17:17:54.931  INFO 11784 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d33660c4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-16 17:17:55.361  INFO 11784 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2019-09-16 17:17:55.395  INFO 11784 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-16 17:17:55.395  INFO 11784 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-16 17:17:55.749  INFO 11784 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-16 17:17:55.750  INFO 11784 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3089 ms
+2019-09-16 17:17:57.668  INFO 11784 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-16 17:17:57.849  INFO 11784 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-09-16 17:17:57.979  INFO 11784 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-09-16 17:17:57.997  INFO 11784 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-09-16 17:17:58.012  INFO 11784 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-09-16 17:17:58.391  INFO 11784 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2019-09-16 17:17:58.395  INFO 11784 --- [main] com.neu.his.HisApplication               : Started HisApplication in 6.499 seconds (JVM running for 7.894)
+2019-09-16 17:17:59.838  INFO 11784 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-16 17:17:59.839  INFO 11784 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-16 17:17:59.851  INFO 11784 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 12 ms
+2019-09-16 17:18:10.066  INFO 11784 --- [http-nio-8888-exec-10] com.neu.his.web.LoginController          : 登录验证中
+2019-09-16 17:18:10.165  INFO 11784 --- [http-nio-8888-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-16 17:18:11.036  INFO 11784 --- [http-nio-8888-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-16 17:18:11.106  INFO 11784 --- [http-nio-8888-exec-10] com.neu.his.web.LoginController          : 登录成功
+2019-09-16 17:18:11.123  INFO 11784 --- [http-nio-8888-exec-1] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 17:18:15.121  INFO 11784 --- [http-nio-8888-exec-5] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的未诊断患者信息
+2019-09-16 17:18:15.121  INFO 11784 --- [http-nio-8888-exec-3] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的已诊断患者信息
+2019-09-16 20:45:05.296  INFO 9332 --- [main] com.neu.his.HisApplication               : Starting HisApplication on LAPTOP-ICT3KM42 with PID 9332 (C:\Users\lenovo\Desktop\JavaWebDesign\his\target\classes started by lenovo in C:\Users\lenovo\Desktop\JavaWebDesign\his)
+2019-09-16 20:45:05.346  INFO 9332 --- [main] com.neu.his.HisApplication               : No active profile set, falling back to default profiles: default
+2019-09-16 20:45:09.195  INFO 9332 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$54842cf] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-16 20:45:09.993  INFO 9332 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2019-09-16 20:45:10.074  INFO 9332 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-16 20:45:10.078  INFO 9332 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-16 20:45:10.448  INFO 9332 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-16 20:45:10.449  INFO 9332 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4960 ms
+2019-09-16 20:45:12.966  INFO 9332 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-16 20:45:13.212  INFO 9332 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-09-16 20:45:13.499  INFO 9332 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-09-16 20:45:13.525  INFO 9332 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-09-16 20:45:13.553  INFO 9332 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-09-16 20:45:15.169  INFO 9332 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2019-09-16 20:45:15.216  INFO 9332 --- [main] com.neu.his.HisApplication               : Started HisApplication in 10.812 seconds (JVM running for 13.552)
+2019-09-16 20:45:22.317  INFO 9332 --- [http-nio-8888-exec-10] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-16 20:45:22.325  INFO 9332 --- [http-nio-8888-exec-10] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-16 20:45:22.347  INFO 9332 --- [http-nio-8888-exec-10] o.s.web.servlet.DispatcherServlet        : Completed initialization in 21 ms
+2019-09-16 20:45:27.015  INFO 9332 --- [http-nio-8888-exec-9] com.neu.his.web.LoginController          : 登录验证中
+2019-09-16 20:45:27.131  INFO 9332 --- [http-nio-8888-exec-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-16 20:45:27.973  INFO 9332 --- [http-nio-8888-exec-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-16 20:45:28.051  INFO 9332 --- [http-nio-8888-exec-9] com.neu.his.web.LoginController          : 登录成功
+2019-09-16 20:45:28.073  INFO 9332 --- [http-nio-8888-exec-8] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 20:45:33.497  INFO 9332 --- [http-nio-8888-exec-2] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的未诊断患者信息
+2019-09-16 20:45:33.497  INFO 9332 --- [http-nio-8888-exec-1] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的已诊断患者信息
+2019-09-16 20:45:36.607  INFO 9332 --- [http-nio-8888-exec-10] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 20:45:38.929  INFO 9332 --- [http-nio-8888-exec-5] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的已诊断患者信息
+2019-09-16 20:45:38.928  INFO 9332 --- [http-nio-8888-exec-7] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的未诊断患者信息
+2019-09-16 20:46:03.794  INFO 9332 --- [http-nio-8888-exec-6] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 20:46:06.638  INFO 9332 --- [http-nio-8888-exec-2] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的未诊断患者信息
+2019-09-16 20:46:06.639  INFO 9332 --- [http-nio-8888-exec-1] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的已诊断患者信息
+2019-09-16 20:46:22.988  INFO 4100 --- [main] com.neu.his.HisApplication               : Starting HisApplication on LAPTOP-ICT3KM42 with PID 4100 (C:\Users\lenovo\Desktop\JavaWebDesign\his\target\classes started by lenovo in C:\Users\lenovo\Desktop\JavaWebDesign\his)
+2019-09-16 20:46:22.993  INFO 4100 --- [main] com.neu.his.HisApplication               : No active profile set, falling back to default profiles: default
+2019-09-16 20:46:26.379  INFO 4100 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d311b372] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-16 20:46:26.915  INFO 4100 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2019-09-16 20:46:26.959  INFO 4100 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-16 20:46:26.960  INFO 4100 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-16 20:46:27.307  INFO 4100 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-16 20:46:27.308  INFO 4100 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4216 ms
+2019-09-16 20:46:29.204  INFO 4100 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-16 20:46:29.374  INFO 4100 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-09-16 20:46:29.522  INFO 4100 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-09-16 20:46:29.544  INFO 4100 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-09-16 20:46:29.564  INFO 4100 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-09-16 20:46:30.151  INFO 4100 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2019-09-16 20:46:30.161  INFO 4100 --- [main] com.neu.his.HisApplication               : Started HisApplication in 7.965 seconds (JVM running for 10.232)
+2019-09-16 20:46:34.084  INFO 4100 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-16 20:46:34.085  INFO 4100 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-16 20:46:34.103  INFO 4100 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 17 ms
+2019-09-16 20:46:38.334  INFO 4100 --- [http-nio-8888-exec-3] com.neu.his.web.LoginController          : 登录验证中
+2019-09-16 20:46:38.426  INFO 4100 --- [http-nio-8888-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-16 20:46:39.402  INFO 4100 --- [http-nio-8888-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-16 20:46:39.464  INFO 4100 --- [http-nio-8888-exec-3] com.neu.his.web.LoginController          : 登录成功
+2019-09-16 20:46:39.480  INFO 4100 --- [http-nio-8888-exec-4] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 20:46:41.849  INFO 4100 --- [http-nio-8888-exec-7] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的已诊断患者信息
+2019-09-16 20:46:41.864  INFO 4100 --- [http-nio-8888-exec-6] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的未诊断患者信息
+2019-09-16 20:47:02.974  INFO 11368 --- [main] com.neu.his.HisApplication               : Starting HisApplication on LAPTOP-ICT3KM42 with PID 11368 (C:\Users\lenovo\Desktop\JavaWebDesign\his\target\classes started by lenovo in C:\Users\lenovo\Desktop\JavaWebDesign\his)
+2019-09-16 20:47:02.994  INFO 11368 --- [main] com.neu.his.HisApplication               : No active profile set, falling back to default profiles: default
+2019-09-16 20:47:06.457  INFO 11368 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$ed36b9b4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-16 20:47:06.910  INFO 11368 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2019-09-16 20:47:06.947  INFO 11368 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-16 20:47:06.948  INFO 11368 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-16 20:47:07.195  INFO 11368 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-16 20:47:07.196  INFO 11368 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4089 ms
+2019-09-16 20:47:08.916  INFO 11368 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-16 20:47:09.085  INFO 11368 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-09-16 20:47:09.256  INFO 11368 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-09-16 20:47:09.278  INFO 11368 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-09-16 20:47:09.297  INFO 11368 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-09-16 20:47:09.753  INFO 11368 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2019-09-16 20:47:09.759  INFO 11368 --- [main] com.neu.his.HisApplication               : Started HisApplication in 7.52 seconds (JVM running for 9.315)
+2019-09-16 20:55:18.315  INFO 11368 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-16 20:55:18.317  INFO 11368 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-16 20:55:18.333  INFO 11368 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
+2019-09-16 20:55:24.723  INFO 11368 --- [http-nio-8888-exec-3] com.neu.his.web.LoginController          : 登录验证中
+2019-09-16 20:55:24.829  INFO 11368 --- [http-nio-8888-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-16 20:55:25.743  INFO 11368 --- [http-nio-8888-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-16 20:55:25.812  INFO 11368 --- [http-nio-8888-exec-3] com.neu.his.web.LoginController          : 登录成功
+2019-09-16 20:55:25.828  INFO 11368 --- [http-nio-8888-exec-4] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 20:55:30.554  INFO 11368 --- [http-nio-8888-exec-8] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的已诊断患者信息
+2019-09-16 20:55:30.554  INFO 11368 --- [http-nio-8888-exec-7] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的未诊断患者信息
+2019-09-16 21:46:40.969  WARN 11368 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=33m44s925ms958µs244ns).
+2019-09-16 21:47:06.545  INFO 11368 --- [http-nio-8888-exec-3] com.neu.his.web.LoginController          : 登录验证中
+2019-09-16 21:47:06.572  INFO 11368 --- [http-nio-8888-exec-3] com.neu.his.web.LoginController          : 登录成功
+2019-09-16 21:47:06.592  INFO 11368 --- [http-nio-8888-exec-4] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 21:47:10.978  INFO 11368 --- [http-nio-8888-exec-6] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的未诊断患者信息
+2019-09-16 21:47:10.978  INFO 11368 --- [http-nio-8888-exec-7] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的已诊断患者信息
+2019-09-16 21:48:13.979  INFO 11368 --- [http-nio-8888-exec-3] com.neu.his.web.RegistrationController   : 得到所有科室的名称
+2019-09-16 21:48:13.982  INFO 11368 --- [http-nio-8888-exec-4] com.neu.his.web.RegistrationController   : 找到最大可用发票号
+2019-09-16 21:48:13.984  INFO 11368 --- [http-nio-8888-exec-2] com.neu.his.web.RegistrationController   : 挂号时根据病历号得到一些信息
+2019-09-16 21:52:04.104  INFO 11368 --- [http-nio-8888-exec-8] com.neu.his.web.RegistrationController   : 挂号时根据病历号得到一些信息
+2019-09-16 21:53:37.876  INFO 11368 --- [http-nio-8888-exec-9] com.neu.his.web.RegistrationController   : 根据科室名称得到所有医生姓名
+2019-09-16 21:53:43.799  INFO 11368 --- [http-nio-8888-exec-3] com.neu.his.web.RegistrationController   : 根据科室名称得到所有医生姓名
+2019-09-16 21:53:43.799  INFO 11368 --- [http-nio-8888-exec-1] com.neu.his.web.RegistrationController   : 得到该挂号级别对应的挂号金额
+2019-09-16 21:53:45.356  INFO 11368 --- [http-nio-8888-exec-2] com.neu.his.web.RegistrationController   : 根据医生ID得到该医生初始挂号额和已挂号额
+2019-09-16 21:53:52.881  INFO 11368 --- [http-nio-8888-exec-4] com.neu.his.web.RegistrationController   : 挂号
+2019-09-16 21:53:52.988  INFO 11368 --- [http-nio-8888-exec-5] com.neu.his.web.RegistrationController   : 挂号时根据病历号得到一些信息
+2019-09-16 21:53:52.989  INFO 11368 --- [http-nio-8888-exec-7] com.neu.his.web.RegistrationController   : 得到所有科室的名称
+2019-09-16 21:53:52.988  INFO 11368 --- [http-nio-8888-exec-8] com.neu.his.web.RegistrationController   : 找到最大可用发票号
+2019-09-16 21:54:01.136  INFO 11368 --- [http-nio-8888-exec-1] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 21:54:01.136  INFO 11368 --- [http-nio-8888-exec-3] com.neu.his.web.RegistrationController   : 挂号时根据病历号得到一些信息
+2019-09-16 21:54:04.492  INFO 11368 --- [http-nio-8888-exec-2] com.neu.his.web.RegistrationController   : 退号
+2019-09-16 21:54:04.538  INFO 11368 --- [http-nio-8888-exec-4] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 21:54:07.935  INFO 11368 --- [http-nio-8888-exec-6] com.neu.his.web.RegistrationController   : 退号
+2019-09-16 21:54:07.973  INFO 11368 --- [http-nio-8888-exec-5] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 21:54:10.876  INFO 11368 --- [http-nio-8888-exec-8] com.neu.his.web.RegistrationController   : 退号
+2019-09-16 21:54:10.908  INFO 11368 --- [http-nio-8888-exec-7] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 21:54:11.536  INFO 11368 --- [http-nio-8888-exec-10] com.neu.his.web.RegistrationController   : 退号
+2019-09-16 21:54:11.578  INFO 11368 --- [http-nio-8888-exec-9] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 21:54:12.493  INFO 11368 --- [http-nio-8888-exec-3] com.neu.his.web.RegistrationController   : 退号
+2019-09-16 21:54:12.526  INFO 11368 --- [http-nio-8888-exec-1] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 21:54:14.102  INFO 11368 --- [http-nio-8888-exec-2] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 21:54:20.760  INFO 11368 --- [http-nio-8888-exec-8] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 21:54:20.760  INFO 11368 --- [http-nio-8888-exec-5] com.neu.his.web.RegistrationController   : 挂号时根据病历号得到一些信息
+2019-09-16 21:54:53.259  INFO 11368 --- [http-nio-8888-exec-7] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 21:54:59.429  INFO 11368 --- [http-nio-8888-exec-1] com.neu.his.web.RegistrationController   : 挂号时根据病历号得到一些信息
+2019-09-16 21:54:59.430  INFO 11368 --- [http-nio-8888-exec-2] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 21:55:02.973  INFO 11368 --- [http-nio-8888-exec-4] com.neu.his.web.RegistrationController   : 退号
+2019-09-16 21:55:03.005  INFO 11368 --- [http-nio-8888-exec-6] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 21:56:31.378  INFO 10204 --- [main] com.neu.his.HisApplication               : Starting HisApplication on LAPTOP-ICT3KM42 with PID 10204 (C:\Users\lenovo\Desktop\JavaWebDesign\his\target\classes started by lenovo in C:\Users\lenovo\Desktop\JavaWebDesign\his)
+2019-09-16 21:56:31.383  INFO 10204 --- [main] com.neu.his.HisApplication               : No active profile set, falling back to default profiles: default
+2019-09-16 21:56:33.851  INFO 10204 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4035af7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-16 21:56:34.363  INFO 10204 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2019-09-16 21:56:34.395  INFO 10204 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-16 21:56:34.395  INFO 10204 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-16 21:56:34.668  INFO 10204 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-16 21:56:34.668  INFO 10204 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3196 ms
+2019-09-16 21:56:36.385  INFO 10204 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-16 21:56:36.556  INFO 10204 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-09-16 21:56:36.677  INFO 10204 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-09-16 21:56:36.693  INFO 10204 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-09-16 21:56:36.707  INFO 10204 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-09-16 21:56:37.045  INFO 10204 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2019-09-16 21:56:37.049  INFO 10204 --- [main] com.neu.his.HisApplication               : Started HisApplication in 6.303 seconds (JVM running for 7.671)
+2019-09-16 21:58:16.856  INFO 10204 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-16 21:58:16.857  INFO 10204 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-16 21:58:16.872  INFO 10204 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
+2019-09-16 21:58:21.405  INFO 10204 --- [http-nio-8888-exec-3] com.neu.his.web.LoginController          : 登录验证中
+2019-09-16 21:58:21.478  INFO 10204 --- [http-nio-8888-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-16 21:58:22.196  INFO 10204 --- [http-nio-8888-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-16 21:58:22.255  INFO 10204 --- [http-nio-8888-exec-3] com.neu.his.web.LoginController          : 登录成功
+2019-09-16 21:58:22.267  INFO 10204 --- [http-nio-8888-exec-4] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 21:58:27.626  INFO 10204 --- [http-nio-8888-exec-7] com.neu.his.web.RegistrationController   : 挂号时根据病历号得到一些信息
+2019-09-16 21:58:27.626  INFO 10204 --- [http-nio-8888-exec-8] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 21:58:29.110  INFO 10204 --- [http-nio-8888-exec-9] com.neu.his.web.RegistrationController   : 退号
+2019-09-16 21:58:29.181  INFO 10204 --- [http-nio-8888-exec-10] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 22:12:00.330  INFO 15900 --- [main] com.neu.his.HisApplication               : Starting HisApplication on LAPTOP-ICT3KM42 with PID 15900 (C:\Users\lenovo\Desktop\JavaWebDesign\his\target\classes started by lenovo in C:\Users\lenovo\Desktop\JavaWebDesign\his)
+2019-09-16 22:12:00.334  INFO 15900 --- [main] com.neu.his.HisApplication               : No active profile set, falling back to default profiles: default
+2019-09-16 22:12:00.560  INFO 15900 --- [main] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-16 22:12:00.560  INFO 15900 --- [main] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-16 22:12:05.979  INFO 15900 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4b5eb86b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-16 22:12:07.583  INFO 15900 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2019-09-16 22:12:07.680  INFO 15900 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-16 22:12:07.681  INFO 15900 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-16 22:12:08.513  INFO 15900 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-16 22:12:08.514  INFO 15900 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 7952 ms
+2019-09-16 22:12:12.079  INFO 15900 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-16 22:12:12.216  INFO 15900 --- [main] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-09-16 22:12:12.510  INFO 15900 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-09-16 22:12:14.414  INFO 15900 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-09-16 22:12:14.481  INFO 15900 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-09-16 22:12:14.534  INFO 15900 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-09-16 22:12:15.794  INFO 15900 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2019-09-16 22:12:15.810  INFO 15900 --- [main] com.neu.his.HisApplication               : Started HisApplication in 18.843 seconds (JVM running for 51.628)
+2019-09-16 22:12:22.112  INFO 15900 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-16 22:12:22.113  INFO 15900 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-16 22:12:22.148  INFO 15900 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 34 ms
+2019-09-16 22:12:27.118  INFO 15900 --- [http-nio-8888-exec-3] com.neu.his.web.LoginController          : 登录验证中
+2019-09-16 22:12:27.418  INFO 15900 --- [http-nio-8888-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-16 22:12:28.232  INFO 15900 --- [http-nio-8888-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-16 22:12:28.591  INFO 15900 --- [http-nio-8888-exec-3] com.neu.his.web.LoginController          : 登录成功
+2019-09-16 22:12:28.623  INFO 15900 --- [http-nio-8888-exec-4] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 22:12:34.085  INFO 15900 --- [http-nio-8888-exec-7] com.neu.his.web.RegistrationController   : 挂号时根据病历号得到一些信息
+2019-09-16 22:12:34.085  INFO 15900 --- [http-nio-8888-exec-6] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 22:12:37.682  INFO 15900 --- [http-nio-8888-exec-9] com.neu.his.web.RegistrationController   : 退号
+2019-09-16 22:12:37.853  INFO 15900 --- [http-nio-8888-exec-10] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 22:13:46.016  INFO 15900 --- [http-nio-8888-exec-3] com.neu.his.web.RegistrationController   : 退号
+2019-09-16 22:13:46.066  INFO 15900 --- [http-nio-8888-exec-4] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 22:13:47.240  INFO 15900 --- [http-nio-8888-exec-5] com.neu.his.web.RegistrationController   : 退号
+2019-09-16 22:13:47.293  INFO 15900 --- [http-nio-8888-exec-8] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 22:13:48.080  INFO 15900 --- [http-nio-8888-exec-6] com.neu.his.web.RegistrationController   : 退号
+2019-09-16 22:13:48.139  INFO 15900 --- [http-nio-8888-exec-7] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 22:13:49.383  INFO 15900 --- [http-nio-8888-exec-9] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 22:14:03.510  INFO 15900 --- [http-nio-8888-exec-6] com.neu.his.web.RegistrationController   : 挂号时根据病历号得到一些信息
+2019-09-16 22:14:03.510  INFO 15900 --- [http-nio-8888-exec-7] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 22:14:27.695  INFO 15900 --- [http-nio-8888-exec-9] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 22:14:47.843  INFO 15900 --- [http-nio-8888-exec-10] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 22:14:47.849  INFO 15900 --- [http-nio-8888-exec-4] com.neu.his.web.RegistrationController   : 挂号时根据病历号得到一些信息
+2019-09-16 22:14:49.383  INFO 15900 --- [http-nio-8888-exec-2] com.neu.his.web.RegistrationController   : 退号
+2019-09-16 22:14:49.454  INFO 15900 --- [http-nio-8888-exec-6] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 22:14:51.005  INFO 15900 --- [http-nio-8888-exec-8] com.neu.his.web.RegistrationController   : 退号
+2019-09-16 22:14:51.051  INFO 15900 --- [http-nio-8888-exec-7] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 22:14:52.220  INFO 15900 --- [http-nio-8888-exec-5] com.neu.his.web.RegistrationController   : 退号
+2019-09-16 22:14:52.270  INFO 15900 --- [http-nio-8888-exec-3] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 22:17:34.854  INFO 13080 --- [restartedMain] com.neu.his.HisApplication               : Starting HisApplication on LAPTOP-ICT3KM42 with PID 13080 (C:\Users\lenovo\Desktop\JavaWebDesign\his\target\classes started by lenovo in C:\Users\lenovo\Desktop\JavaWebDesign\his)
+2019-09-16 22:17:34.860  INFO 13080 --- [restartedMain] com.neu.his.HisApplication               : No active profile set, falling back to default profiles: default
+2019-09-16 22:17:34.975  INFO 13080 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-16 22:17:34.976  INFO 13080 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-16 22:17:40.493  INFO 13080 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e1b8d3e7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-16 22:17:41.469  INFO 13080 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2019-09-16 22:17:41.511  INFO 13080 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-16 22:17:41.513  INFO 13080 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-16 22:17:41.853  INFO 13080 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-16 22:17:41.854  INFO 13080 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 6877 ms
+2019-09-16 22:17:45.464  INFO 13080 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-16 22:17:45.578  INFO 13080 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-09-16 22:17:45.816  INFO 13080 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-09-16 22:17:48.378  INFO 13080 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-09-16 22:17:48.443  INFO 13080 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-09-16 22:17:48.558  INFO 13080 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-09-16 22:17:50.148  INFO 13080 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2019-09-16 22:17:50.160  INFO 13080 --- [restartedMain] com.neu.his.HisApplication               : Started HisApplication in 16.364 seconds (JVM running for 19.446)
+2019-09-16 22:17:55.680  INFO 13080 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-16 22:17:55.688  INFO 13080 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-16 22:17:55.708  INFO 13080 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 20 ms
+2019-09-16 22:18:04.748  INFO 13080 --- [http-nio-8888-exec-4] com.neu.his.web.LoginController          : 登录验证中
+2019-09-16 22:18:04.849  INFO 13080 --- [http-nio-8888-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-16 22:18:05.836  INFO 13080 --- [http-nio-8888-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-16 22:18:05.911  INFO 13080 --- [http-nio-8888-exec-4] com.neu.his.web.LoginController          : 登录成功
+2019-09-16 22:18:05.936  INFO 13080 --- [http-nio-8888-exec-3] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 22:18:14.536  INFO 13080 --- [http-nio-8888-exec-1] com.neu.his.web.RegistrationController   : 挂号时根据病历号得到一些信息
+2019-09-16 22:18:14.536  INFO 13080 --- [http-nio-8888-exec-6] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 22:18:16.243  INFO 13080 --- [http-nio-8888-exec-2] com.neu.his.web.RegistrationController   : 退号
+2019-09-16 22:18:16.317  INFO 13080 --- [http-nio-8888-exec-3] com.neu.his.web.RegistrationController   : 根据病历号得到该患者的所有挂号信息
+2019-09-16 22:18:33.462  INFO 13080 --- [http-nio-8888-exec-4] com.neu.his.web.RegistrationController   : 退号
+2019-09-16 22:18:36.329  INFO 13080 --- [http-nio-8888-exec-8] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 22:18:56.038  INFO 13080 --- [http-nio-8888-exec-4] com.neu.his.web.RegistrationController   : 挂号时根据病历号得到一些信息
+2019-09-16 22:18:56.039  INFO 13080 --- [http-nio-8888-exec-5] com.neu.his.web.RegistrationController   : 根据病历号得到所有处方明细
+2019-09-16 22:19:03.321  INFO 13080 --- [http-nio-8888-exec-1] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的未诊断患者信息
+2019-09-16 22:19:03.323  INFO 13080 --- [http-nio-8888-exec-3] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的已诊断患者信息
+2019-09-16 22:19:05.174  INFO 13080 --- [http-nio-8888-exec-4] com.neu.his.web.ClinicController         : 根据病历号得到该患者的一些信息
+2019-09-16 22:19:12.065  INFO 13080 --- [http-nio-8888-exec-5] com.neu.his.web.ClinicController         : 填写病历首页
+2019-09-16 22:19:12.096  INFO 13080 --- [http-nio-8888-exec-8] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的未诊断患者信息
+2019-09-16 22:19:12.098  INFO 13080 --- [http-nio-8888-exec-9] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的已诊断患者信息
+2019-09-16 22:21:49.535  INFO 13080 --- [http-nio-8888-exec-4] com.neu.his.web.ClinicController         : 填写病历首页
+2019-09-16 22:21:49.768  INFO 13080 --- [http-nio-8888-exec-9] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的已诊断患者信息
+2019-09-16 22:21:49.769  INFO 13080 --- [http-nio-8888-exec-5] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的未诊断患者信息
+2019-09-16 22:22:40.460  INFO 13080 --- [http-nio-8888-exec-8] com.neu.his.web.ClinicController         : 根据病历号得到该患者的一些信息
+2019-09-16 22:22:43.063  INFO 13080 --- [http-nio-8888-exec-2] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 22:22:45.768  INFO 13080 --- [http-nio-8888-exec-7] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的未诊断患者信息
+2019-09-16 22:22:45.770  INFO 13080 --- [http-nio-8888-exec-3] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的已诊断患者信息
+2019-09-16 22:22:46.507  INFO 13080 --- [http-nio-8888-exec-10] com.neu.his.web.ClinicController         : 根据病历号得到该患者的一些信息
+2019-09-16 22:22:54.128  INFO 13080 --- [http-nio-8888-exec-1] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:22:54.487  INFO 13080 --- [http-nio-8888-exec-4] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:22:54.567  INFO 13080 --- [http-nio-8888-exec-8] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:22:54.599  INFO 13080 --- [http-nio-8888-exec-5] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:22:54.731  INFO 13080 --- [http-nio-8888-exec-9] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:22:54.788  INFO 13080 --- [http-nio-8888-exec-2] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:22:54.896  INFO 13080 --- [http-nio-8888-exec-6] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:22:55.008  INFO 13080 --- [http-nio-8888-exec-7] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:22:55.872  INFO 13080 --- [http-nio-8888-exec-3] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:22:56.037  INFO 13080 --- [http-nio-8888-exec-10] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:22:56.153  INFO 13080 --- [http-nio-8888-exec-1] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:22:56.384  INFO 13080 --- [http-nio-8888-exec-4] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:22:56.566  INFO 13080 --- [http-nio-8888-exec-8] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:22:56.655  INFO 13080 --- [http-nio-8888-exec-5] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:22:56.692  INFO 13080 --- [http-nio-8888-exec-9] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:22:56.804  INFO 13080 --- [http-nio-8888-exec-2] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:22:56.877  INFO 13080 --- [http-nio-8888-exec-6] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:22:56.965  INFO 13080 --- [http-nio-8888-exec-7] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:22:57.116  INFO 13080 --- [http-nio-8888-exec-3] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:22:57.854  INFO 13080 --- [http-nio-8888-exec-10] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:23:01.342  INFO 13080 --- [http-nio-8888-exec-1] com.neu.his.web.ClinicController         : 模糊匹配疾病
+2019-09-16 22:23:25.452  INFO 13080 --- [http-nio-8888-exec-4] com.neu.his.web.ClinicController         : 模糊匹配药品
+2019-09-16 22:23:26.077  INFO 13080 --- [http-nio-8888-exec-8] com.neu.his.web.ClinicController         : 找特定的药品
+2019-09-16 22:23:26.507  INFO 13080 --- [http-nio-8888-exec-5] com.neu.his.web.ClinicController         : 找特定的药品
+2019-09-16 22:23:59.613  INFO 13080 --- [http-nio-8888-exec-10] com.neu.his.web.ClinicController         : 医生开立处方
+2019-09-16 22:24:10.982  INFO 13080 --- [http-nio-8888-exec-8] com.neu.his.web.RegistrationController   : 挂号时根据病历号得到一些信息
+2019-09-16 22:24:10.984  INFO 13080 --- [http-nio-8888-exec-5] com.neu.his.web.RegistrationController   : 根据病历号得到所有处方明细
+2019-09-16 22:24:16.388  INFO 13080 --- [http-nio-8888-exec-9] com.neu.his.web.RegistrationController   : 找到最大可用发票号
+2019-09-16 22:24:16.392  INFO 13080 --- [http-nio-8888-exec-6] com.neu.his.web.RegistrationController   : 根据处方明细ID得到应收金额
+2019-09-16 22:24:19.992  INFO 13080 --- [http-nio-8888-exec-2] com.neu.his.web.RegistrationController   : 收费
+2019-09-16 22:24:20.014  INFO 13080 --- [http-nio-8888-exec-7] com.neu.his.web.RegistrationController   : 挂号时根据病历号得到一些信息
+2019-09-16 22:24:20.017  INFO 13080 --- [http-nio-8888-exec-3] com.neu.his.web.RegistrationController   : 根据病历号得到所有处方明细
+2019-09-16 22:24:47.185  INFO 13080 --- [http-nio-8888-exec-10] com.neu.his.web.RegistrationController   : 根据处方明细ID得到应收金额
+2019-09-16 22:24:47.190  INFO 13080 --- [http-nio-8888-exec-10] com.neu.his.web.RegistrationController   : 找到最大可用发票号
+2019-09-16 22:24:48.396  INFO 13080 --- [http-nio-8888-exec-4] com.neu.his.web.RegistrationController   : 收费
+2019-09-16 22:24:48.423  INFO 13080 --- [http-nio-8888-exec-5] com.neu.his.web.RegistrationController   : 根据病历号得到所有处方明细
+2019-09-16 22:24:48.419  INFO 13080 --- [http-nio-8888-exec-8] com.neu.his.web.RegistrationController   : 挂号时根据病历号得到一些信息
+2019-09-16 22:25:11.092  INFO 13080 --- [http-nio-8888-exec-9] com.neu.his.web.RegistrationController   : 根据处方明细ID得到应收金额
+2019-09-16 22:25:11.092  INFO 13080 --- [http-nio-8888-exec-6] com.neu.his.web.RegistrationController   : 找到最大可用发票号
+2019-09-16 22:25:19.684  INFO 13080 --- [http-nio-8888-exec-4] com.neu.his.web.RegistrationController   : 挂号时根据病历号得到一些信息
+2019-09-16 22:25:19.688  INFO 13080 --- [http-nio-8888-exec-5] com.neu.his.web.RegistrationController   : 得到所有科室的名称
+2019-09-16 22:25:19.693  INFO 13080 --- [http-nio-8888-exec-8] com.neu.his.web.RegistrationController   : 找到最大可用发票号
+2019-09-16 22:25:27.910  INFO 13080 --- [http-nio-8888-exec-6] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 22:26:08.183  INFO 13080 --- [http-nio-8888-exec-10] com.neu.his.web.LoginController          : 登录验证中
+2019-09-16 22:26:08.191  INFO 13080 --- [http-nio-8888-exec-10] com.neu.his.web.LoginController          : 登录成功
+2019-09-16 22:26:08.201  INFO 13080 --- [http-nio-8888-exec-7] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 22:26:15.342  INFO 13080 --- [http-nio-8888-exec-7] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的未诊断患者信息
+2019-09-16 22:26:15.342  INFO 13080 --- [http-nio-8888-exec-4] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的已诊断患者信息
+2019-09-16 22:26:17.389  INFO 13080 --- [http-nio-8888-exec-1] com.neu.his.web.ClinicController         : 根据病历号得到该患者的一些信息
+2019-09-16 22:26:19.158  INFO 13080 --- [http-nio-8888-exec-5] com.neu.his.web.ClinicController         : 填写病历首页
+2019-09-16 22:26:19.185  INFO 13080 --- [http-nio-8888-exec-2] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的未诊断患者信息
+2019-09-16 22:26:19.186  INFO 13080 --- [http-nio-8888-exec-9] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的已诊断患者信息
+2019-09-16 22:26:25.297  INFO 13080 --- [http-nio-8888-exec-6] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:26:25.370  INFO 13080 --- [http-nio-8888-exec-8] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:26:25.452  INFO 13080 --- [http-nio-8888-exec-10] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:26:25.551  INFO 13080 --- [http-nio-8888-exec-7] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:26:25.695  INFO 13080 --- [http-nio-8888-exec-4] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:26:25.779  INFO 13080 --- [http-nio-8888-exec-3] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:26:26.033  INFO 13080 --- [http-nio-8888-exec-1] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:26:26.439  INFO 13080 --- [http-nio-8888-exec-5] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:26:26.662  INFO 13080 --- [http-nio-8888-exec-9] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:26:26.997  INFO 13080 --- [http-nio-8888-exec-2] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:26:27.747  INFO 13080 --- [http-nio-8888-exec-6] com.neu.his.web.ClinicController         : 模糊匹配疾病类型
+2019-09-16 22:26:29.219  INFO 13080 --- [http-nio-8888-exec-8] com.neu.his.web.ClinicController         : 模糊匹配疾病
+2019-09-16 22:26:33.045  INFO 13080 --- [http-nio-8888-exec-10] com.neu.his.web.ClinicController         : 填写病历首页
+2019-09-16 22:26:33.062  INFO 13080 --- [http-nio-8888-exec-4] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的已诊断患者信息
+2019-09-16 22:26:33.057  INFO 13080 --- [http-nio-8888-exec-7] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的未诊断患者信息
+2019-09-16 22:26:44.237  INFO 13080 --- [http-nio-8888-exec-3] com.neu.his.web.ClinicController         : 医生开立处方
+2019-09-16 22:40:40.077  INFO 1704 --- [restartedMain] com.neu.his.HisApplication               : Starting HisApplication on LAPTOP-ICT3KM42 with PID 1704 (C:\Users\lenovo\Desktop\JavaWebDesign\his\target\classes started by lenovo in C:\Users\lenovo\Desktop\JavaWebDesign\his)
+2019-09-16 22:40:40.083  INFO 1704 --- [restartedMain] com.neu.his.HisApplication               : No active profile set, falling back to default profiles: default
+2019-09-16 22:40:40.246  INFO 1704 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-16 22:40:40.247  INFO 1704 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-16 22:40:44.068  INFO 1704 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$71865319] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-16 22:40:44.901  INFO 1704 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2019-09-16 22:40:44.945  INFO 1704 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-16 22:40:44.946  INFO 1704 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-16 22:40:45.246  INFO 1704 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-16 22:40:45.247  INFO 1704 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 5000 ms
+2019-09-16 22:40:47.029  INFO 1704 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-16 22:40:47.085  INFO 1704 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-09-16 22:40:47.190  INFO 1704 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-09-16 22:40:48.617  INFO 1704 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-09-16 22:40:48.636  INFO 1704 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-09-16 22:40:48.655  INFO 1704 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-09-16 22:40:49.039  INFO 1704 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2019-09-16 22:40:49.043  INFO 1704 --- [restartedMain] com.neu.his.HisApplication               : Started HisApplication in 9.881 seconds (JVM running for 11.808)
+2019-09-16 22:40:49.144  INFO 1704 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-16 22:40:49.144  INFO 1704 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-16 22:40:49.162  INFO 1704 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 17 ms
+2019-09-16 22:40:55.715  INFO 1704 --- [http-nio-8888-exec-9] com.neu.his.web.LoginController          : 登录验证中
+2019-09-16 22:40:55.795  INFO 1704 --- [http-nio-8888-exec-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-16 22:40:56.382  INFO 1704 --- [http-nio-8888-exec-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-16 22:40:56.437  INFO 1704 --- [http-nio-8888-exec-9] com.neu.his.web.LoginController          : 登录成功
+2019-09-16 22:40:56.458  INFO 1704 --- [http-nio-8888-exec-2] com.neu.his.web.IndexController          : 验证cookie，进入主界面
+2019-09-16 22:41:01.378  INFO 1704 --- [http-nio-8888-exec-6] com.neu.his.web.RegistrationController   : 找到最大可用发票号
+2019-09-16 22:41:01.376  INFO 1704 --- [http-nio-8888-exec-9] com.neu.his.web.RegistrationController   : 得到所有科室的名称
+2019-09-16 22:41:01.446  INFO 1704 --- [http-nio-8888-exec-2] com.neu.his.web.RegistrationController   : 挂号时根据病历号得到一些信息
+2019-09-16 22:41:04.764  INFO 1704 --- [http-nio-8888-exec-8] com.neu.his.web.RegistrationController   : 挂号时根据病历号得到一些信息
+2019-09-16 22:41:06.957  INFO 1704 --- [http-nio-8888-exec-5] com.neu.his.web.RegistrationController   : 挂号时根据病历号得到一些信息
+2019-09-16 22:41:29.934  INFO 1704 --- [http-nio-8888-exec-6] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的未诊断患者信息
+2019-09-16 22:41:29.934  INFO 1704 --- [http-nio-8888-exec-8] com.neu.his.web.ClinicController         : 根据医生ID找到挂号到该医生的已诊断患者信息
+2019-09-16 22:41:31.782  INFO 1704 --- [http-nio-8888-exec-7] com.neu.his.web.ClinicController         : 根据病历号得到该患者的一些信息
+2019-09-16 22:41:31.933  INFO 1704 --- [http-nio-8888-exec-1] com.neu.his.web.ClinicController         : 根据病历号得到该患者的一些信息
+2019-09-16 22:41:32.086  INFO 1704 --- [http-nio-8888-exec-10] com.neu.his.web.ClinicController         : 根据病历号得到该患者的一些信息
+2019-09-16 22:41:32.218  INFO 1704 --- [http-nio-8888-exec-3] com.neu.his.web.ClinicController         : 根据病历号得到该患者的一些信息
+2019-09-16 22:41:32.371  INFO 1704 --- [http-nio-8888-exec-4] com.neu.his.web.ClinicController         : 根据病历号得到该患者的一些信息
+2019-09-16 22:41:37.038  INFO 1704 --- [http-nio-8888-exec-8] com.neu.his.web.RegistrationController   : 找到最大可用发票号
+2019-09-16 22:41:37.046  INFO 1704 --- [http-nio-8888-exec-6] com.neu.his.web.RegistrationController   : 根据处方明细ID得到应收金额
+2019-09-16 22:41:39.333  INFO 1704 --- [http-nio-8888-exec-7] com.neu.his.web.RegistrationController   : 找到最大可用发票号
+2019-09-16 22:41:39.334  INFO 1704 --- [http-nio-8888-exec-5] com.neu.his.web.RegistrationController   : 根据处方明细ID得到应收金额
+2019-09-16 22:41:45.029  INFO 1704 --- [http-nio-8888-exec-2] com.neu.his.web.RegistrationController   : 挂号时根据病历号得到一些信息
+2019-09-16 22:41:45.031  INFO 1704 --- [http-nio-8888-exec-8] com.neu.his.web.RegistrationController   : 得到所有科室的名称
+2019-09-16 22:41:45.033  INFO 1704 --- [http-nio-8888-exec-6] com.neu.his.web.RegistrationController   : 找到最大可用发票号
+2019-09-16 22:42:49.075  INFO 1704 --- [Thread-20] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-16 22:42:49.080  INFO 1704 --- [Thread-20] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-09-16 22:42:49.102  INFO 1704 --- [Thread-20] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-09-16 22:42:50.547  INFO 1704 --- [restartedMain] com.neu.his.HisApplication               : Starting HisApplication on LAPTOP-ICT3KM42 with PID 1704 (C:\Users\lenovo\Desktop\JavaWebDesign\his\target\classes started by lenovo in C:\Users\lenovo\Desktop\JavaWebDesign\his)
+2019-09-16 22:42:50.549  INFO 1704 --- [restartedMain] com.neu.his.HisApplication               : No active profile set, falling back to default profiles: default

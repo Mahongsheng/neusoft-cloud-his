@@ -1,5 +1,4 @@
 <body>
-
 <div class="modal inmodal" id="searchDisease" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content animated flipInY">
@@ -163,11 +162,11 @@
                 </div>
             </div>
             <div class="col-md-8" style="padding-left: 0px;background: white" id="patientFunctionDiv">
-                <div class="form-inline">
-                    <button class="btn btn-lg btn-primary" id="diagnosingPatientRegistrationID" value="">隐藏患者栏
-                    </button>
-                    <h3 style="margin-left: 20px" id="diagnosingPatient"></h3>
-                </div>
+                    <div class="form-inline">
+                        <button class="btn btn-lg btn-primary" id="diagnosingPatientRegistrationID" value="">隐藏患者栏
+                        </button>
+                        <h3 style="margin-left: 20px" id="diagnosingPatient"></h3>
+                    </div>
                 <div class="tabs-container">
                     <ul class="nav nav-tabs">
                         <li><a class="nav-link active" data-toggle="tab" href="#tab-1">病历首页</a>
@@ -492,6 +491,7 @@
             }
         });
     }
+
     $.fn.serializeObject = function () {
         var obj = {};
         var formArray = this.serializeArray();

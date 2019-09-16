@@ -23,6 +23,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 门诊医疗部分实现层
+ */
 @Service
 public class ClinicManagementImpl implements ClinicManagement {
 

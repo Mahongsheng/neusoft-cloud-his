@@ -11,6 +11,7 @@ $(function () {
     })
 });
 
+//提交前的表单验证
 function getInputsByFunc() {
     'use strict';
 
@@ -28,7 +29,7 @@ function submit_validate() {
     for (let i = 0; i < inputs.length; i++) {
         let item = inputs[i];
         let result = item.validator.is_valid();
-        if (!result){
+        if (!result) {
             return result;
         }
     }

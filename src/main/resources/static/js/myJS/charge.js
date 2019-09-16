@@ -1,4 +1,5 @@
-function searchPatient(){
+//根据病历号搜索病人
+function searchPatient() {
     let medicalRecordID = $("input[name = 'medicalRecordID']").val();
     if (medicalRecordID.length != 0) {
         let sendJson = {};
@@ -47,6 +48,7 @@ function searchPatient(){
     }
 }
 
+//打开收费模态框并执行一定操作
 $(document).ready(function () {
     $("#openInvoiceModal").click(function () {
         let shouldPayMoney;
@@ -83,7 +85,7 @@ $(document).ready(function () {
         });
     });
 });
-
+//检测实收金额框是否有输入数字的操作，如果有，计算出差值
 $(document).ready(function () {
     $("input[name='paidMoneyModal']").change(function () {
         let exchange = $("input[name='paidMoneyModal']").val() - $("input[name = 'shouldPayMoneyModal']").val();
@@ -91,13 +93,14 @@ $(document).ready(function () {
     });
 });
 
+//全选框的实现
 $(document).ready(function () {
     $('input[name="selectAll"]').change(function () {
-        if ($(this).is(":checked")){
-            $(this).attr('checked',true);
+        if ($(this).is(":checked")) {
+            $(this).attr('checked', true);
             $("input[name='drugPreDetail']").attr({'checked': true});
-        }else {
-            $(this).attr('checked',false);
+        } else {
+            $(this).attr('checked', false);
             $("input[name='drugPreDetail").attr({'checked': false});
         }
     });

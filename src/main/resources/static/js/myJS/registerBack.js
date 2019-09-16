@@ -32,17 +32,32 @@ function registerBack(obj) {
                         let numID = $("input[name = 'numID']").val();
 
                         for (let i = 0; i < PatientRegistrationRecord.length; i++) {
-                            $("#RegistrationRecordInfo tbody").append(
-                                '<tr>' +
-                                '<td>' + medicalRecordID + '</td>' +
-                                '<td>' + name + '</td>' +
-                                '<td>' + numID + '</td>' +
-                                '<td>' + PatientRegistrationRecord[i].registrationDate + '</td>' +
-                                '<td>' + PatientRegistrationRecord[i].registrationNoon + '</td>' +
-                                '<td>' + PatientRegistrationRecord[i].department + '</td>' +
-                                '<td>' + PatientRegistrationRecord[i].registrationState + '</td>' +
-                                '<td><button class="btn btn-sm btn-primary" onclick="registerBack(this)" id="' + PatientRegistrationRecord[i].registrationID + '">' + '退号' + '</button></td>' +
-                                '</tr>');
+                            if (PatientRegistrationRecord[i].registrationState == "待诊") {
+                                $("#RegistrationRecordInfo tbody").append(
+                                    '<tr>' +
+                                    '<td>' + medicalRecordID + '</td>' +
+                                    '<td>' + name + '</td>' +
+                                    '<td>' + numID + '</td>' +
+                                    '<td>' + PatientRegistrationRecord[i].registrationDate + '</td>' +
+                                    '<td>' + PatientRegistrationRecord[i].registrationNoon + '</td>' +
+                                    '<td>' + PatientRegistrationRecord[i].department + '</td>' +
+                                    '<td>' + PatientRegistrationRecord[i].registrationState + '</td>' +
+                                    '<td><button class="btn btn-xs btn-primary" onclick="registerBack(this)" id="' + PatientRegistrationRecord[i].registrationID + '">' + '退号' + '</button></td>' +
+                                    '</tr>');
+                            } else {
+                                $("#RegistrationRecordInfo tbody").append(
+                                    '<tr>' +
+                                    '<td>' + medicalRecordID + '</td>' +
+                                    '<td>' + name + '</td>' +
+                                    '<td>' + numID + '</td>' +
+                                    '<td>' + PatientRegistrationRecord[i].registrationDate + '</td>' +
+                                    '<td>' + PatientRegistrationRecord[i].registrationNoon + '</td>' +
+                                    '<td>' + PatientRegistrationRecord[i].department + '</td>' +
+                                    '<td>' + PatientRegistrationRecord[i].registrationState + '</td>' +
+                                    '<td><button class="btn btn-xs btn-primary" disabled="disabled" id="' + PatientRegistrationRecord[i].registrationID + '">' + '退号' + '</button></td>' +
+                                    '</tr>');
+                            }
+
                         }
                         wholeRegisterBackPageNum = PatientRegistrationRecord[0].wholePage;
 

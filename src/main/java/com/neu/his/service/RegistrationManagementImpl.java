@@ -20,6 +20,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 挂号收费部分实现层
+ */
 @Service
 public class RegistrationManagementImpl implements RegistrationManagement {
 
@@ -605,7 +608,6 @@ public class RegistrationManagementImpl implements RegistrationManagement {
             RegistrationRecordExample.Criteria criteria = registrationRecordExample.createCriteria();
             criteria.andPatientRecordIdEqualTo(medicalRecordIDDTO.getMedicalRecordID());
 
-            System.out.println(medicalRecordIDDTO.getPageNum());
             Page page = PageHelper.startPage(medicalRecordIDDTO.getPageNum(), medicalRecordIDDTO.getPageSize());
             List<RegistrationRecord> registrationRecords = registrationRecordMapper.selectByExample(registrationRecordExample);
 

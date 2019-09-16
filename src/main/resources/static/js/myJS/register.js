@@ -113,11 +113,14 @@ function refreshDoctor() {
     });
 }
 
+//监测科室名称是否改变，及时更新该科室内医生
 $(document).ready(function () {
     $($("select[name = 'department']")).change(function () {
         refreshDoctor();
     });
 });
+
+//监测医生是否改变，及时更新该医生的号额和已挂号额
 $(document).ready(function () {
     $($("select[name = 'doctorID']")).change(function () {
         let docIDJson = {};

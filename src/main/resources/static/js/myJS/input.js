@@ -1,3 +1,6 @@
+//表单验证轮子，实现By马洪升
+//本文件中定义Input对象，在Input对象中放入Validator对象以做到一对一绑定
+//调用Validator中方法验证输入是否合格
 $(function () {
     'use strict';
 
