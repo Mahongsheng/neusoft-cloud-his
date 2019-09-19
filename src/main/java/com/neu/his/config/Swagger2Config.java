@@ -29,7 +29,7 @@ public class Swagger2Config {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Springboot利用Swagger2构建api文档")
-                .description("简单优雅的restfun风格")
+                .description("项目运行By马洪升")
                 .termsOfServiceUrl("http://his.neu.com")
                 .version("1.0")
                 .build();

@@ -57,7 +57,6 @@ function registerBack(obj) {
                                     '<td><button class="btn btn-xs btn-primary" disabled="disabled" id="' + PatientRegistrationRecord[i].registrationID + '">' + '退号' + '</button></td>' +
                                     '</tr>');
                             }
-
                         }
                         wholeRegisterBackPageNum = PatientRegistrationRecord[0].wholePage;
 
@@ -98,11 +97,15 @@ $(document).ready(function () {
                 dataType: "json",
                 data: JSON.stringify(sendJson),
                 success: function (RegistrationInfo) {
-                    $("input[name = 'medicalRecordID']").val(RegistrationInfo.medicalRecordID);
-                    if (true) {
-                        $("input[name = 'name']").val(RegistrationInfo.patientName);
-                        $("input[name = 'numID']").val(RegistrationInfo.numID);
-                        $("input[name = 'address']").val(RegistrationInfo.address);
+                    if (RegistrationInfo === undefined){
+                        $('.alert').html('病历号不存在').addClass('alert-info').show().delay(1400).fadeOut();
+                    }else {
+                        $("input[name = 'medicalRecordID']").val(RegistrationInfo.medicalRecordID);
+                        if (true) {
+                            $("input[name = 'name']").val(RegistrationInfo.patientName);
+                            $("input[name = 'numID']").val(RegistrationInfo.numID);
+                            $("input[name = 'address']").val(RegistrationInfo.address);
+                        }
                     }
                 }
             });

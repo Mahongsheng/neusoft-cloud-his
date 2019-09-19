@@ -472,11 +472,7 @@ public class RegistrationManagementImpl implements RegistrationManagement {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            ReturnState returnState = new ReturnState();
-            returnState.setState(515);
-            returnState.setDetail("病人信息获取失败");
-            returnJson = (JSONObject) JSON.toJSON(returnState);
-            return returnJson;
+            return null;
         }
     }
 

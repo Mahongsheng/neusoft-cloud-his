@@ -51,7 +51,6 @@ function searchPatient() {
 //打开收费模态框并执行一定操作
 $(document).ready(function () {
     $("#openInvoiceModal").click(function () {
-        let shouldPayMoney;
         let medicalRecordID = $("input[name = 'medicalRecordID']").val();
         let name = $("input[name = 'name']").val();
         $("input[name = 'medicalRecordIDModal']").val(medicalRecordID);

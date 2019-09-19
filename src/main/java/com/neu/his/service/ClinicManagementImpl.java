@@ -303,6 +303,7 @@ public class ClinicManagementImpl implements ClinicManagement {
         try {
             if (findDiseaseDTO.getDiseaseCategory().equals("")) {
                 String pattern = "%" + findDiseaseDTO.getPattern() + "%";
+
                 Page page = PageHelper.startPage(findDiseaseDTO.getPageNum(), findDiseaseDTO.getPageSize());
                 List<DiseaseCatalog> diseaseCatalogs = diseaseCatalogMapper.findDiseaseCatalog(pattern);
 
